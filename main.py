@@ -15,7 +15,7 @@ class AmazonGPURealTimeSpider(scrapy.Spider):
     custom_settings = {
         'FEEDS': {
             'gpus_en_tiempo_real.json': {
-                'format': 'jsonlines',  # Formato para escritura incremental
+                'format': 'jsonlines',
                 'encoding': 'utf8',
             }
         },
