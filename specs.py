@@ -1,36 +1,55 @@
-from src.scraper.gpu_details import extract_gpu_details, save_to_csv
 import pandas as pd
+from src.scraper.newegg_specs import scrape_newegg_gpu_specs
+import os
 import time
 
 def main():
-    API_KEY = ""  # Reemplaza con tu API key real
-    gpu_urls = pd.read_csv("output/amazon_gpu_links.csv")["url"].tolist()
+    API_KEY = "" 
+    INPUT_CSV = "newegg_gpus.csv"
+    OUTPUT_CSV = "output/gpu_specs_combined.csv"
     
-    all_gpus_data = []
-    for i, url in enumerate(gpu_urls[:5]):  # Limitar a 50 productos para prueba
-        print(f"Extrayendo GPU {i+1}/{len(gpu_urls[:50])}: {url}")
-        gpu_data = extract_gpu_details(api_key=API_KEY, product_url=url)
-        if gpu_data:
-            all_gpus_data.append(gpu_data)
-        time.sleep(2)  # Evitar bloqueos
+    # Crear directorios si no existen
+    os.makedirs("output", exist_ok=True)
+    
+    # Leer URLs desde el CSV
+    df_urls = pd.read_csv(INPUT_CSV)
+    urls = df_urls['url'].tolist()
+    
+    all_specs = []
+    
+    for i, url in enumerate(urls):
+        print(f"\nProcesando GPU {i+1}/{len(urls)}: {url}")
         
-    if all_gpus_data:
-        save_to_csv(all_gpus_data, "output/gpu_details_full.csv")
+        try:
+            # Extraer specs
+            specs = scrape_newegg_gpu_specs(api_key=API_KEY, product_url=url)
+            
+            if specs:
+                # Aplanar el diccionario y añadir URL
+                flat_specs = {"URL": url}
+                for category, details in specs.items():
+                    for name, value in details.items():
+                        flat_specs[f"{category} - {name}"] = value
+                
+                all_specs.append(flat_specs)
+                print("✓ Datos extraídos")
+            else:
+                print("✗ No se encontraron specs, omitiendo...")
         
-        # Opcional: Crear una versión simplificada del CSV
-        df = pd.DataFrame(all_gpus_data)
-        simplified_df = df[[
-            # Datos Básicos
-            "name", "brand", "price", "availability", "url", "rating", "review_count",
-            # Especificaciones Clave
-            "gpu_model", "vram", "clock_speed", "tdp",
-            # Dimensiones
-            "length", "width", "height"
-        ]]
-        simplified_df.to_csv("output/gpu_details_simplified.csv", index=False)
-        print("¡Datos guardados en output/gpu_details_full.csv y versión simplificada!")
+        except Exception as e:
+            print(f"✗ Error procesando la URL: {str(e)}")
+            continue
+        
+        time.sleep(2)  # Delay para evitar bloqueos
+    
+    # Guardar todo en un CSV
+    if all_specs:
+        df_specs = pd.DataFrame(all_specs)
+        df_specs.to_csv(OUTPUT_CSV, index=False, encoding='utf-8-sig')
+        print(f"\n¡Datos guardados en {OUTPUT_CSV}!")
+        print(f"Total GPUs procesadas: {len(all_specs)}/{len(urls)}")
     else:
-        print("No se extrajeron datos.")
+        print("\nNo se extrajeron datos válidos.")
 
 if __name__ == "__main__":
     main()
