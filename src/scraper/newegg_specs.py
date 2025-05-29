@@ -1,23 +1,25 @@
+import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
-from typing import Dict, List
+import os
 import time
+from typing import Dict, List
 
-def scrape_newegg_gpu_specs(api_key: str, product_url: str) -> Dict[str, Dict[str, str]]:
+def scrape_newegg_specs(api_key: str, product_url: str, component_type: str) -> Dict[str, Dict[str, str]]:
     """
-    Extrae especificaciones técnicas de una GPU en Newegg en el formato solicitado.
+    Extrae especificaciones para cualquier componente de Newegg.
     
     Args:
-        api_key (str): API key de ScraperAPI.
-        product_url (str): URL del producto.
+        api_key: API key de ScraperAPI.
+        product_url: URL del producto.
+        component_type: Tipo de componente ('gpu', 'cpu', 'motherboard', etc.).
     
     Returns:
-        Dict: { "Model": {"Brand": "GIGABYTE", ...}, "Interface": {...}, ... }
+        Dict con especificaciones organizadas por categoría.
     """
     try:
         response = requests.get(
-            "http://api.scraperapi.com",
+            "https://api.scraperapi.com",
             params={
                 "api_key": api_key,
                 "url": product_url,
@@ -31,7 +33,7 @@ def scrape_newegg_gpu_specs(api_key: str, product_url: str) -> Dict[str, Dict[st
         soup = BeautifulSoup(response.text, 'html.parser')
         specs_data = {}
         
-        # Encontrar todas las tablas de especificaciones
+        # Selector universal para tablas de specs
         spec_tables = soup.select('div.tab-pane table.table-horizontal')
         
         for table in spec_tables:
@@ -56,14 +58,18 @@ def scrape_newegg_gpu_specs(api_key: str, product_url: str) -> Dict[str, Dict[st
         print(f"Error al scrapear {product_url}: {str(e)}")
         return {}
 
-def save_specs_to_txt(specs_data: Dict[str, Dict[str, str]], filename: str) -> None:
+def save_failed_links(failed_links: List[Dict[str, str]], filename: str = "failed_links.csv") -> None:
     """
-    Guarda las especificaciones en un archivo de texto con el formato deseado.
+    Guarda los links fallidos en un CSV con el formato original.
+    
+    Args:
+        failed_links: Lista de diccionarios con los datos originales.
+        filename: Nombre del archivo de salida.
     """
-    with open(filename, 'w', encoding='utf-8') as f:
-        for category, specs in specs_data.items():
-            f.write(f"{category}\n")
-            for name, value in specs.items():
-                f.write(f"{name}\t{value}\n")
-            f.write("\n")
-    print(f"¡Datos guardados en {filename}!")
+    if failed_links:
+        df = pd.DataFrame(failed_links)
+        df.to_csv(filename, index=False)
+        print(f"Links fallidos guardados en {filename}")
+    else:
+        print("No hay links fallidos para guardar.")
+

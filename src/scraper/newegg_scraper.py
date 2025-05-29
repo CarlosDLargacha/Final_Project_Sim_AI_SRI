@@ -4,7 +4,7 @@ import pandas as pd
 import time
 from typing import List, Dict
 
-def scrape_newegg_gpus(
+def scrape_newegg(
     api_key: str,
     base_url: str = "https://www.newegg.com/GPUs-Video-Graphics-Cards/SubCategory/ID-48",
     max_pages: int = 1,
