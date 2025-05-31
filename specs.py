@@ -1,55 +1,78 @@
 import pandas as pd
-from src.scraper.newegg_specs import scrape_newegg_gpu_specs
+from src.scraper.newegg_specs import *
 import os
 import time
 
 def main():
-    API_KEY = "" 
-    INPUT_CSV = "newegg_gpus.csv"
-    OUTPUT_CSV = "output/gpu_specs_combined.csv"
+    API_KEY = "315e98b8a8ea24b3d682638fd09f54a4"
+    INPUT_CSV = "data\product_links\_newegg_SSD_links.csv"  # Debe contener: title,price,url,brand
+    OUTPUT_CSV = "data\component_specs\SSD_specs.csv"
+    FAILED_LINKS_CSV = "output/failed_links.csv"
     
-    # Crear directorios si no existen
     os.makedirs("output", exist_ok=True)
     
-    # Leer URLs desde el CSV
-    df_urls = pd.read_csv(INPUT_CSV)
-    urls = df_urls['url'].tolist()
+    try:
+        df = pd.read_csv(INPUT_CSV)
+    except FileNotFoundError:
+        print(f"Error: No se encontró el archivo {INPUT_CSV}")
+        return
     
     all_specs = []
+    try:
+        a = pd.read_csv(OUTPUT_CSV)
+        all_specs = a.to_dict(orient="records")
+    except FileNotFoundError:
+        print(f"Error: No se encontró el archivo {OUTPUT_CSV}")
     
-    for i, url in enumerate(urls):
-        print(f"\nProcesando GPU {i+1}/{len(urls)}: {url}")
+    failed_links = []
+    
+    for idx, row in df.iterrows():
+        url = row['url']
+        price = row['price']
+        print(f"\nProcesando componente {idx + 1}/{len(df)}: {url}")
         
         try:
-            # Extraer specs
-            specs = scrape_newegg_gpu_specs(api_key=API_KEY, product_url=url)
+            # Extraer el tipo de componente de la URL o columna específica
+            component_type = 'SSD'
+            
+            specs = scrape_newegg_specs(API_KEY, url, component_type)
             
             if specs:
-                # Aplanar el diccionario y añadir URL
-                flat_specs = {"URL": url}
-                for category, details in specs.items():
-                    for name, value in details.items():
-                        flat_specs[f"{category} - {name}"] = value
-                
+                flat_specs = {
+                    "URL": url,
+                    "Price": price,
+                    "Component_Type": component_type,
+                    **{f"{cat}_{k}": v for cat, details in specs.items() for k, v in details.items()}
+                }
                 all_specs.append(flat_specs)
-                print("✓ Datos extraídos")
+                print("✓ Especificaciones extraídas")
             else:
-                print("✗ No se encontraron specs, omitiendo...")
+                print("✗ No se pudieron extraer especificaciones")
+                # Guardar el link fallido con todos los datos originales
+                failed_links.append({
+                    "title": row.get('title', ''),
+                    "price": row.get('price', ''),
+                    "url": url,
+                    "brand": row.get('brand', '')
+                })
         
         except Exception as e:
-            print(f"✗ Error procesando la URL: {str(e)}")
-            continue
+            print(f"✗ Error procesando el componente: {str(e)}")
+            failed_links.append({
+                "title": row.get('title', ''),
+                "price": row.get('price', ''),
+                "url": url,
+                "brand": row.get('brand', '')
+            })
         
         time.sleep(2)  # Delay para evitar bloqueos
     
-    # Guardar todo en un CSV
+    # Guardar resultados
     if all_specs:
-        df_specs = pd.DataFrame(all_specs)
-        df_specs.to_csv(OUTPUT_CSV, index=False, encoding='utf-8-sig')
-        print(f"\n¡Datos guardados en {OUTPUT_CSV}!")
-        print(f"Total GPUs procesadas: {len(all_specs)}/{len(urls)}")
-    else:
-        print("\nNo se extrajeron datos válidos.")
+        pd.DataFrame(all_specs).to_csv(OUTPUT_CSV, index=False)
+        print(f"\nEspecificaciones guardadas en {OUTPUT_CSV}")
+    
+    save_failed_links(failed_links, FAILED_LINKS_CSV)
 
 if __name__ == "__main__":
     main()
