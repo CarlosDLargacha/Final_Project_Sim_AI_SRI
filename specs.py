@@ -5,8 +5,8 @@ import time
 
 def main():
     API_KEY = "315e98b8a8ea24b3d682638fd09f54a4"
-    INPUT_CSV = "data\product_links\_newegg_SSD_links.csv"  # Debe contener: title,price,url,brand
-    OUTPUT_CSV = "data\component_specs\SSD_specs.csv"
+    INPUT_CSV = "data\product_links\_newegg_CPU_links.csv"  # Debe contener: title,price,url,brand
+    OUTPUT_CSV = "data\component_specs\CPU_specs.csv"
     FAILED_LINKS_CSV = "output/failed_links.csv"
     
     os.makedirs("output", exist_ok=True)
@@ -33,7 +33,7 @@ def main():
         
         try:
             # Extraer el tipo de componente de la URL o columna específica
-            component_type = 'SSD'
+            component_type = 'CPU'
             
             specs = scrape_newegg_specs(API_KEY, url, component_type)
             
