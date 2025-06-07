@@ -16,7 +16,7 @@ class HardwareRequirements(BaseModel):
     use_case: UseCase
     budget: Dict[str, float]  # {"min": 0, "max": 0}
     performance: Dict[str, Any]  # {"resolution": "4K", "fps": 60}
-    aesthetics: Dict[str, str]  # {"color": "black", "rgb": True}
+    aesthetics: Dict[str, Any]  # {"color": "black", "rgb": True}
     constraints: List[str]  # ["low_noise", "small_form_factor"]
 
 class BDIAgent:
@@ -84,7 +84,11 @@ class BDIAgent:
         """
         
         response = self.llm.generate(prompt)
-        return self._safe_parse_json(response)
+        
+        try:
+            return json.loads(response) 
+        except json.JSONDecodeError:
+            return self._safe_parse_json(response) 
 
     def _safe_parse_json(self, text: str) -> Dict[str, Any]:
         """Extrae JSON de texto potencialmente mal formado"""
@@ -96,6 +100,10 @@ class BDIAgent:
 
     def _validate_output(self, raw_data: Dict) -> HardwareRequirements:
         """Valida y normaliza los datos extraídos"""
+        
+        if isinstance(raw_data, str):
+             raw_data = self._safe_parse_json(raw_data)
+             
         # Convertir budget a números
         if 'budget' in raw_data:
             raw_data['budget'] = {
