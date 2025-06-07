@@ -3,160 +3,212 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai
 from openai import OpenAI
+from model.vectorDB import CSVToEmbeddings
+from model.recommender import RecommenderSystem
+import pandas as pd
 
-# Cargar variables de entorno
+# --- Configuración Inicial ---
 load_dotenv()
-
-# Configuración de la página
 st.set_page_config(
-    page_title="Chatbot",
-    page_icon="💻",
-    layout="wide"
+    page_title="ExpertBot de Hardware", 
+    layout="wide",
+    page_icon="🖥️"
 )
 
-# Modelos disponibles por proveedor
-MODEL_OPTIONS: dict[str, list[str]] = {
-    "openai": [
-        "gpt-3.5-turbo",
-        "gpt-4",
-        "gpt-4-turbo"
-    ],
-    "google": [
-        "gemini-1.5-flash",
-        "gemini-pro",
-        "gemini-1.5-pro"
-    ]
+# --- Modelos Disponibles ---
+MODEL_OPTIONS = {
+    "openai": ["gpt-3.5-turbo", "gpt-4", "gpt-4-turbo"],
+    "google": ["gemini-1.5-flash", "gemini-pro", "gemini-1.5-pro"]
 }
 
-# Configurar clientes de IA
+# --- Clientes de IA ---
+@st.cache_resource
 def configure_providers():
-    """Configura los clientes para los proveedores disponibles"""
-    providers = {
+    return {
         "openai": {
             "client": OpenAI(api_key=os.getenv("OPENAI_API_KEY")),
-            "default_model": "gpt-3.5-turbo"
+            "default_model": "gpt-4-turbo"
         },
         "google": {
             "client": genai.configure(api_key=os.getenv("GOOGLE_API_KEY")),
             "default_model": "gemini-1.5-flash"
         }
     }
-    return providers
 
+# --- Sistema de Recomendación ---
+@st.cache_resource
+def load_systems():
+    vectorizer = CSVToEmbeddings()
+    dbs = {
+        'CPU': vectorizer.process_csv('data/component_specs/CPU_specs.csv'),
+        'GPU': vectorizer.process_csv('data/component_specs/GPU_specs.csv')
+        # Añadir más componentes según sea necesario
+    }
+    return RecommenderSystem(dbs)
+
+# --- Inicialización ---
 providers = configure_providers()
+recommender = load_systems()
 
-# Inicializar el estado de la sesión
 if "messages" not in st.session_state:
     st.session_state.update({
         "messages": [{
             "role": "assistant", 
-            "content": "¡Hola! Soy tu experto en hardware. ¿En qué puedo ayudarte hoy?"
+            "content": "¡Hola! Soy tu experto en hardware. ¿Qué componentes necesitas hoy?"
         }],
-        "provider": os.getenv("DEFAULT_PROVIDER", "openai"),
+        "provider": "openai",
         "model": MODEL_OPTIONS["openai"][0],
-        "conversation_history": []
+        "recommendations": []
     })
 
-def get_llm_response(user_query, history):
-    """Obtiene respuesta del modelo seleccionado"""
+# --- Funciones Clave ---
+def get_llm_response(user_query: str, history: list) -> str:
+    """Obtiene respuesta del LLM integrando recomendaciones y enlaces"""
     try:
+        # Contexto del sistema mejorado
         system_prompt = """
-        Eres un experto en hardware de computadoras con estos roles:
-        1. ANALISTA: Identifica necesidades técnicas del usuario
-        2. TRADUCTOR: Convierte requisitos a especificaciones
-        3. ASESOR: Recomienda componentes compatibles
-        4. CRÍTICO: Evalúa relación calidad-precio
-        
+        Eres un experto en hardware con acceso a datos reales de componentes. Reglas estrictas:
+        1. NUNCA decir "No puedo proporcionar enlaces" o similares
+        2. SIEMPRE usar los enlaces exactos del sistema cuando existan
+        3. Si no hay enlace, decir "Consulta disponibilidad en distribuidores"
+        4. Los precios mostrados SON los actuales del sistema
+
         Reglas:
         - Sé técnico pero claro
-        - Pide detalles faltantes
-        - Compara opciones
-        - Verifica compatibilidad
-        - Proporciona rangos de precios
+        - Destaca características clave
+        - Siempre menciona precio y enlace si está disponible
+        - Explica compatibilidades
         """
-        
+
+        # Procesar con el LLM seleccionado
         if st.session_state.provider == "openai":
             messages = [{"role": "system", "content": system_prompt}]
-            
-            # Formatear historial para OpenAI
-            for msg in history[-8:]:  # Mantener último contexto
-                messages.append({"role": msg["role"], "content": msg["content"]})
+            messages += [{"role": m["role"], "content": m["content"]} for m in history[-6:]]
             
             response = providers["openai"]["client"].chat.completions.create(
                 model=st.session_state.model,
                 messages=messages,
                 temperature=0.7,
-                max_tokens=1000
+                max_tokens=1200
             )
-            return response.choices[0].message.content
+            llm_response = response.choices[0].message.content
             
         elif st.session_state.provider == "google":
-            # Configurar modelo Gemini
             model = genai.GenerativeModel(st.session_state.model)
             chat = model.start_chat(history=[])
             
-            # Construir contexto
-            prompt = system_prompt + "\n\nContexto:\n"
-            for msg in history[-6:]:
-                prompt += f"{msg['role'].capitalize()}: {msg['content']}\n"
+            context = system_prompt + "\nHistorial:\n" + "\n".join(
+                f"{m['role']}: {m['content']}" for m in history[-4:]
+            )
+            response = chat.send_message(context + f"\nUsuario: {user_query}")
+            llm_response = response.text
+
+        # Extraer requisitos y obtener recomendaciones
+        component_type = recommender._infer_component_type(user_query)
+        if component_type:
+            recs = recommender.recommend(user_query, component_type)
+            st.session_state.recommendations = recs
             
-            prompt += f"\nUsuario: {user_query}"
-            response = chat.send_message(prompt)
-            return response.text
-            
+            # Dentro de get_llm_response(), modifica la sección de recomendaciones:
+            if recs:
+                llm_response += "\n\n🔍 **Recomendaciones basadas en disponibilidad actual:**\n"
+                for i, item in enumerate(recs[:3], 1):
+                    response_text = (
+                        f"{i}. **{item['Model_Brand']} {item['Model_Name']}**\n"
+                        f"   - 💵 Precio actual: ${item['Price']}\n"
+                    )
+                    
+                    # Añadir specs dinámicas
+                    specs = {
+                        'CPU': f"⚙️ {item.get('Details_# of Cores# of Cores', 'N/A')} núcleos",
+                        'GPU': f"🎮 {item.get('Details_Memory Size', 'N/A')}GB VRAM"
+                    }
+                    response_text += f"   - {specs.get(component_type, '')}\n"
+                    
+                    # Manejo robusto de URLs
+                    if 'URL' in item and str(item['URL']).startswith('http'):
+                        response_text += f"   - 🔗 [Ver producto en Newegg]({item['URL']})\n"
+                    else:
+                        response_text += "   - 📞 Consultar disponibilidad con distribuidores\n"
+                    
+                    llm_response += response_text
+        
+        return llm_response
+
     except Exception as e:
         return f"⚠️ Error: {str(e)}"
 
-# Interfaz de usuario
+# --- Interfaz de Usuario Mejorada ---
 def main():
-    st.title("🔧 ExpertBot de computadoras")
+    st.title("🖥️ ExpertBot de Hardware AI")
     
-    # Sidebar para configuración avanzada
+    # Sidebar - Configuración
     with st.sidebar:
-        st.header("Configuración de Modelo")
+        st.header("⚙️ Configuración")
         
-        # Selector de proveedor
-        new_provider = st.selectbox(
+        # Selector de Proveedor
+        provider = st.selectbox(
             "Proveedor de IA",
             options=list(MODEL_OPTIONS.keys()),
-            index=0 if st.session_state.provider == "openai" else 1,
-            format_func=lambda x: "OpenAI" if x == "openai" else "Google"
+            format_func=lambda x: "OpenAI" if x == "openai" else "Google",
+            index=0 if st.session_state.provider == "openai" else 1
         )
         
-        # Selector de modelo específico
-        if new_provider != st.session_state.provider:
-            st.session_state.provider = new_provider
-            st.session_state.model = MODEL_OPTIONS[new_provider][0]
+        # Selector de Modelo
+        if provider != st.session_state.provider:
+            st.session_state.provider = provider
+            st.session_state.model = MODEL_OPTIONS[provider][0]
             st.rerun()
         
-        print(list(MODEL_OPTIONS[st.session_state.provider]))
-        model_key = st.selectbox(
+        model = st.selectbox(
             "Modelo",
-            options=list(MODEL_OPTIONS[st.session_state.provider]),
-            index=list(MODEL_OPTIONS[st.session_state.provider]).index(st.session_state.model)
+            options=MODEL_OPTIONS[st.session_state.provider],
+            index=0
         )
         
-        if model_key != st.session_state.model:
-            st.session_state.model = model_key
+        if model != st.session_state.model:
+            st.session_state.model = model
             st.rerun()
         
         st.markdown("---")
-        
-        if st.button("🔄 Reiniciar conversación"):
+        if st.button("🔄 Reiniciar Conversación", use_container_width=True):
             st.session_state.messages = [{
                 "role": "assistant",
-                "content": f"Conversación reiniciada. Ahora usando {st.session_state.provider.upper()}/{st.session_state.model}"
+                "content": "Conversación reiniciada. ¿En qué puedo ayudarte?"
             }]
+            st.session_state.recommendations = []
             st.rerun()
     
-    # Mostrar historial de chat
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-            if message["role"] == "assistant":
-                st.caption(f"Generado con {st.session_state.provider.upper()} - {st.session_state.model}")
+    # Historial de Chat
+    for msg in st.session_state.messages:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
+            
+            # Mostrar recomendaciones expandibles
+            if msg["role"] == "assistant" and st.session_state.recommendations:
+                with st.expander("📊 Detalles técnicos y compra", expanded=False):
+                    for item in st.session_state.recommendations[:3]:
+                        st.subheader(f"{item['Model_Brand']} {item['Model_Name']}")
+                        
+                        # Tarjeta de información
+                        col1, col2 = st.columns([3, 1])
+                        with col1:
+                            st.caption(f"**Precio:** ${item['Price']}")
+                            if 'Details_# of Cores# of Cores' in item:
+                                st.caption(f"**Núcleos:** {item['Details_# of Cores# of Cores']}")
+                            if 'Details_Memory Size' in item:
+                                st.caption(f"**VRAM:** {item['Details_Memory Size']}GB")
+                        
+                        with col2:
+                            if 'URL' in item and pd.notna(item['URL']):
+                                st.markdown(
+                                    f"<a href='{item['URL']}' target='_blank' style='color: white; background-color: #FF6B00; padding: 0.5em; border-radius: 5px; text-decoration: none;'>🛒 Comprar</a>",
+                                    unsafe_allow_html=True
+                                )
+                            else:
+                                st.caption("🔴 Enlace no disponible")
     
-    # Input del usuario
+    # Input de Usuario
     if prompt := st.chat_input("Describe tu necesidad de hardware..."):
         st.session_state.messages.append({"role": "user", "content": prompt})
         

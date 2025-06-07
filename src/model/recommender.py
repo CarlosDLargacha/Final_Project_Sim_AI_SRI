@@ -1,46 +1,73 @@
 import numpy as np
-from typing import List, Dict, Any
-import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
 class RecommenderSystem:
-    def __init__(self, vector_db, csp):
+    def __init__(self, vector_dbs: dict):
         """
-        :param embedding_model: Modelo de embeddings pre-cargado
-        :param vector_db_embeddings: Array numpy con todos los embeddings (n x d)
-        :param metadata: Lista de diccionarios con metadatos de cada componente
+        :param vector_dbs: Diccionario de bases de datos vectoriales por tipo
+                          Ej: {'CPU': cpu_db, 'GPU': gpu_db}
         """
-        self.embedding_model = vector_db["model"]
-        self.embeddings = vector_db["embeddings"]
-        self.metadata = vector_db["metadata"]
-        self.csp = csp
+        self.vector_dbs = vector_dbs
 
-    def recommend(self, user_query: str, constraints: Dict[str, Any], top_k: int = 5) -> List[Dict]:
-        """
-        Proceso completo de recomendación:
-        1. Transforma la consulta a embedding
-        2. Busca componentes similares
-        3. Aplica restricciones CSP
-        4. Devuelve mejores resultados
-        """
-        # Paso 1: Embedding de la consulta
-        query_embedding = self.embedding_model.encode([user_query])[0]
+    def recommend(self, user_query: str, component_type: str = None, 
+                 top_k: int = 5, min_price: float = None, max_price: float = None) -> list:
+        if not component_type:
+            component_type = self._infer_component_type(user_query)
+            if not component_type:
+                return []
+
+        db = self.vector_dbs.get(component_type)
+        if not db:
+            return []
+
+        # Embedding de la consulta
+        query_embed = db['model'].encode([user_query.lower()])
         
-        # Paso 2: Búsqueda semántica inicial
-        similarities = cosine_similarity([query_embedding], self.embeddings)[0]
-        candidate_indices = np.argsort(similarities)[-100:][::-1]  # Top 100 candidatos
+        # Calcular similitudes
+        sim_matrix = cosine_similarity(query_embed, db['embeddings'])
+        sim_scores = sim_matrix[0]
         
-        # Paso 3: Preparar datos para CSP
-        candidate_vectors = self.embeddings[candidate_indices]
-        candidate_metadata = [self.metadata[i] for i in candidate_indices]
+        # Filtrar por precio si se especifica
+        metadata = db['metadata']
+        valid_indices = []
+        for idx, score in enumerate(sim_scores):
+            item = metadata[idx]
+            price_ok = True
+            if min_price is not None and float(item.get('Price', 0)) < min_price:
+                price_ok = False
+            if max_price is not None and float(item.get('Price', float('inf'))) > max_price:
+                price_ok = False
+            if price_ok:
+                valid_indices.append((idx, score))
         
-        # Paso 4: Aplicar restricciones técnicas
-        valid_indices = self.csp.solve(candidate_vectors, candidate_metadata, constraints)
+        # Ordenar y seleccionar top_k
+        valid_indices.sort(key=lambda x: -x[1])
+        top_indices = [idx for idx, _ in valid_indices[:top_k]]
         
-        # Paso 5: Ordenar por score combinado (similitud + cumplimiento)
-        results = sorted(
-            valid_indices,
-            key=lambda x: (-x['similarity'], x['csp_score']))
+        # Formatear resultados
+        results = []
+        for idx in top_indices:
+            item = metadata[idx].copy()
+            item['similarity_score'] = float(sim_scores[idx])
+            
+            item['purchase_link'] = item.get('URL', '#')
+            if item['purchase_link'] != 'N/A':
+               item['purchase_link'] = f"[Comprar en Newegg]({item['purchase_link']})"
+               
+            results.append(item)
         
-        return results[:top_k]
-    
+        return results
+
+    def _infer_component_type(self, query: str) -> str:
+        query_lower = query.lower()
+        type_keywords = {
+            'CPU': ['cpu', 'procesador', 'core', 'ryzen', 'intel'],
+            'GPU': ['gpu', 'tarjeta gráfica', 'nvidia', 'radeon', 'rtx', 'gtx'],
+            'RAM': ['ram', 'memoria', 'ddr'],
+            'Motherboard': ['motherboard', 'placa base', 'placa madre']
+        }
+        
+        for comp_type, keywords in type_keywords.items():
+            if any(kw in query_lower for kw in keywords):
+                return comp_type
+        return None
