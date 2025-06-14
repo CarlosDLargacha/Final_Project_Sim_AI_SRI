@@ -2,6 +2,7 @@ from typing import Dict, Any, List
 import json
 from enum import Enum
 from pydantic import BaseModel
+from blackboard import Blackboard, EventType
 import re
 
 class UseCase(Enum):
@@ -20,16 +21,32 @@ class HardwareRequirements(BaseModel):
     constraints: List[str]  # ["low_noise", "small_form_factor"]
 
 class BDIAgent:
-    def __init__(self, llm_client):
+    def __init__(self, llm_client, blackboard: Blackboard):
         """
         :param llm_client: Cliente para el modelo de lenguaje (OpenAI/Gemini)
         """
+        super().__init__(blackboard)
+        
         self.llm = llm_client
         self.current_beliefs = {}  # Creencias actuales del sistema
         self.user_desires = {}  # Deseos expresados por el usuario
         self.intentions = []  # Planes de acción generados
+        
+        
+        self.blackboard.subscribe(
+            EventType.USER_INPUT,
+            self.extract_requirements
+        )
+        
+        self.blackboard.subscribe(
+            EventType.OPTIMIZATION_DONE,
+            self.generate_user_response
+        )
 
-    def extract_requirements(self, user_input: str) -> HardwareRequirements:
+    def generate_user_response(self):
+        pass 
+    
+    def extract_requirements(self):
         """
         Proceso completo de extracción BDI:
         1. Análisis de texto para creencias (Beliefs)
@@ -37,7 +54,8 @@ class BDIAgent:
         3. Generación de intenciones (Intentions)
         """
         # Paso 1: Extraer información cruda con LLM
-        raw_data = self._ask_llm(user_input)
+
+        raw_data = self._ask_llm(self.blackboard.get("user_input"))
         
         # Paso 2: Validar y normalizar
         requirements = self._validate_output(raw_data)
@@ -45,8 +63,13 @@ class BDIAgent:
         # Paso 3: Actualizar estados internos
         self._update_bdi_state(requirements)
         
-        return requirements
-
+        self.blackboard.update(
+            section='user_requirements',
+            data=requirements,
+            agent_id='bdi_agent',
+            notify=True  # Dispara EventType.REQUIREMENTS_UPDATED
+        )
+        
     def _ask_llm(self, text: str) -> Dict[str, Any]:
         """Consulta al modelo de lenguaje para extracción estructurada"""
         prompt = f"""

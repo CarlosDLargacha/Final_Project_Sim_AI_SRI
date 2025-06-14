@@ -2,6 +2,8 @@ from typing import Dict, List, Optional, Callable
 from dataclasses import dataclass
 import numpy as np
 from enum import Enum
+from agents.base_agent import BaseAgent
+from blackboard import Blackboard, EventType
 
 class ComponentType(Enum):
     CPU = "CPU"
@@ -35,10 +37,77 @@ class CompatibilityRule:
         self.verify = verification_fn
         self.severity = severity
 
-class CompatibilityAgent:
-    def __init__(self):
+
+class CompatibilityAgent(BaseAgent):
+    def __init__(self, blackboard: Blackboard):
+        super().__init__(blackboard)
         self.rules = self._initialize_rules()
         self.compatibility_matrix = self._build_compatibility_matrix()
+        
+        # Suscripción a eventos relevantes
+        self.blackboard.subscribe(
+            EventType.COMPONENTS_PROPOSED,
+            self.on_components_proposed
+        )
+        
+        # Configuración inicial
+        self.component_type = "compatibility"  # Identificador único
+        self.required_agents = ['cpu_agent', 'gpu_agent', 'motherboard_agent']  # Agentes mínimos requeridos
+
+    def on_components_proposed(self):
+        """Callback cuando hay nuevas propuestas de componentes"""
+        try:
+            # Obtener componentes consolidados del blackboard
+            components = self._get_components_from_blackboard()
+            
+            # Verificar compatibilidad
+            result = self.verify_system(components)
+            
+            # Escribir resultados en el blackboard
+            self.blackboard.update(
+                section='compatibility_issues',
+                data=result['issues'],
+                agent_id=self.component_type,
+                notify=bool(result['issues'])  # Notificar solo si hay problemas
+            )
+                
+            # Si no hay issues, activar optimización
+            if result['is_compatible']:
+                self.blackboard.update(
+                    section='compatibility_status',
+                    data={'ready_for_optimization': True},
+                    agent_id=self.component_type
+                )
+                
+        except Exception as e:
+            self._handle_error(f"Error en verificación: {str(e)}")
+
+    def _get_components_from_blackboard(self) -> List[HardwareComponent]:
+        """Convierte datos del blackboard a objetos HardwareComponent"""
+        proposals = self.blackboard.get_consolidated_components(
+            min_agents=len(self.required_agents)
+        )
+            
+        components = []
+        for comp_type, items in proposals.items():
+            for item in items:
+                components.append(
+                    HardwareComponent(
+                        id=item['id'],
+                        type=ComponentType[comp_type.upper()],
+                        specs=item['specs'],
+                        price=item['price']
+                    )
+                )
+        return components
+
+    def _handle_error(self, error_msg: str):
+        """Registra errores en el blackboard"""
+        self.blackboard.update(
+            section='errors',
+            data={'agent': self.component_type, 'error': error_msg},
+            agent_id=self.component_type
+        )
 
     def _initialize_rules(self) -> List[CompatibilityRule]:
         """Reglas técnicas fundamentales"""
@@ -197,3 +266,4 @@ class CompatibilityAgent:
             related_types = [t for t in rule.component_types if t != comp_type]
             self.compatibility_matrix.setdefault(comp_type, []).extend(related_types)
             self.compatibility_matrix[comp_type] = list(set(self.compatibility_matrix[comp_type]))
+            

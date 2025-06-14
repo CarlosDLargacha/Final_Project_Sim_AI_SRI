@@ -37,6 +37,7 @@ def test_notifications():
     
     bb.subscribe(EventType.REQUIREMENTS_UPDATED, callback)
     bb.update('user_requirements', {'test': 1}, 'test_agent')
+
     
     time.sleep(0.1)  # Dar tiempo a la notificación asíncrona
     assert len(events_received) == 1

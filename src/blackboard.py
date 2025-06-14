@@ -7,6 +7,7 @@ import json
 
 class EventType(Enum):
     """Tipos de eventos para notificaciones"""
+    USER_INPUT = 0
     REQUIREMENTS_UPDATED = 1
     COMPONENTS_PROPOSED = 2
     COMPATIBILITY_CHECKED = 3
@@ -23,11 +24,14 @@ class Blackboard:
     def __init__(self):
         # Estado estructurado del sistema
         self.state = {
+            'user_input': None,
             'user_requirements': None,       # Requisitos extraídos por BDI
             'component_proposals': {},       # {agent_id: [components]}
             'compatibility_issues': [],      # Problemas detectados
             'optimized_configs': [],         # Configuraciones finales
-            'knowledge_updates': {}          # Datos para actualizar RAG
+            'knowledge_updates': {},          # Datos para actualizar RAG
+            'compatibility_status': {'ready_for_optimization': False},
+            'errors': []
         }
         
         # Control de concurrencia
@@ -64,6 +68,7 @@ class Blackboard:
             # Notificar según tipo de cambio
             if notify:
                 event_map = {
+                    'user_input': EventType.USER_INPUT,
                     'user_requirements': EventType.REQUIREMENTS_UPDATED,
                     'component_proposals': EventType.COMPONENTS_PROPOSED,
                     'compatibility_issues': EventType.COMPATIBILITY_CHECKED,
