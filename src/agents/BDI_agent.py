@@ -3,6 +3,7 @@ import json
 from enum import Enum
 from pydantic import BaseModel
 from blackboard import Blackboard, EventType
+from model.LLMClient import LLMClient
 import re
 
 class UseCase(Enum):
@@ -21,12 +22,12 @@ class HardwareRequirements(BaseModel):
     constraints: List[str]  # ["low_noise", "small_form_factor"]
 
 class BDIAgent:
-    def __init__(self, llm_client, blackboard: Blackboard):
+    def __init__(self, llm_client: LLMClient, blackboard: Blackboard):
         """
         :param llm_client: Cliente para el modelo de lenguaje (OpenAI/Gemini)
         """
-        super().__init__(blackboard)
         
+        self.blackboard = blackboard
         self.llm = llm_client
         self.current_beliefs = {}  # Creencias actuales del sistema
         self.user_desires = {}  # Deseos expresados por el usuario

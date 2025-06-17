@@ -83,7 +83,7 @@ class CSVToEmbeddings:
             'component_type': csv_path.split('/')[-1].split('_')[0].upper()  # Asume que el tipo de componente está en el nombre del archivo
         }
     
-    def save_embeddings(self, embeddings_data: dict, output_dir: str = "embeddings_data") -> None:
+    def save_embeddings(self, embeddings_data: dict, output_dir: str = "src/data/component_embeddings") -> None:
         """
         Guarda los embeddings y metadatos en archivos binarios para uso futuro.
         
@@ -115,7 +115,7 @@ class CSVToEmbeddings:
             raise
 
     @staticmethod
-    def load_embeddings(component_type: str, input_dir: str = "embeddings_data") -> dict:
+    def load_embeddings(component_type: str, input_dir: str = "src/data/component_embeddings") -> dict:
         """
         Carga embeddings previamente guardados desde disco.
         

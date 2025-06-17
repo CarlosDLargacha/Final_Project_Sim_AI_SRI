@@ -3,7 +3,8 @@ import numpy as np
 from typing import Dict, List, Any
 from sklearn.metrics.pairwise import cosine_similarity
 from blackboard import Blackboard, EventType
-from bdi_agent import HardwareRequirements, UseCase
+from agents.BDI_agent import HardwareRequirements, UseCase
+import re
 
 class GPUAgent:
     def __init__(self, vector_db: Dict[str, Any], gpu_benchmarks_path: str, blackboard: Blackboard):

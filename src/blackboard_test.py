@@ -1,48 +1,71 @@
-# test_blackboard.py
-import pytest
-import threading
+# test_blackboard_integration.py
+import json
+from time import sleep
+from agents.BDI_agent import BDIAgent, HardwareRequirements
+from agents.CPU_agent import CPUAgent
+from agents.GPU_agent import GPUAgent
 from blackboard import Blackboard, EventType
-import time
+from model.vectorDB import CSVToEmbeddings
+from model.LLMClient import GeminiClient
 
-def test_concurrent_updates():
-    bb = Blackboard()
-    
-    def mock_agent(section, data):
-        for i in range(100):
-            time.sleep(0.1)
-            bb.update(section, f"{data}_{i}", "test_agent", False)
-    
-    threads = [
-        threading.Thread(target=mock_agent, args=('section1', 'data1')),
-        threading.Thread(target=mock_agent, args=('section2', 'data2'))
-    ]
-    
-    for t in threads:
-        t.start()
-    for t in threads:
-        t.join()
-    
-    assert bb.get('section1') == "data1_99"
-    assert bb.get('section2') == "data2_99"
-    
-    for i in bb.audit_log:
-        print(i)
 
-def test_notifications():
-    bb = Blackboard()
-    events_received = []
+class User:
+    def __init__(self, blackboard: Blackboard):
+        
+        self.blackboard = blackboard
+        
+        self.blackboard.subscribe(event_type=EventType.REQUIREMENTS_UPDATED, callback=self.on_components_proposed)
+        
+        self.blackboard.subscribe(event_type=EventType.COMPONENTS_PROPOSED, callback=self.on_components_proposed)
+        
+    def on_components_proposed(self):
+        
+        print("\n----AGENTS_LOG-----------------------------------\n")
+        
+        for i, log in enumerate(self.blackboard.audit_log):
+            print(f"Log {i}: {log}")
+            print()
+            
+        print("\n-----------------------------------------------------------------\n")
     
-    def callback():
-        events_received.append(1)
+    def make_request(self, user_input: str):
+        """
+        Simula la entrada del usuario.
+        En un escenario real, esto podría ser reemplazado por una interfaz de usuario.
+        """
+        
+        self.blackboard.update('user_input', {'user_input': user_input}, 'user_agent')
+        
+def run_test_scenario():
     
-    bb.subscribe(EventType.REQUIREMENTS_UPDATED, callback)
-    bb.update('user_requirements', {'test': 1}, 'test_agent')
+    # Cargar embeddings
+    processor = CSVToEmbeddings()
 
+    # Inicializar Blackboard
+    blackboard = Blackboard()
     
-    time.sleep(0.1)  # Dar tiempo a la notificación asíncrona
-    assert len(events_received) == 1
+    # Inicializar agentes
+    bdi_agent = BDIAgent( 
+        llm_client=GeminiClient(), 
+        blackboard=blackboard
+    )
     
-    for i in bb.audit_log:
-        print(i)
+    # cpu_agent = CPUAgent(
+    #     vector_db=processor.load_embeddings('CPU'), 
+    #     cpu_scores_path='src/data/benchmarks/CPU_benchmarks.json', 
+    #     blackboard=blackboard
+    # )
     
-test_notifications()
+    # gpu_agent = GPUAgent(
+    #     vector_db=processor.load_embeddings('GPU'), 
+    #     gpu_benchmarks_path='src/data/benchmarks/GPU_benchmarks_v7.csv', 
+    #     blackboard=blackboard
+    # )
+    
+    user_agent = User(blackboard=blackboard)
+    user_agent.make_request("Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU.")
+    
+    sleep(15)
+
+if __name__ == "__main__":
+    run_test_scenario()

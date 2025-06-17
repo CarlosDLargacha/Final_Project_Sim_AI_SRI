@@ -3,7 +3,7 @@ import pandas as pd
 from typing import Dict, List, Any
 from sklearn.metrics.pairwise import cosine_similarity
 from blackboard import Blackboard, EventType
-from bdi_agent import HardwareRequirements, UseCase
+from agents.BDI_agent import HardwareRequirements, UseCase
 
 class MotherboardAgent:
     def __init__(self, vector_db: Dict[str, Any], compatibility_db: Dict[str, Any], blackboard: Blackboard):
@@ -67,7 +67,7 @@ class MotherboardAgent:
                 'metadata': metadata,
                 'similarity': similarities[i],
                 'price': price,
-                'compatibility_score': self._calculate_compatibility_score(metadata, proposed_components)
+                'compatibility_score': self._calculate_compatibility_score(requirements, metadata, proposed_components)
             })
         
         # Ordenar por compatibilidad, similitud y precio
@@ -146,7 +146,7 @@ class MotherboardAgent:
         
         return True
 
-    def _calculate_compatibility_score(self, mb_metadata: Dict, components: Dict) -> int:
+    def _calculate_compatibility_score(self, requirements: HardwareRequirements,  mb_metadata: Dict, components: Dict) -> int:
         """Calcula puntaje de compatibilidad (mayor es mejor)"""
         score = 0
         
