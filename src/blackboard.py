@@ -111,14 +111,13 @@ class Blackboard:
             # Combinar propuestas eliminando duplicados
             consolidated = {}
             for agent, components in proposals.items():
-                for comp in components:
-                    comp_type = comp['component_type']
+                for comp_type , comp in components.items():
+                    #comp_type = comp['Component_Type']
                     if comp_type not in consolidated:
                         consolidated[comp_type] = []
                     
-                    # Evitar duplicados por ID/modelo
-                    if not any(c['id'] == comp['id'] for c in consolidated[comp_type]):
-                        consolidated[comp_type].append(comp)
+                    for c in comp:
+                        consolidated[comp_type].append(c)
             
             return consolidated
     
