@@ -44,11 +44,115 @@ class BDIAgent:
             EventType.OPTIMIZATION_DONE,
             self.generate_user_response
         )
-
+        
     @agent_error_handler
     def generate_user_response(self):
-        pass 
-    
+        """
+        Genera una respuesta en lenguaje natural basada en las configuraciones optimizadas
+        y contextualizada con el estado interno BDI.
+        """
+        user_input = self.blackboard.get("user_input", {}).get("user_input", "")
+        optimized_builds = self.blackboard.get("optimized_configs", [])
+
+        if not optimized_builds:
+            print("[BDIAgent] No hay configuraciones optimizadas para generar respuesta.")
+            return
+
+        # Construcción del prompt
+        system_prompt = """
+            Eres un experto en armado de computadoras personalizadas. Tu tarea es explicar de forma clara y profesional
+            una o más configuraciones recomendadas para el usuario, basadas en sus necesidades y el estado interno del sistema.
+
+            Tu respuesta debe:
+            - Mencionar los componentes clave seleccionados (CPU, GPU, RAM, almacenamiento, etc.)
+            - Justificar por qué se eligieron (rendimiento, eficiencia, estética, precio)
+            - Indicar el precio total de la build
+            - Mencionar cualquier ventaja técnica o compatibilidad relevante
+            - Ser clara incluso para usuarios no expertos, pero sin perder rigor técnico
+        """
+
+        bdi_context = f"""
+            === CONTEXTO INTERNO DEL SISTEMA (BDI) ===
+
+            🧠 Creencias (Beliefs):
+            - Requerimientos técnicos confirmados: {self.current_beliefs.get('validated_requirements')}
+            - Campos faltantes en la solicitud: {self.current_beliefs.get('missing_fields')}
+
+            🎯 Deseos (Desires):
+            - Rendimiento deseado: {self.user_desires.get('performance')}
+            - Estética deseada: {self.user_desires.get('aesthetics')}
+
+            ✅ Intenciones ejecutadas (Intentions):
+            - {', '.join(self.intentions)}
+
+            ===========================================
+        """
+
+        prompt = f"""{system_prompt}
+
+            Entrada original del usuario:
+            \"\"\"{user_input}\"\"\"
+
+            {bdi_context}
+
+            Configuraciones optimizadas encontradas (máximo 3):
+            {self._format_optimized_builds_for_prompt(optimized_builds)}
+
+            Responde de forma explicativa y clara, justificando las elecciones y destacando lo que cada build aporta.
+        """
+
+        response = self.llm.generate(prompt)
+
+        self.blackboard.update(
+            section="user_response",
+            data={"response": response},
+            agent_id="bdi_agent",
+            notify=True
+        )
+
+    def _format_optimized_builds_for_prompt(self, builds: List[Dict]) -> str:
+        """Convierte las builds optimizadas a un texto amigable para LLM"""
+        text = ""
+        for i, build in enumerate(builds, 1):
+            text += f"\n🛠️ Build #{i} - Precio Total: ${build['total_price']}\n"
+            for comp_type, comp in build['components'].items():
+                meta = comp.get("metadata", comp)
+                name = f"{meta.get('Model_Brand', '')} {meta.get('Model_Name', '')}".strip()
+                price = meta.get("Price", comp.get("price", "N/A"))
+                
+                highlights = []
+                # CPU
+                if comp_type == "CPU":
+                    highlights = [
+                        f"Núcleos: {meta.get('Details_# of Cores# of Cores', 'N/A')}",
+                        f"Frecuencia: {meta.get('Details_Operating FrequencyOperating Frequency', 'N/A')}",
+                        f"TDP: {meta.get('Details_Thermal Design PowerThermal Design Power', 'N/A')}"
+                    ]
+                # GPU
+                elif comp_type == "GPU":
+                    highlights = [
+                        f"Memoria: {meta.get('Details_Memory Size', 'N/A')} GB",
+                        f"Interfaz: {meta.get('Details_Interface', 'N/A')}"
+                    ]
+                # RAM
+                elif comp_type == "RAM":
+                    highlights = [
+                        f"Capacidad: {meta.get('Details_Capacity', 'N/A')}",
+                        f"Velocidad: {meta.get('Details_Speed', 'N/A')}"
+                    ]
+                # SSD
+                elif comp_type == "SSD":
+                    highlights = [
+                        f"Capacidad: {meta.get('Details_Capacity', 'N/A')}",
+                        f"Tipo: {meta.get('Details_Interface', 'N/A')}"
+                    ]
+
+                text += f"- {comp_type}: {name} (${price})\n"
+                for h in highlights:
+                    text += f"   - {h}\n"
+            text += "\n"
+        return text
+
     @agent_error_handler
     def extract_requirements(self):
         """

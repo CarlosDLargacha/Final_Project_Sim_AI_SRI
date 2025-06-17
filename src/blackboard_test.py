@@ -16,7 +16,7 @@ class User:
         self.agents_proposed = 0
                 
         self.blackboard.subscribe(event_type=EventType.COMPONENTS_PROPOSED, callback=self.fake_compability_check)
-        self.blackboard.subscribe(event_type=EventType.OPTIMIZATION_DONE, callback=self.on_log)
+        self.blackboard.subscribe(event_type=EventType.USER_RESPONSE, callback=self.on_log)
         
     def fake_compability_check(self):
         
@@ -82,7 +82,7 @@ def run_test_scenario():
     user_agent = User(blackboard=blackboard)
     user_agent.make_request("Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU.")
     
-    sleep(3000)
+    sleep(60)
 
 if __name__ == "__main__":
     run_test_scenario()

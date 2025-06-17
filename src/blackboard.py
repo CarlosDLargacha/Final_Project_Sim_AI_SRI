@@ -12,6 +12,7 @@ class EventType(Enum):
     COMPONENTS_PROPOSED = 2
     COMPATIBILITY_CHECKED = 3
     OPTIMIZATION_DONE = 4
+    USER_RESPONSE = 5
 
 @dataclass
 class BlackboardEntry:
@@ -25,6 +26,7 @@ class Blackboard:
         # Estado estructurado del sistema
         self.state = {
             'user_input': None,
+            'user_response': None,          # Respuesta del usuario a la propuesta
             'user_requirements': None,       # Requisitos extraídos por BDI
             'component_proposals': {},       # {agent_id: [components]}
             'compatibility_issues': [],      # Problemas detectados
@@ -72,7 +74,8 @@ class Blackboard:
                     'user_requirements': EventType.REQUIREMENTS_UPDATED,
                     'component_proposals': EventType.COMPONENTS_PROPOSED,
                     'compatibility_issues': EventType.COMPATIBILITY_CHECKED,
-                    'optimized_configs': EventType.OPTIMIZATION_DONE
+                    'optimized_configs': EventType.OPTIMIZATION_DONE,
+                    'user_response': EventType.USER_RESPONSE
                 }
                 
                 if section in event_map:
