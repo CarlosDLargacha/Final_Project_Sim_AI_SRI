@@ -4,6 +4,7 @@ from enum import Enum
 from pydantic import BaseModel
 from blackboard import Blackboard, EventType
 from model.LLMClient import LLMClient
+from agents.decorators import agent_error_handler
 import re
 
 class UseCase(Enum):
@@ -44,9 +45,11 @@ class BDIAgent:
             self.generate_user_response
         )
 
+    @agent_error_handler
     def generate_user_response(self):
         pass 
     
+    @agent_error_handler
     def extract_requirements(self):
         """
         Proceso completo de extracción BDI:
@@ -87,7 +90,7 @@ class BDIAgent:
             }},
             "performance": {{
                 "resolution": "1080p/1440p/4K",
-                "fps": número,
+                "fps": número (si no es especificado en dependencia del use_case seleciona el mas usado en esa catogoría),
                 "software": ["nombres de programas"]
             }},
             "aesthetics": {{

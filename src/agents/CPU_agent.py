@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from typing import Dict, List, Any, Tuple
 from agents.BDI_agent import HardwareRequirements, UseCase
+from agents.decorators import agent_error_handler
 from blackboard import *
 
 class CPUAgent:
@@ -31,7 +32,7 @@ class CPUAgent:
         
         # Crear un diccionario indexado por nombre normalizado de CPU
         scores_dict = {}
-        for cpu in raw_scores:
+        for cpu in raw_scores['devices']:
             # Normalizar el nombre para mejorar la coincidencia
             normalized_name = self._normalize_cpu_name(cpu['name'])
             cpu['normalized_name'] = normalized_name
@@ -65,6 +66,7 @@ class CPUAgent:
         
         return None
     
+    @agent_error_handler
     def process_requirements(self):
         """
         Proceso principal que filtra y recomienda CPUs basado en:
@@ -101,8 +103,12 @@ class CPUAgent:
         for i, metadata in enumerate(self.vector_db['metadata']):
             # 5.1. Procesar precio (convertir de string a float)
             try:
-                price_str = metadata.get('Price', '0').replace('$', '').replace(',', '').strip()
-                price = float(price_str)
+                if isinstance(metadata.get('Price'), str):
+                    # Eliminar símbolos de dólar y comas, y convertir a float
+                    price_str = metadata.get('Price', '0').replace('$', '').replace(',', '').strip()
+                    price = float(price_str) if price_str else float('inf')
+                else:
+                    price = float(metadata.get('Price', '0'))
             except (ValueError, TypeError) as e:
                 print(f"Error al procesar precio {metadata.get('Price')}: {str(e)}")
                 price = float('inf')
@@ -223,7 +229,7 @@ class CPUAgent:
         if requirements.constraints:
             text_parts.append(f"Restricciones: {', '.join(requirements.constraints)}")
         if requirements.aesthetics:
-            text_parts.append(f"Preferencias estéticas: {json.dumps(requirements.aesthetics)}")
+            text_parts.append(f"Color: {requirements.aesthetics.get('color', 'cualquiera')}, RGB: {'Sí' if requirements.aesthetics.get('rgb', False) else 'No'}")
         
         return ". ".join(text_parts)
    

@@ -2,6 +2,7 @@ import re
 import pandas as pd
 from typing import Dict, List, Any
 from sklearn.metrics.pairwise import cosine_similarity
+from agents.decorators import agent_error_handler
 from blackboard import Blackboard, EventType
 from agents.BDI_agent import HardwareRequirements, UseCase
 
@@ -23,6 +24,7 @@ class MotherboardAgent:
             self.process_requirements
         )
 
+    @agent_error_handler
     def process_requirements(self):
         """Procesa los requisitos y componentes seleccionados para recomendar motherboards"""
         requirements = self.blackboard.get('user_requirements')

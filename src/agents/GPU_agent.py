@@ -1,7 +1,9 @@
+from time import sleep
 import pandas as pd
 import numpy as np
 from typing import Dict, List, Any
 from sklearn.metrics.pairwise import cosine_similarity
+from agents.decorators import agent_error_handler
 from blackboard import Blackboard, EventType
 from agents.BDI_agent import HardwareRequirements, UseCase
 import re
@@ -27,6 +29,10 @@ class GPUAgent:
     def _load_gpu_benchmarks(self, path: str) -> Dict[str, Dict]:
         """Carga y normaliza los benchmarks de GPU desde CSV"""
         df = pd.read_csv(path)
+        
+        df_numeric = df.select_dtypes(include=['int64', 'float64'])
+        df[df_numeric.columns] = df_numeric.fillna(0)
+        
         benchmarks_dict = {}
         
         for _, row in df.iterrows():
@@ -48,6 +54,7 @@ class GPUAgent:
         name = re.sub(r'(®|™|nvidia|geforce|radeon|amd|\s+)', '', name)
         return name.strip()
 
+    @agent_error_handler
     def process_requirements(self):
         """Procesa los requisitos del usuario para recomendar GPUs"""
         requirements = self.blackboard.get('user_requirements')
@@ -70,19 +77,19 @@ class GPUAgent:
         # Filtrar GPUs que cumplan con requisitos
         candidates = []
         for i, metadata in enumerate(self.vector_db['metadata']):
-            gpu_name = metadata.get('Model_Name', '')
+            gpu_name = metadata.get('Model - Model', '')
             gpu_bench = self._find_matching_gpu(gpu_name)
             
             if not gpu_bench:
                 continue
             
-            # Verificar rendimiento mínimo
+            #Verificar rendimiento mínimo
             if gpu_bench['G3Dmark'] < min_performance['G3Dmark']:
                 continue
                 
             # Verificar presupuesto (hasta 40% del total para GPU)
             try:
-                price = float(metadata.get('Price', float('inf')))
+                price = float(metadata.get('price', float('inf')))
             except (ValueError, TypeError):
                 price = float('inf')
             

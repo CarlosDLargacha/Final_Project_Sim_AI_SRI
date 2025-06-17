@@ -8,6 +8,7 @@ from pathlib import Path
 
 class CSVToEmbeddings:
     def __init__(self, embedding_model_name: str = 'all-MiniLM-L6-v2'):
+        self.embedding_model_name = embedding_model_name
         self.embedding_model = SentenceTransformer(embedding_model_name)
         self.component_types = {
             'CPU': ['Details_# of Cores# of Cores', 'CPU Socket Type_CPU Socket Type', 
@@ -80,6 +81,7 @@ class CSVToEmbeddings:
             'embeddings': np.vstack(embeddings),
             'metadata': df.to_dict('records'),
             'model': self.embedding_model,
+            'model_name': self.embedding_model_name,
             'component_type': csv_path.split('/')[-1].split('_')[0].upper()  # Asume que el tipo de componente está en el nombre del archivo
         }
     
@@ -105,7 +107,7 @@ class CSVToEmbeddings:
             with open(f"{base_filename}_meta.pkl", 'wb') as f:
                 pickle.dump({
                     'metadata': embeddings_data['metadata'],
-                    'model_name': str(self.embedding_model),
+                    'model_name': self.embedding_model_name,
                     'component_type': embeddings_data['component_type']
                 }, f)
                 
@@ -140,7 +142,8 @@ class CSVToEmbeddings:
             return {
                 'embeddings': embeddings,
                 'metadata': meta_data['metadata'],
-                'model': meta_data['model_name'],  # Nota: Esto será string, no el modelo
+                'model_name': meta_data['model_name'], 
+                'model': SentenceTransformer(meta_data['model_name']),
                 'component_type': meta_data['component_type']
             }
         except FileNotFoundError:

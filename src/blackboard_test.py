@@ -14,11 +14,11 @@ class User:
         
         self.blackboard = blackboard
         
-        self.blackboard.subscribe(event_type=EventType.REQUIREMENTS_UPDATED, callback=self.on_components_proposed)
+        #self.blackboard.subscribe(event_type=EventType.REQUIREMENTS_UPDATED, callback=self.on_requirements_updated)
         
-        self.blackboard.subscribe(event_type=EventType.COMPONENTS_PROPOSED, callback=self.on_components_proposed)
+        self.blackboard.subscribe(event_type=EventType.COMPONENTS_PROPOSED, callback=self.on_log)
         
-    def on_components_proposed(self):
+    def on_log(self):
         
         print("\n----AGENTS_LOG-----------------------------------\n")
         
@@ -27,7 +27,7 @@ class User:
             print()
             
         print("\n-----------------------------------------------------------------\n")
-    
+            
     def make_request(self, user_input: str):
         """
         Simula la entrada del usuario.
@@ -44,23 +44,22 @@ def run_test_scenario():
     # Inicializar Blackboard
     blackboard = Blackboard()
     
-    # Inicializar agentes
-    bdi_agent = BDIAgent( 
-        llm_client=GeminiClient(), 
-        blackboard=blackboard
-    )
-    
-    # cpu_agent = CPUAgent(
-    #     vector_db=processor.load_embeddings('CPU'), 
-    #     cpu_scores_path='src/data/benchmarks/CPU_benchmarks.json', 
-    #     blackboard=blackboard
-    # )
-    
-    # gpu_agent = GPUAgent(
-    #     vector_db=processor.load_embeddings('GPU'), 
-    #     gpu_benchmarks_path='src/data/benchmarks/GPU_benchmarks_v7.csv', 
-    #     blackboard=blackboard
-    # )
+    agents = {
+        'bdi': BDIAgent(
+            llm_client=GeminiClient(),
+            blackboard=blackboard
+        ),
+        'cpu': CPUAgent(
+            vector_db= processor.load_embeddings('CPU'),
+            cpu_scores_path='src/data/benchmarks/CPU_benchmarks.json',
+            blackboard=blackboard
+        ),
+        'gpu': GPUAgent(
+            vector_db=processor.load_embeddings('GPU'),
+            gpu_benchmarks_path='src/data/benchmarks/GPU_benchmarks_v7.csv',
+            blackboard=blackboard
+        )
+    }
     
     user_agent = User(blackboard=blackboard)
     user_agent.make_request("Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU.")

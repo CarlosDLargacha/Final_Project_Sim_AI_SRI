@@ -2,7 +2,6 @@ from typing import Dict, List, Optional, Callable
 from dataclasses import dataclass
 import numpy as np
 from enum import Enum
-from agents.base_agent import BaseAgent
 from blackboard import Blackboard, EventType
 
 class ComponentType(Enum):
@@ -38,9 +37,9 @@ class CompatibilityRule:
         self.severity = severity
 
 
-class CompatibilityAgent(BaseAgent):
+class CompatibilityAgent():
     def __init__(self, blackboard: Blackboard):
-        super().__init__(blackboard)
+        self.blackboard = blackboard
         self.rules = self._initialize_rules()
         self.compatibility_matrix = self._build_compatibility_matrix()
         
