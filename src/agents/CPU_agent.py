@@ -82,11 +82,12 @@ class CPUAgent:
             return
         
         # 1. Determinar puntajes mínimos según el caso de uso
-        min_scores = self._get_min_scores(requirements.use_case)
+        min_scores = self._find_matching_cpu(requirements.cpu)
+        
         
         # 2. Obtener presupuesto máximo (si no existe, usar infinito)
         max_budget = requirements.budget.get('max', float('inf'))
-        cpu_budget_limit = max_budget * 0.35  # Asignar hasta 35% del presupuesto a CPU
+        cpu_budget_limit = max_budget
         
         # 3. Generar embedding para los requisitos
         requirement_text = self._generate_requirement_text(requirements, min_scores)
@@ -125,8 +126,8 @@ class CPUAgent:
                 continue
                 
             # 5.4. Verificar requisitos mínimos de rendimiento
-            if (cpu_score['score'] < min_scores['single_core'] or 
-                cpu_score['multicore_score'] < min_scores['multi_core']):
+            if (cpu_score['score'] < min_scores['score'] or 
+                cpu_score['multicore_score'] < min_scores['multicore_core']):
                 continue
                 
             # 5.5. Verificar compatibilidad con restricciones
@@ -165,18 +166,6 @@ class CPUAgent:
             agent_id='cpu_agent',
             notify=True
         )
-    
-    def _get_min_scores(self, use_case: UseCase) -> Dict[str, int]:
-        """Determina los puntajes mínimos según el caso de uso"""
-        # Estos valores pueden ajustarse según datos históricos
-        if use_case == UseCase.GAMING:
-            return {'single_core': 1800, 'multi_core': 8000}
-        elif use_case == UseCase.VIDEO_EDITING:
-            return {'single_core': 1500, 'multi_core': 12000}
-        elif use_case == UseCase.DATA_SCIENCE:
-            return {'single_core': 1600, 'multi_core': 15000}
-        else:  # GENERAL
-            return {'single_core': 1200, 'multi_core': 6000}
     
     def _select_cheapest_per_model(self, candidates: List[Dict]) -> List[Dict]:
         """
