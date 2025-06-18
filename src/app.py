@@ -2,6 +2,8 @@ import streamlit as st
 import os
 from time import sleep
 from dotenv import load_dotenv
+from agents.MB_agent import MotherboardAgent
+from agents.compatibility_agent import CompatibilityAgent
 from blackboard import Blackboard, EventType
 from agents.BDI_agent import BDIAgent
 from agents.CPU_agent import CPUAgent
@@ -45,46 +47,43 @@ def init_agents():
 
     llm_client = OpenAIClient(model=st.session_state.model) if st.session_state.provider == "openai" else GeminiClient()
 
+    cpu_db = processor.load_embeddings('CPU')
+    gpu_db = processor.load_embeddings('GPU')
+    mb_db = processor.load_embeddings('Motherboard')
+    rule_db = [ cpu_db, gpu_db, mb_db ]
+    
     agents = {
-        "bdi": BDIAgent(
-            llm_client=llm_client, 
-            blackboard=blackboard),
-        "cpu": CPUAgent(
-            vector_db=processor.load_embeddings('CPU'),
+        'bdi': BDIAgent(
+            llm_client=GeminiClient(),
+            blackboard=blackboard
+        ),
+        'cpu': CPUAgent(
+            vector_db=cpu_db ,
             cpu_scores_path='src/data/benchmarks/CPU_benchmarks.json',
             blackboard=blackboard
         ),
-        "gpu": GPUAgent(
-            vector_db=processor.load_embeddings('GPU'),
+        'gpu': GPUAgent(
+            vector_db=gpu_db,
             gpu_benchmarks_path='src/data/benchmarks/GPU_benchmarks_v7.csv',
             blackboard=blackboard
         ),
-        "opt": OptimizationAgent(
+        'mb': MotherboardAgent(
+            vector_db=mb_db,
+            blackboard=blackboard
+        ),
+        'comp': CompatibilityAgent(
             blackboard=blackboard,
-            agents_proposal_number=2
+            rules_db=rule_db
+        ),
+        'opt': OptimizationAgent(
+            blackboard=blackboard,
         )
     }
 
     def handle_user_response():
         st.session_state.user_response = blackboard.get("user_response")
-
-    blackboard.subscribe(EventType.USER_RESPONSE, handle_user_response)
-    
-    def fake_compability_check(self):
         
-        self.agents_proposed += 1
-        
-        if(self.agents_proposed >= 2):
-            self.blackboard.update(
-                'compatibility_issues',
-                {
-                    'compatible': True,
-                    'message': 'Todos los componentes son compatibles.'
-                },
-                'user_agent'
-            )
-            
-    blackboard.subscribe(EventType.COMPONENTS_PROPOSED, fake_compability_check)
+    blackboard.subscribe(event_type=EventType.USER_RESPONSE, callback=handle_user_response)
 
 init_agents()
 

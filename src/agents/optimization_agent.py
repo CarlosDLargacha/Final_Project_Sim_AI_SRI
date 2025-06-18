@@ -4,15 +4,13 @@ from agents.decorators import agent_error_handler
 from itertools import product
 
 class OptimizationAgent:
-    def __init__(self, blackboard: Blackboard, agents_proposal_number: int = 2):
+    def __init__(self, blackboard: Blackboard):
         """
         Agente encargado de optimizar las configuraciones de componentes propuestos
         :param blackboard: Instancia del Blackboard para acceder a datos compartidos
-        :param agents_proposal_number: Número mínimo de propuestas de componentes requeridas para optimizar
         """
         
         self.blackboard = blackboard
-        self.agents_proposal_number = agents_proposal_number
 
         # Suscribirse al evento de compatibilidad completada
         self.blackboard.subscribe(
@@ -29,14 +27,9 @@ class OptimizationAgent:
         print("[OptimizationAgent] Iniciando optimización de configuraciones...")
 
         # Obtener datos del blackboard
-        proposals: Dict[str, List[Dict]] = self.blackboard.get_consolidated_components(2) or {}
+        proposals: Dict[str, List[Dict]] = self.blackboard.get_consolidated_components() or {}
         requirements = self.blackboard.get("user_requirements") or {}
         compatibility_issues = self.blackboard.get("compatibility_issues") or []
-
-        # Si no hay propuestas suficientes, salimos
-        if len(proposals) < self.agents_proposal_number: 
-            print("[OptimizationAgent] Faltan componentes propuestos para optimizar")
-            return
 
         # Generar combinaciones posibles
         domains = [proposals[k] for k in sorted(proposals.keys())]

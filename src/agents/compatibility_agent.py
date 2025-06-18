@@ -1,6 +1,7 @@
 from typing import Dict, List, Any, Callable
 from dataclasses import dataclass
 from enum import Enum
+from agents.decorators import agent_error_handler
 from blackboard import Blackboard, EventType
 
 class ComponentType(Enum):
@@ -21,7 +22,7 @@ class CompatibilityRule:
     severity: str  # "error" or "warning"
 
 class CompatibilityAgent:
-    def __init__(self, blackboard: Blackboard, rules_db: Dict[str, Any]):
+    def __init__(self, blackboard: Blackboard, rules_db: Dict[str, Any], component_agents_number: int = 3):
         """
         :param blackboard: Instancia compartida del blackboard
         :param rules_db: Base de datos de reglas de compatibilidad
@@ -29,6 +30,7 @@ class CompatibilityAgent:
         self.blackboard = blackboard
         self.rules_db = rules_db
         self.compatibility_rules = self._load_compatibility_rules()
+        self.component_agents_number = component_agents_number
         
         # Suscribirse a eventos de actualización de componentes
         self.blackboard.subscribe(
@@ -84,10 +86,11 @@ class CompatibilityAgent:
         
         return rules
 
+    @agent_error_handler
     def check_compatibility(self):
         """Verifica la compatibilidad entre todos los componentes propuestos"""
         component_proposals = self.blackboard.get('component_proposals', {})
-        if not component_proposals:
+        if len(component_proposals) < self.component_agents_number:
             return
         
         issues = []

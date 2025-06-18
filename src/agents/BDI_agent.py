@@ -95,10 +95,13 @@ class BDIAgent:
 
             {bdi_context}
 
-            Configuraciones optimizadas encontradas (máximo 3):
+            Configuraciones optimizadas encontradas por ti (máximo 3):
             {self._format_optimized_builds_for_prompt(optimized_builds)}
 
-            Responde de forma explicativa y clara, justificando las elecciones y destacando lo que cada build aporta.
+            Responde de forma explicativa y clara, justificando las elecciones y destacando lo que cada build aporta. 
+            
+            PD: Recuerda que tu (el sistema) eres quien esta recomendando las builds, no el usuario. Por lo tanto explica cada una de las build.
+            PD2: Ajustate solamente a las recomendaciones encontradas. Evita cualquier suposición o recomendación adicional que no esté basada en las builds optimizadas.
         """
 
         response = self.llm.generate(prompt)

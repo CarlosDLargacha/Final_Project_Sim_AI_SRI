@@ -18,7 +18,7 @@ class MotherboardAgent:
         
         # Suscribirse a eventos relevantes
         self.blackboard.subscribe(
-            EventType.COMPONENTS_PROPOSED,  # Esperar a que otros agentes propongan componentes
+            EventType.REQUIREMENTS_UPDATED,  
             self.process_requirements
         )
 
@@ -29,11 +29,8 @@ class MotherboardAgent:
         if not requirements:
             return
         
-        # Obtener componentes ya seleccionados/propuestos
-        proposed_components = self.blackboard.get('component_proposals', {})
-        
         # Generar embedding para los requisitos
-        requirement_text = self._generate_requirement_text(requirements, proposed_components)
+        requirement_text = self._generate_requirement_text(requirements)
         requirement_embedding = self.embedding_model.encode([requirement_text])[0]
         
         # Calcular similitud con todas las motherboards
@@ -86,21 +83,12 @@ class MotherboardAgent:
             notify=True
         )
 
-    def _generate_requirement_text(self, requirements: HardwareRequirements, components: Dict) -> str:
+    def _generate_requirement_text(self, requirements: HardwareRequirements) -> str:
         """Genera texto descriptivo de requisitos para embeddings"""
         text_parts = [
             f"Motherboard para {requirements.use_case.value}",
             "Requisitos:"
         ]
-        
-        # Añadir características de componentes seleccionados
-        if 'CPU' in components:
-            cpu_model = components['CPU'][0]['metadata'].get('Model_Name', 'CPU')
-            text_parts.append(f"Compatibilidad con {cpu_model}")
-        
-        if 'GPU' in components:
-            gpu_model = components['GPU'][0]['metadata'].get('Model_Name', 'GPU')
-            text_parts.append(f"Ranura compatible con {gpu_model}")
         
         # Añadir requisitos específicos
         if requirements.use_case == UseCase.GAMING:
