@@ -7,15 +7,13 @@ from blackboard import Blackboard, EventType
 from agents.BDI_agent import HardwareRequirements, UseCase
 
 class MotherboardAgent:
-    def __init__(self, vector_db: Dict[str, Any], compatibility_db: Dict[str, Any], blackboard: Blackboard):
+    def __init__(self, vector_db: Dict[str, Any], blackboard: Blackboard):
         """
         :param vector_db: Base de datos vectorial de motherboards
-        :param compatibility_db: Diccionario con datos de compatibilidad
         :param blackboard: Instancia compartida del blackboard
         """
         self.vector_db = vector_db
         self.blackboard = blackboard
-        self.compatibility_db = compatibility_db
         self.embedding_model = vector_db['model']
         
         # Suscribirse a eventos relevantes
@@ -47,10 +45,7 @@ class MotherboardAgent:
         # Filtrar motherboards que cumplan con requisitos
         candidates = []
         for i, metadata in enumerate(self.vector_db['metadata']):
-            # Verificar compatibilidad con componentes propuestos
-            if not self._check_compatibility(metadata, proposed_components):
-                continue
-                
+            
             # Verificar restricciones del usuario
             if not self._check_constraints(metadata, requirements.constraints):
                 continue
@@ -69,14 +64,12 @@ class MotherboardAgent:
                 'metadata': metadata,
                 'similarity': similarities[i],
                 'price': price,
-                'compatibility_score': self._calculate_compatibility_score(requirements, metadata, proposed_components)
             })
         
-        # Ordenar por compatibilidad, similitud y precio
+        # Ordenar por similitud y precio
         sorted_candidates = sorted(
             candidates,
             key=lambda x: (
-                -x['compatibility_score'],
                 -x['similarity'],
                 x['price']
             )
@@ -119,60 +112,6 @@ class MotherboardAgent:
             text_parts.append(f"Restricciones: {', '.join(requirements.constraints)}")
         
         return ". ".join(text_parts)
-
-    def _check_compatibility(self, mb_metadata: Dict, components: Dict) -> bool:
-        """Verifica compatibilidad con componentes propuestos"""
-        # Compatibilidad con CPU
-        if 'CPU' in components:
-            cpu_socket = components['CPU'][0]['metadata'].get('CPU Socket Type_CPU Socket Type', '')
-            mb_socket = mb_metadata.get('CPU Socket Type_CPU Socket Type', '')
-            if cpu_socket and mb_socket and cpu_socket != mb_socket:
-                return False
-        
-        # Compatibilidad con RAM
-        if 'RAM' in components:
-            ram_type = components['RAM'][0]['metadata'].get('Memory - Memory Type', '')
-            mb_ram_type = mb_metadata.get('Memory - Memory Type', '')
-            if ram_type and mb_ram_type and ram_type != mb_ram_type:
-                return False
-        
-        # Compatibilidad con tamaño de GPU
-        if 'GPU' in components:
-            gpu_length = components['GPU'][0]['metadata'].get('Form Factor & Dimensions - Max GPU Length', '0 mm')
-            mb_max_gpu_length = mb_metadata.get('Form Factor & Dimensions - Max GPU Length', '0 mm')
-            try:
-                if float(gpu_length.split()[0]) > float(mb_max_gpu_length.split()[0]):
-                    return False
-            except (ValueError, IndexError):
-                pass
-        
-        return True
-
-    def _calculate_compatibility_score(self, requirements: HardwareRequirements,  mb_metadata: Dict, components: Dict) -> int:
-        """Calcula puntaje de compatibilidad (mayor es mejor)"""
-        score = 0
-        
-        # Puntos por compatibilidad exacta de socket
-        if 'CPU' in components:
-            cpu_socket = components['CPU'][0]['metadata'].get('CPU Socket Type_CPU Socket Type', '')
-            mb_socket = mb_metadata.get('CPU Socket Type_CPU Socket Type', '')
-            if cpu_socket and mb_socket and cpu_socket == mb_socket:
-                score += 3
-        
-        # Puntos por slots de RAM adecuados
-        if 'RAM' in components:
-            ram_modules = int(components['RAM'][0]['metadata'].get('Memory - Modules', '1'))
-            mb_ram_slots = int(mb_metadata.get('Memory - Slots', '0'))
-            if mb_ram_slots >= ram_modules:
-                score += 2
-        
-        # Puntos por conectividad adecuada
-        if requirements.use_case == UseCase.VIDEO_EDITING:
-            usb_ports = int(mb_metadata.get('Ports - USB', '0'))
-            if usb_ports >= 4:
-                score += 1
-        
-        return score
 
     def _check_constraints(self, metadata: Dict, constraints: List[str]) -> bool:
         """Verifica restricciones como tamaño, factor de forma, etc."""
