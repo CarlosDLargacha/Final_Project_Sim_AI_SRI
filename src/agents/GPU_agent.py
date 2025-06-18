@@ -62,7 +62,7 @@ class GPUAgent:
             return
         
         # Determinar requisitos mínimos según caso de uso
-        min_performance = self._get_min_performance(requirements.use_case, requirements.performance)
+        min_performance = self._find_matching_gpu(requirements.gpu)
         
         # Generar embedding para los requisitos
         requirement_text = self._generate_requirement_text(requirements, min_performance)
@@ -93,7 +93,7 @@ class GPUAgent:
             except (ValueError, TypeError):
                 price = float('inf')
             
-            max_gpu_budget = requirements.budget.get('max', float('inf')) * 0.4
+            max_gpu_budget = requirements.budget.get('max', float('inf'))
             if price > max_gpu_budget:
                 continue
             
