@@ -1,0 +1,634 @@
+
+----------------------------------------------------------------------------------
+
+Querie: Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU.Necesito una PC para jugar en 1440p a 144fps con presupuesto de $1200
+
+Propuestas: 
+Motherboard: 79
+GPU: 0
+CPU: 25
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Armar setup gamer económico para 1080p que corra Fortnite a 120fps
+
+Propuestas: 
+Motherboard: 0
+CPU: 0
+GPU: 0
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: PC high-end para 4K/120Hz en juegos AAA, sin límite de presupuesto
+
+Propuestas: 
+CPU: 0
+GPU: 0
+Motherboard: 0
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Recomienda componentes para streaming y gaming simultáneo (presupuesto $2000)
+
+Propuestas: 
+Motherboard: 107
+GPU: 1
+CPU: 26
+
+Response: 
+
+Build #1:
+
+CPU:
+**Intel Core i5-14600K** ($192)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**RTX 3050 VENTUS 2X 6G OC** ($189)
+- Memoria: 6GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0 x8
+- TDP: 70W
+- Longitud: 189 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+Build #2:
+
+CPU:
+**Intel Core i5-14600K** ($192)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**RTX 3050 VENTUS 2X 6G OC** ($189)
+- Memoria: 6GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0 x8
+- TDP: 70W
+- Longitud: 189 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+Build #3:
+
+CPU:
+**Intel Core i5-14600K** ($192)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**RTX 3050 VENTUS 2X 6G OC** ($189)
+- Memoria: 6GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0 x8
+- TDP: 70W
+- Longitud: 189 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Setup compacto para gaming en LAN parties (max $1000, preferencia AMD)
+
+Propuestas: 
+Motherboard: 40
+GPU: 0
+CPU: 18
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: PC para esports (Valorant, CS2) que alcance 240fps estables
+
+Propuestas: 
+Motherboard: 0
+CPU: 0
+GPU: 0
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Configuración VR-ready para Half-Life Alyx (presupuesto $1500)
+
+Propuestas: 
+GPU: 1
+Motherboard: 79
+CPU: 25
+
+Response: 
+
+Build #1:
+
+CPU:
+**Intel Core i7-14700KF** ($319)
+- Núcleos/Hilos: 20-Core (8P+12E)
+- Frecuencia Base: Performance-core Base Frequency: 3.4 GHz Efficient-core Base Frequency: 2.5 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.6 GHz P-core Max Turbo Frequency: Up to 5.5 GHz E-core Max Turbo Frequency: Up to 4.3 GHz
+- Socket: LGA 1700
+- Cache (L3): 33MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+Build #2:
+
+CPU:
+**Intel Core i7-14700KF** ($319)
+- Núcleos/Hilos: 20-Core (8P+12E)
+- Frecuencia Base: Performance-core Base Frequency: 3.4 GHz Efficient-core Base Frequency: 2.5 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.6 GHz P-core Max Turbo Frequency: Up to 5.5 GHz E-core Max Turbo Frequency: Up to 4.3 GHz
+- Socket: LGA 1700
+- Cache (L3): 33MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+Build #3:
+
+CPU:
+**Intel Core i7-14700KF** ($319)
+- Núcleos/Hilos: 20-Core (8P+12E)
+- Frecuencia Base: Performance-core Base Frequency: 3.4 GHz Efficient-core Base Frequency: 2.5 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.6 GHz P-core Max Turbo Frequency: Up to 5.5 GHz E-core Max Turbo Frequency: Up to 4.3 GHz
+- Socket: LGA 1700
+- Cache (L3): 33MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Build silenciosa para gaming nocturno (sin RGB, max $1300)
+
+Propuestas: 
+Motherboard: 64
+GPU: 1
+CPU: 22
+
+Response: 
+
+Build #1:
+
+CPU:
+**Intel Core i7-14700KF** ($319)
+- Núcleos/Hilos: 20-Core (8P+12E)
+- Frecuencia Base: Performance-core Base Frequency: 3.4 GHz Efficient-core Base Frequency: 2.5 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.6 GHz P-core Max Turbo Frequency: Up to 5.5 GHz E-core Max Turbo Frequency: Up to 4.3 GHz
+- Socket: LGA 1700
+- Cache (L3): 33MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+Build #2:
+
+CPU:
+**Intel Core i7-14700KF** ($319)
+- Núcleos/Hilos: 20-Core (8P+12E)
+- Frecuencia Base: Performance-core Base Frequency: 3.4 GHz Efficient-core Base Frequency: 2.5 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.6 GHz P-core Max Turbo Frequency: Up to 5.5 GHz E-core Max Turbo Frequency: Up to 4.3 GHz
+- Socket: LGA 1700
+- Cache (L3): 33MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+Build #3:
+
+CPU:
+**Intel Core i7-14700KF** ($319)
+- Núcleos/Hilos: 20-Core (8P+12E)
+- Frecuencia Base: Performance-core Base Frequency: 3.4 GHz Efficient-core Base Frequency: 2.5 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.6 GHz P-core Max Turbo Frequency: Up to 5.5 GHz E-core Max Turbo Frequency: Up to 4.3 GHz
+- Socket: LGA 1700
+- Cache (L3): 33MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: PC futurista con mucho RGB para juegos en 1440p ($1800)
+
+Propuestas: 
+Motherboard: 103
+GPU: 0
+CPU: 26
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Recomendación para upgrade de GPU manteniendo mi Ryzen 5 3600
+
+Propuestas: 
+Motherboard: 0
+CPU: 0
+GPU: 0
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Workstation para edición 4K en Premiere (budget $2500)
+
+Propuestas: 
+GPU: 1
+Motherboard: 119
+CPU: 24
+
+Response: 
+
+Build #1:
+
+CPU:
+**Intel Core i5-14600K** ($192)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**AMD Radeon RX 6700XT** ($344)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 240W
+- Conectores: 1 x 6-Pin + 1 x 8-Pin
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+Build #2:
+
+CPU:
+**Intel Core i5-14600K** ($192)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**AMD Radeon RX 6700XT** ($344)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 240W
+- Conectores: 1 x 6-Pin + 1 x 8-Pin
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+Build #3:
+
+CPU:
+**Intel Core i5-14600K** ($192)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**AMD Radeon RX 6700XT** ($344)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 240W
+- Conectores: 1 x 6-Pin + 1 x 8-Pin
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: PC económica para diseño gráfico (Photoshop/Illustrator)
+
+Propuestas: 
+CPU: 0
+Motherboard: 0
+GPU: 0
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Configuración para renderizado 3D en Blender (sin límite de precio)
+
+Propuestas: 
+GPU: 0
+Motherboard: 0
+CPU: 0
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Build optimizada para After Effects con previews fluidas
+
+Propuestas: 
+GPU: 0
+CPU: 0
+Motherboard: 0
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Estación de trabajo para ingeniería CAD (Autodesk, SolidWorks)
+
+Propuestas: 
+CPU: 0
+Motherboard: 0
+GPU: 0
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: PC para producción musical con baja latencia (presupuesto $1500)
+
+Propuestas: 
+Motherboard: 79
+GPU: 1
+CPU: 25
+
+Response: 
+
+Build #1:
+
+CPU:
+**Intel Core i5-14600K** ($192)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**RTX 3050 VENTUS 2X 6G OC** ($189)
+- Memoria: 6GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0 x8
+- TDP: 70W
+- Longitud: 189 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+Build #2:
+
+CPU:
+**Intel Core i5-14600K** ($192)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**RTX 3050 VENTUS 2X 6G OC** ($189)
+- Memoria: 6GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0 x8
+- TDP: 70W
+- Longitud: 189 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+Build #3:
+
+CPU:
+**Intel Core i5-14600K** ($192)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+GPU:
+**RTX 3050 VENTUS 2X 6G OC** ($189)
+- Memoria: 6GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0 x8
+- TDP: 70W
+- Longitud: 189 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($79)
+- Socket: AM4
+- Chipset: AMD B450
+- Formato: 1x Power Connector(ATX_PWR) 1x Power Connector(CPU_PWR)
+- RAM Soporte: Memory Support DDR4 2667/ 2800/ 2933/ 3000/ 3066/ 3200/ 3466/ 3600/ 3733/ 3866/ 4000/ 4133 MHz (by A-XMP OC MODE)
+- Conectividad: Wi-Fi, Bluetooth, N/A
+
+
+

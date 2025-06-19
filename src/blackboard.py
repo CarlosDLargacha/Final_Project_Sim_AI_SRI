@@ -133,3 +133,20 @@ class Blackboard:
                 'timeline': self.audit_log,
                 'subscribers': {e.name: len(cb) for e, cb in self.subscribers.items()}
             }
+            
+    def reset(self):
+        # Estado estructurado del sistema
+        self.state = {
+            'user_input': None,
+            'user_response': None,          # Respuesta del usuario a la propuesta
+            'user_requirements': None,       # Requisitos extraídos por BDI
+            'component_proposals': {},       # {agent_id: [components]}
+            'compatibility_issues': [],      # Problemas detectados
+            'optimized_configs': [],         # Configuraciones finales
+            'knowledge_updates': {},          # Datos para actualizar RAG
+            'compatibility_status': {'ready_for_optimization': False},
+            'errors': []
+        }
+        
+        # Histórico de cambios (para debugging/experimentación)
+        self.audit_log = []

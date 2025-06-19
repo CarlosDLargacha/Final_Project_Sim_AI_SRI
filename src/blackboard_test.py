@@ -1,4 +1,3 @@
-# test_blackboard_integration.py
 import json
 from time import sleep
 from agents.BDI_agent import BDIAgent, HardwareRequirements
@@ -23,9 +22,9 @@ class User:
         
         print("\n----AGENTS_LOG-----------------------------------\n")
         
-        for i, log in enumerate(self.blackboard.audit_log):
-            print(f"Log {i}: {log}")
-            print()
+        # for i, log in enumerate(self.blackboard.audit_log):
+        #     print(f"Log {i}: {log}")
+        #     print()
             
         print("\n-----------------------------------------------------------------\n")
             
@@ -79,7 +78,7 @@ def run_test_scenario():
     }
     
     user_agent = User(blackboard=blackboard)
-    user_agent.make_request("Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU.")
+    user_agent.make_request("Servidor doméstico para Plex/NAS (bajo consumo, 24/7)")
     
     sleep(600)
 

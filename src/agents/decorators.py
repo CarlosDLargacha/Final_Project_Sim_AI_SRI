@@ -24,6 +24,7 @@ def agent_error_handler(func):
                     self.blackboard.state['errors'] = []
                 self.blackboard.state['errors'].append(error_entry)
                 print(f"⚠️ Error en {self.__class__.__name__}.{func.__name__}: {str(e)}")
+                print(traceback.format_exc())
             return None
     return wrapper
 

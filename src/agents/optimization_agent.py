@@ -23,8 +23,6 @@ class OptimizationAgent:
         """
         Optimiza las configuraciones de componentes propuestos basándose en las restricciones del usuario y problemas de compatibilidad. Este agente combina las propuestas de múltiples agentes especializados y genera configuraciones óptimas.
         """
-        
-        print("[OptimizationAgent] Iniciando optimización de configuraciones...")
 
         # Obtener datos del blackboard
         proposals: Dict[str, List[Dict]] = self.blackboard.get_consolidated_components() or {}
@@ -34,8 +32,6 @@ class OptimizationAgent:
         # Generar combinaciones posibles
         domains = [proposals[k] for k in sorted(proposals.keys())]
         keys = sorted(proposals.keys())  # ['CPU', 'GPU', ...]
-
-        print(f"[OptimizationAgent] Combinando {len(keys)} tipos de componentes")
 
         max_budget = requirements.budget.get("max", float("inf"))
 

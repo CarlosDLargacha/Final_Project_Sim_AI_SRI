@@ -92,6 +92,7 @@ class GPUAgent:
                 price = float(metadata.get('price', float('inf')))
             except (ValueError, TypeError):
                 price = float('inf')
+
             
             max_gpu_budget = requirements.budget.get('max', float('inf'))
             if price > max_gpu_budget:
@@ -99,6 +100,7 @@ class GPUAgent:
             
             # Verificar restricciones
             if not self._check_constraints(metadata, requirements.constraints):
+
                 continue
             
             candidates.append({
@@ -122,7 +124,8 @@ class GPUAgent:
         )
         
         # Proponer las mejores opciones (máximo 5)
-        top_candidates = sorted_candidates[:5]
+        top_candidates = sorted_candidates
+        
         
         # Actualizar el blackboard
         self.blackboard.update(
@@ -200,8 +203,7 @@ class GPUAgent:
         model_map = {}
         
         for candidate in candidates:
-            model_name = self._normalize_gpu_name(candidate['metadata'].get('Model_Name', ''))
-            
+            model_name = self._normalize_gpu_name(candidate['metadata'].get('Model - Model', ''))
             if model_name not in model_map or candidate['price'] < model_map[model_name]['price']:
                 model_map[model_name] = candidate
         

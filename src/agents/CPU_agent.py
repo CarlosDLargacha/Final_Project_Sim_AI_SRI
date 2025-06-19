@@ -127,7 +127,7 @@ class CPUAgent:
                 
             # 5.4. Verificar requisitos mínimos de rendimiento
             if (cpu_score['score'] < min_scores['score'] or 
-                cpu_score['multicore_score'] < min_scores['multicore_core']):
+                cpu_score['multicore_score'] < min_scores['multicore_score']):
                 continue
                 
             # 5.5. Verificar compatibilidad con restricciones
@@ -157,7 +157,7 @@ class CPUAgent:
         )
         
         # 8. Proponer las mejores opciones (máximo 5)
-        top_candidates = sorted_candidates[:5]
+        top_candidates = sorted_candidates
         
         # 9. Actualizar el blackboard con las propuestas
         self.blackboard.update(
@@ -202,7 +202,7 @@ class CPUAgent:
         """
         text_parts = [
             f"CPU para {requirements.use_case.value}",
-            f"Requisitos mínimos: Single-Core {min_scores['single_core']}, Multi-Core {min_scores['multi_core']}"
+            f"Requisitos mínimos: Single-Core {min_scores.get('single_core', 'N/A')}, Multi-Core {min_scores.get('multi_core', 'N/A')}"
         ]
         
         # Detalles específicos por caso de uso

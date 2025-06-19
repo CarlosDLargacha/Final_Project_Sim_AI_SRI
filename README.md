@@ -1,4 +1,4 @@
-# README: Sistema de Recomendación para Armado de PCs con Arquitectura Multiagente
+# Sistema de Recomendación para Armado de PCs con Arquitectura Multiagente
 
 ## Autores
 - Gabriel Andrés Pla Lasa
