@@ -30,13 +30,17 @@ class OptimizationAgent:
         compatibility_issues = self.blackboard.get("compatibility_issues") or []
 
         # Generar combinaciones posibles
-        domains = [proposals[k] for k in sorted(proposals.keys())]
+        domains = []
+        for comp_name in sorted(proposals.keys()):
+            domains.append([])
+            for comp in proposals[comp_name]:
+                domains[-1].append(comp["metadata"])
+
         keys = sorted(proposals.keys())  # ['CPU', 'GPU', ...]
-
+        
         max_budget = requirements.budget.get("max", float("inf"))
-
         valid_builds = []
-        for combo in product(*domains):
+        for i, combo in enumerate(product(*domains)):
             build = {k: v for k, v in zip(keys, combo)}
             if self._is_valid(build, max_budget, compatibility_issues):
                 valid_builds.append(build)

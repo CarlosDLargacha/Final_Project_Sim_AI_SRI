@@ -20,13 +20,17 @@ class User:
     
     def on_log(self):
         
-        print("\n----AGENTS_LOG-----------------------------------\n")
+        proposol = self.blackboard.get_consolidated_components()
+
+        r = f"Querie: {self.blackboard.get('user_input')['user_input']}"
         
-        # for i, log in enumerate(self.blackboard.audit_log):
-        #     print(f"Log {i}: {log}")
-        #     print()
-            
-        print("\n-----------------------------------------------------------------\n")
+        r += "\n\nPropuestas: "
+        for comp_name, prop in proposol.items():
+            r+= f"\n{comp_name}: {len(prop)}"
+        
+        r += f"\n\nResponse: \n\n{self.blackboard.get('user_response')['response']}\n"
+        
+        print(r)
             
     def make_request(self, user_input: str):
         """
@@ -78,7 +82,7 @@ def run_test_scenario():
     }
     
     user_agent = User(blackboard=blackboard)
-    user_agent.make_request("Servidor doméstico para Plex/NAS (bajo consumo, 24/7)")
+    user_agent.make_request("Build para programación y desarrollo web (multimonitor)")
     
     sleep(600)
 

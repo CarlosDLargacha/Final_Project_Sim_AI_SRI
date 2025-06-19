@@ -16,6 +16,7 @@ class UseCase(Enum):
     SERVER = "server"
     CRYPTO_MINING = "crypto_mining"
     MACHINE_LEARNING = "machine_learning"
+    WEB_DEVELOPMENT = "web_development"
 
     GAMING_VIDEO_EDITING = "gaming/video_editing"
     GAMING_DATA_SCIENCE = "gaming/data_science"
@@ -55,186 +56,7 @@ class BDIAgent:
             EventType.OPTIMIZATION_DONE,
             self.generate_user_response
         )
-        
-    @agent_error_handler
-    def generate_user_response(self):
-        """
-        Genera una respuesta en lenguaje natural basada en las configuraciones optimizadas
-        y contextualizada con el estado interno BDI.
-        """
-        user_input = self.blackboard.get("user_input", {}).get("user_input", "")
-        optimized_builds = self.blackboard.get("optimized_configs", [])
-        
-        # # Construcción del prompt
-        # system_prompt = """
-        #     Eres un experto en armado de computadoras personalizadas. Tu tarea es explicar de forma clara y profesional
-        #     una o más configuraciones recomendadas para el usuario, basadas en sus necesidades y el estado interno del sistema.
-
-        #     Tu respuesta debe:
-        #     - Mencionar los componentes clave seleccionados (CPU, GPU, RAM, almacenamiento, etc.)
-        #     - Justificar por qué se eligieron (rendimiento, eficiencia, estética, precio)
-        #     - Indicar el precio total de la build
-        #     - Mencionar cualquier ventaja técnica o compatibilidad relevante
-        #     - Ser clara incluso para usuarios no expertos, pero sin perder rigor técnico
-        # """
-
-        # bdi_context = f"""
-        #     === CONTEXTO INTERNO DEL SISTEMA (BDI) ===
-
-        #     🧠 Creencias (Beliefs):
-        #     - Requerimientos técnicos confirmados: {self.current_beliefs.get('validated_requirements')}
-        #     - Campos faltantes en la solicitud: {self.current_beliefs.get('missing_fields')}
-
-        #     🎯 Deseos (Desires):
-        #     - Rendimiento deseado: {self.user_desires.get('performance')}
-        #     - Estética deseada: {self.user_desires.get('aesthetics')}
-
-        #     ✅ Intenciones ejecutadas (Intentions):
-        #     - {', '.join(self.intentions)}
-
-        #     ===========================================
-        # """
-
-        # prompt = f"""{system_prompt}
-
-        #     Entrada original del usuario:
-        #     \"\"\"{user_input}\"\"\"
-
-        #     {bdi_context}
-
-        #     Configuraciones optimizadas encontradas por ti (máximo 3):
-        #     {self._format_optimized_builds_for_prompt(optimized_builds)}
-
-        #     Responde de forma explicativa y clara, justificando las elecciones y destacando lo que cada build aporta. 
-            
-        #     PD: Recuerda que tu (el sistema) eres quien esta recomendando las builds, no el usuario. Por lo tanto explica cada una de las build.
-        #     PD2: Ajustate solamente a las recomendaciones encontradas. Evita cualquier suposición o recomendación adicional que no esté basada en las builds optimizadas.
-        # """
-        
-        # prompt = f"""{system_prompt}
-
-        #     Entrada original del usuario:
-        #     \"\"\"{user_input}\"\"\"
-
-        #     {bdi_context}
-
-        #     Configuraciones optimizadas encontradas por ti (máximo 3):
-        #     {self._format_optimized_builds_for_prompt(optimized_builds)}
-
-        #     Quisiera q me explicaras las caracteriscas cada una de las configuraciones optimizadas. Por ejejmplo:
-            
-        #     user_input: "Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU."
-            
-        #     response: Basado en tus requisitos de gaming con presupuesto de $1500, he encontrado estas opciones:
-
-        #     **Opción 1** (Precio total: $1489.99):
-        #     - **Procesador**: AMD Ryzen 7 7800X3D (8 núcleos, 4.2 GHz)
-        #     - **Tarjeta gráfica**: NVIDIA RTX 4070 (12GB VRAM)
-        #     - **Motherboard*: 32GB DDR5 5600MHz
-        #     - **Puntos clave**: alto rendimiento, buen manejo térmico
-
-        #     **Opción 2** (Precio total: $1350.50):
-        #     - **Procesador**: Intel Core i5-13600K (14 núcleos, 3.5 GHz)
-        #     - **Tarjeta gráfica**: AMD RX 7700 XT (12GB VRAM)
-        #     - **Motherboard**: 32GB DDR5 5200MHz
-        #     - **Puntos clave**: excelente relación precio-calidad
-            
-        #     PD: En caso de que no haya ninguna configuracion optimizada, simplemente responde que no se encontraron configuraciones que cumplan con los requisitos del usuario.
-        # """
-        
-        #response = self.llm.generate(prompt)
-        
-        
-        if(optimized_builds):
-            response = ""
-            for i, build in enumerate(optimized_builds):
-                
-                response += f"Build #{i+1}:\n\n" 
-                for _, comps in build.items():
-                    for comp_name, meta in comps.items():
-                        response += comp_name + ":\n" + self._format_component_description(comp_name, meta) + "\n"
-                    break                        
-                response += "\n"
-        else:
-            response = "No se encontraron configuraciones que cumplan con los requisitos del usuario." 
-        
-        self.blackboard.update(
-            section="user_response",
-            data={"response": response},
-            agent_id="bdi_agent",
-            notify=True
-        )
-    
-    def _format_component_description(self, comp_type, component: Dict) -> str:
-        """
-        Genera una descripción textual con las 5-7 características más relevantes de un componente,
-        adaptándose dinámicamente a los campos disponibles en los metadatos.
-        """
-        meta = component.get("metadata", component)
-        name = f"{meta.get('Model_Brand', '')} {meta.get('Model_Name', meta.get('Model - Model', ''))}".strip()
-        price = meta.get("Price", meta.get("price", "N/A"))
-        
-        # Diccionario de campos relevantes por tipo de componente
-        relevant_fields = {
-            "CPU": {
-                "Núcleos/Hilos": meta.get("Details_# of Cores# of Cores") or meta.get("Details_# of Cores"),
-                "Frecuencia Base": meta.get("Details_Operating FrequencyOperating Frequency") or meta.get("Details_Operating Frequency"),
-                "Frecuencia Turbo": meta.get("Details_Max Turbo FrequencyMax Turbo Frequency") or meta.get("Details_Max Turbo Frequency"),
-                "Socket": meta.get("Details_CPU Socket TypeCPU Socket Type") or meta.get("CPU Socket Type_CPU Socket Type"),
-                "Cache (L3)": meta.get("Details_L3 CacheL3 Cache") or meta.get("Details_L3 Cache"),
-                "TDP": meta.get("Details_Thermal Design PowerThermal Design Power") or meta.get("Details_Thermal Design Power"),
-                "Tecnología": meta.get("Details_Manufacturing TechManufacturing Tech") or meta.get("Details_Manufacturing Tech")
-            },
-            "GPU": {
-                "Memoria": meta.get("Memory - Memory Size") or meta.get("Details_Memory Size"),
-                "Tipo Memoria": meta.get("Memory - Memory Type"),
-                "Interfaz": meta.get("Interface - InterfaceInterface") or meta.get("Interface - Interface"),
-                "TDP": meta.get("Details - Thermal Design PowerThermal Design Power") or meta.get("Details - Thermal Design Power"),
-                "Conectores": meta.get("Details - Power Connector"),
-                "Longitud": meta.get("Form Factor & Dimensions - Max GPU Length"),
-                "Puertos": self._extract_ports(meta)
-            },
-            "Motherboard": {
-                "Socket": meta.get("Supported CPU_CPU Socket TypeCPU Socket Type"),
-                "Chipset": meta.get("Chipsets_ChipsetChipset"),
-                "Formato": meta.get("Physical Spec_Form Factor"),
-                "RAM Soporte": meta.get("Memory_Memory Standard"),
-                "Slots M.2": meta.get("Storage Devices_M.2"),
-                "Conectividad": self._extract_connectivity(meta),
-                "Características": meta.get("Features_Features")
-            }
-        }
-        
-        # Construcción de la descripción
-        desc = f"**{name}** (${price})\n"
-        fields = relevant_fields.get(comp_type, {})
-        
-        # Añadir solo campos con valores existentes (máximo 7)
-        added = 0
-        for field_name, field_value in fields.items():
-            if field_value and field_value != "N/A" and added < 7:
-                desc += f"- {field_name}: {field_value}\n"
-                added += 1
-        
-        return desc
-
-    def _extract_ports(self, meta: Dict) -> str:
-        """Extrae información de puertos para GPUs"""
-        ports = []
-        for port_type in ["HDMI", "DisplayPort", "DVI"]:
-            if meta.get(f"Ports - {port_type}{port_type}") or meta.get(f"Ports - {port_type}"):
-                ports.append(port_type)
-        return ", ".join(ports) if ports else "N/A"
-
-    def _extract_connectivity(self, meta: Dict) -> str:
-        """Extrae información de conectividad para motherboards"""
-        connectivity = []
-        if meta.get("Onboard LAN_Wireless LAN"): connectivity.append("Wi-Fi")
-        if meta.get("Onboard LAN_Bluetooth"): connectivity.append("Bluetooth")
-        if meta.get("Onboard LAN_Max LAN Speed"): connectivity.append(meta["Onboard LAN_Max LAN Speed"])
-        return ", ".join(connectivity) if connectivity else "N/A"
-        
-    
+         
     @agent_error_handler
     def extract_requirements(self):
         """
@@ -248,7 +70,13 @@ class BDIAgent:
         raw_data = self._ask_llm(self.blackboard.get("user_input"))
         
         # Paso 2: Validar y normalizar
-        requirements = self._validate_output(raw_data)
+        try:
+            requirements = self._validate_output(raw_data)
+        except Exception as e:
+            raw_data['use_case'] = "general"
+            print(f"⚠️ Error: {str(e)}. Usando valores por defecto en use_case 'general'.")
+            requirements = self._validate_output(raw_data)
+        
         
         # Paso 3: Actualizar estados internos
         self._update_bdi_state(requirements)
@@ -269,7 +97,7 @@ class BDIAgent:
 
         Devuelve SOLO un JSON con esta estructura:
         {{
-            "use_case": "gaming/video_editing/data_science/general/crypto_mining/server/machine_learning (puede ser combinación como 'gaming/video_editing')",
+            "use_case": "gaming/video_editing/data_science/crypto_mining/server/machine_learning/web_development/general (puede ser combinación como 'gaming/video_editing', defualt 'general')",
             "budget": {{
                 "min": número o None,
                 "max": número o None
@@ -297,6 +125,7 @@ class BDIAgent:
         - crypto_mining
         - server
         - machine_learning
+        - web_development
         - gaming/video_editing
         - gaming/data_science
         - video_editing/data_science
@@ -395,3 +224,196 @@ class BDIAgent:
         }
         
         return [questions[field] for field in self.current_beliefs['missing_fields'] if field in questions]
+    
+    @agent_error_handler
+    def generate_user_response(self):
+        """
+        Genera una respuesta en lenguaje natural basada en las configuraciones optimizadas
+        y contextualizada con el estado interno BDI.
+        """
+        user_input = self.blackboard.get("user_input", {}).get("user_input", "")
+        optimized_builds = self.blackboard.get("optimized_configs", [])
+             
+        if(optimized_builds):
+            response = ""
+            for i, build in enumerate(optimized_builds):
+                
+                response += f"Build #{i+1}:\n\n" 
+                for _, comps in build.items():
+                    for comp_name, meta in comps.items():
+                        response += comp_name + ":\n" + self._format_component_description(comp_name, meta) + "\n"
+                    break                        
+                response += "\n"
+        else:
+            response = "No se encontraron configuraciones que cumplan con los requisitos del usuario." 
+        
+        self.blackboard.update(
+            section="user_response",
+            data={"response": response},
+            agent_id="bdi_agent",
+            notify=True
+        )
+        
+    def generate_user_response_llm(self):
+        """
+        Genera una respuesta en lenguaje natural basada en las configuraciones optimizadas
+        y contextualizada con el estado interno BDI.
+        """
+        user_input = self.blackboard.get("user_input", {}).get("user_input", "")
+        optimized_builds = self.blackboard.get("optimized_configs", [])
+        
+        # Construcción del prompt
+        system_prompt = """
+            Eres un experto en armado de computadoras personalizadas. Tu tarea es explicar de forma clara y profesional
+            una o más configuraciones recomendadas para el usuario, basadas en sus necesidades y el estado interno del sistema.
+
+            Tu respuesta debe:
+            - Mencionar los componentes clave seleccionados (CPU, GPU, RAM, almacenamiento, etc.)
+            - Justificar por qué se eligieron (rendimiento, eficiencia, estética, precio)
+            - Indicar el precio total de la build
+            - Mencionar cualquier ventaja técnica o compatibilidad relevante
+            - Ser clara incluso para usuarios no expertos, pero sin perder rigor técnico
+        """
+
+        bdi_context = f"""
+            === CONTEXTO INTERNO DEL SISTEMA (BDI) ===
+
+            🧠 Creencias (Beliefs):
+            - Requerimientos técnicos confirmados: {self.current_beliefs.get('validated_requirements')}
+            - Campos faltantes en la solicitud: {self.current_beliefs.get('missing_fields')}
+
+            🎯 Deseos (Desires):
+            - Rendimiento deseado: {self.user_desires.get('performance')}
+            - Estética deseada: {self.user_desires.get('aesthetics')}
+
+            ✅ Intenciones ejecutadas (Intentions):
+            - {', '.join(self.intentions)}
+
+            ===========================================
+        """
+
+        prompt = f"""{system_prompt}
+
+            Entrada original del usuario:
+            \"\"\"{user_input}\"\"\"
+
+            {bdi_context}
+
+            Configuraciones optimizadas encontradas por ti (máximo 3):
+            {self._format_optimized_builds_for_prompt(optimized_builds)}
+
+            Responde de forma explicativa y clara, justificando las elecciones y destacando lo que cada build aporta. 
+            
+            PD: Recuerda que tu (el sistema) eres quien esta recomendando las builds, no el usuario. Por lo tanto explica cada una de las build.
+            PD2: Ajustate solamente a las recomendaciones encontradas. Evita cualquier suposición o recomendación adicional que no esté basada en las builds optimizadas.
+        """
+        
+        prompt = f"""{system_prompt}
+
+            Entrada original del usuario:
+            \"\"\"{user_input}\"\"\"
+
+            {bdi_context}
+
+            Configuraciones optimizadas encontradas por ti (máximo 3):
+            {self._format_optimized_builds_for_prompt(optimized_builds)}
+
+            Quisiera q me explicaras las caracteriscas cada una de las configuraciones optimizadas. Por ejejmplo:
+            
+            user_input: "Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU."
+            
+            response: Basado en tus requisitos de gaming con presupuesto de $1500, he encontrado estas opciones:
+
+            **Opción 1** (Precio total: $1489.99):
+            - **Procesador**: AMD Ryzen 7 7800X3D (8 núcleos, 4.2 GHz)
+            - **Tarjeta gráfica**: NVIDIA RTX 4070 (12GB VRAM)
+            - **Motherboard*: 32GB DDR5 5600MHz
+            - **Puntos clave**: alto rendimiento, buen manejo térmico
+
+            **Opción 2** (Precio total: $1350.50):
+            - **Procesador**: Intel Core i5-13600K (14 núcleos, 3.5 GHz)
+            - **Tarjeta gráfica**: AMD RX 7700 XT (12GB VRAM)
+            - **Motherboard**: 32GB DDR5 5200MHz
+            - **Puntos clave**: excelente relación precio-calidad
+            
+            PD: En caso de que no haya ninguna configuracion optimizada, simplemente responde que no se encontraron configuraciones que cumplan con los requisitos del usuario.
+        """
+        
+        response = self.llm.generate(prompt)
+        
+        self.blackboard.update(
+            section="user_response",
+            data={"response": response},
+            agent_id="bdi_agent",
+            notify=True
+        )
+    
+    def _format_component_description(self, comp_type, component: Dict) -> str:
+        """
+        Genera una descripción textual con las 5-7 características más relevantes de un componente,
+        adaptándose dinámicamente a los campos disponibles en los metadatos.
+        """
+        meta = component.get("metadata", component)
+        name = f"{meta.get('Model_Brand', '')} {meta.get('Model_Name', meta.get('Model - Model', ''))}".strip()
+        price = meta.get("Price", meta.get("price", "N/A"))
+        
+        # Diccionario de campos relevantes por tipo de componente
+        relevant_fields = {
+            "CPU": {
+                "Núcleos/Hilos": meta.get("Details_# of Cores# of Cores") or meta.get("Details_# of Cores"),
+                "Frecuencia Base": meta.get("Details_Operating FrequencyOperating Frequency") or meta.get("Details_Operating Frequency"),
+                "Frecuencia Turbo": meta.get("Details_Max Turbo FrequencyMax Turbo Frequency") or meta.get("Details_Max Turbo Frequency"),
+                "Socket": meta.get("Details_CPU Socket TypeCPU Socket Type") or meta.get("CPU Socket Type_CPU Socket Type"),
+                "Cache (L3)": meta.get("Details_L3 CacheL3 Cache") or meta.get("Details_L3 Cache"),
+                "TDP": meta.get("Details_Thermal Design PowerThermal Design Power") or meta.get("Details_Thermal Design Power"),
+                "Tecnología": meta.get("Details_Manufacturing TechManufacturing Tech") or meta.get("Details_Manufacturing Tech")
+            },
+            "GPU": {
+                "Memoria": meta.get("Memory - Memory Size") or meta.get("Details_Memory Size"),
+                "Tipo Memoria": meta.get("Memory - Memory Type"),
+                "Interfaz": meta.get("Interface - InterfaceInterface") or meta.get("Interface - Interface"),
+                "TDP": meta.get("Details - Thermal Design PowerThermal Design Power") or meta.get("Details - Thermal Design Power"),
+                "Conectores": meta.get("Details - Power Connector"),
+                "Longitud": meta.get("Form Factor & Dimensions - Max GPU Length"),
+                "Puertos": self._extract_ports(meta)
+            },
+            "Motherboard": {
+                "Socket": meta.get("Supported CPU_CPU Socket TypeCPU Socket Type"),
+                "Chipset": meta.get("Chipsets_ChipsetChipset"),
+                "Formato": meta.get("Physical Spec_Form Factor"),
+                "RAM Soporte": meta.get("Memory_Memory Standard"),
+                "Slots M.2": meta.get("Storage Devices_M.2"),
+                "Conectividad": self._extract_connectivity(meta),
+                "Características": meta.get("Features_Features")
+            }
+        }
+        
+        # Construcción de la descripción
+        desc = f"**{name}** (${price})\n"
+        fields = relevant_fields.get(comp_type, {})
+        
+        # Añadir solo campos con valores existentes (máximo 7)
+        added = 0
+        for field_name, field_value in fields.items():
+            if field_value and field_value != "N/A" and added < 7:
+                desc += f"- {field_name}: {field_value}\n"
+                added += 1
+        
+        return desc
+
+    def _extract_ports(self, meta: Dict) -> str:
+        """Extrae información de puertos para GPUs"""
+        ports = []
+        for port_type in ["HDMI", "DisplayPort", "DVI"]:
+            if meta.get(f"Ports - {port_type}{port_type}") or meta.get(f"Ports - {port_type}"):
+                ports.append(port_type)
+        return ", ".join(ports) if ports else "N/A"
+
+    def _extract_connectivity(self, meta: Dict) -> str:
+        """Extrae información de conectividad para motherboards"""
+        connectivity = []
+        if meta.get("Onboard LAN_Wireless LAN"): connectivity.append("Wi-Fi")
+        if meta.get("Onboard LAN_Bluetooth"): connectivity.append("Bluetooth")
+        if meta.get("Onboard LAN_Max LAN Speed"): connectivity.append(meta["Onboard LAN_Max LAN Speed"])
+        return ", ".join(connectivity) if connectivity else "N/A"
+        
