@@ -82,7 +82,7 @@ def run_test_scenario():
     }
     
     user_agent = User(blackboard=blackboard)
-    user_agent.make_request("Build para programación y desarrollo web (multimonitor)")
+    user_agent.make_request("Recomendación para upgrade de GPU manteniendo mi Ryzen 5 3600")
     
     sleep(600)
 

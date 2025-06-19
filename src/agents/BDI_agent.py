@@ -111,8 +111,8 @@ class BDIAgent:
                 "color": "string",
                 "rgb": boolean
             }},
-            "cpu" : "1 cpu minima segun el uso del caso (ej: "Intel Core i5-12400F")",
-            "gpu" : "1 gpu minima segun el uso del caso (ej: "NVIDIA RTX 3060")",
+            "cpu" : "1 cpu minima según el uso del caso (ej: "Intel Core i5-12400F") (valor obligatorio, defualt '')",
+            "gpu" : "1 gpu minima según el uso del caso (ej: "NVIDIA RTX 3060") (valor obligatorio, default '')",
             "constraints": ["lista de restricciones"]
         }}
         

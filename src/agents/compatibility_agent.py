@@ -89,7 +89,7 @@ class CompatibilityAgent:
     @agent_error_handler
     def check_compatibility(self):
         """Verifica la compatibilidad entre todos los componentes propuestos"""
-        component_proposals = self.blackboard.get('component_proposals', {})
+        component_proposals = self.blackboard.get_consolidated_components(3)
         if len(component_proposals) < self.component_agents_number:
             return
         

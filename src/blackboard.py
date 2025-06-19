@@ -109,7 +109,8 @@ class Blackboard:
             proposals = self.state.get('component_proposals', {})
             
             if len(proposals) < min_agents:
-                raise ValueError(f"Faltan contribuciones de agentes. Solo {len(proposals)}/{min_agents}")
+                #raise ValueError(f"Faltan contribuciones de agentes. Solo {len(proposals)}/{min_agents}")
+                return []
             
             # Combinar propuestas eliminando duplicados
             consolidated = {}

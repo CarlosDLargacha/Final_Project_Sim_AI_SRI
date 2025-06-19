@@ -42,7 +42,7 @@ class OptimizationAgent:
         valid_builds = []
         for i, combo in enumerate(product(*domains)):
             build = {k: v for k, v in zip(keys, combo)}
-            if self._is_valid(build, max_budget, compatibility_issues):
+            if build not in valid_builds and self._is_valid(build, max_budget, compatibility_issues):
                 valid_builds.append(build)
 
         print(f"[OptimizationAgent] {len(valid_builds)} builds válidas encontradas")
