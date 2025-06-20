@@ -4,6 +4,7 @@ from agents.BDI_agent import BDIAgent, HardwareRequirements
 from agents.CPU_agent import CPUAgent
 from agents.GPU_agent import GPUAgent
 from agents.MB_agent import MotherboardAgent
+from agents.storage_agent import StorageAgent
 from agents.compatibility_agent import CompatibilityAgent
 from agents.optimization_agent import OptimizationAgent
 from blackboard import Blackboard, EventType
@@ -14,7 +15,7 @@ class User:
     def __init__(self, blackboard: Blackboard):
         
         self.blackboard = blackboard
-        self.agents_proposed = 0
+        self.agents_proposed = 4
                 
         self.blackboard.subscribe(event_type=EventType.USER_RESPONSE, callback=self.on_log)
     
@@ -51,7 +52,8 @@ def run_test_scenario():
     cpu_db = processor.load_embeddings('CPU')
     gpu_db = processor.load_embeddings('GPU')
     mb_db = processor.load_embeddings('Motherboard')
-    rule_db = [ cpu_db, gpu_db, mb_db ]
+    hdd_db = processor.load_embeddings('HDD')
+    ssd_db = processor.load_embeddings('SSD')
     
     agents = {
         'bdi': BDIAgent(
@@ -72,9 +74,13 @@ def run_test_scenario():
             vector_db=mb_db,
             blackboard=blackboard
         ),
+        'storage': StorageAgent(
+            ssd_vector_db=ssd_db,
+            hdd_vector_db=hdd_db,
+            blackboard=blackboard
+        ),
         'comp': CompatibilityAgent(
             blackboard=blackboard,
-            rules_db=rule_db
         ),
         'opt': OptimizationAgent(
             blackboard=blackboard,
@@ -82,7 +88,7 @@ def run_test_scenario():
     }
     
     user_agent = User(blackboard=blackboard)
-    user_agent.make_request("Recomendación para upgrade de GPU manteniendo mi Ryzen 5 3600")
+    user_agent.make_request("Armar setup gamer económico para 1080p que corra Fortnite a 120fps")
     
     sleep(600)
 
