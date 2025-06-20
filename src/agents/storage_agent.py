@@ -3,7 +3,7 @@ from enum import Enum
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from blackboard import Blackboard, EventType
-from bdi_agent import HardwareRequirements
+from agents.BDI_agent import HardwareRequirements
 
 class StorageType(Enum):
     SSD = "SSD"
@@ -68,24 +68,28 @@ class StorageAgent:
             )
 
     def _recommend_storage(self, storage_type: StorageType, vector_db: Dict[str, Any], requirements: HardwareRequirements) -> List[Dict]:
-        """Recomienda unidades de almacenamiento de un tipo específico"""
-        # Generar embedding para los requisitos
+        """Recomienda unidades de almacenamiento que cumplan con la capacidad mínima requerida"""
+        # 1. Obtener capacidad mínima requerida
+        min_capacity = self._get_required_capacity(requirements)
+        
+        # 2. Generar embedding para los requisitos
         requirement_text = self._generate_requirement_text(requirements, storage_type)
         requirement_embedding = vector_db['model'].encode([requirement_text])[0]
         
-        # Calcular similitud con todos los items
+        # 3. Calcular similitud con todos los items
         similarities = cosine_similarity(
             [requirement_embedding],
             vector_db['embeddings']
         )[0]
         
-        # Filtrar y ordenar candidatos
+        # 4. Filtrar y ordenar candidatos
         candidates = []
         for i, metadata in enumerate(vector_db['metadata']):
-            # Verificar compatibilidad con motherboard si está disponible
-            mb_proposals = self.blackboard.get('component_proposals', {}).get('Motherboard', [])
-            if mb_proposals and not self._check_motherboard_compatibility(metadata, mb_proposals[0]['metadata']):
-                continue
+            # Verificar capacidad mínima
+            if min_capacity > 0:
+                storage_cap = self._normalize_capacity(metadata.get('Capacity', '0GB'))
+                if storage_cap < min_capacity:
+                    continue
             
             # Verificar presupuesto
             try:
@@ -93,24 +97,66 @@ class StorageAgent:
             except (ValueError, TypeError):
                 price = float('inf')
             
-            max_storage_budget = requirements.budget.get('max', float('inf')) * 0.15  # 15% para almacenamiento
+            max_storage_budget = requirements.budget.get('max', float('inf')) * 0.15
             if price > max_storage_budget:
                 continue
+            
+            # Calcular puntaje de capacidad (mayor es mejor)
+            capacity_score = 0
+            if min_capacity > 0:
+                storage_cap = self._normalize_capacity(metadata.get('Capacity', '0GB'))
+                # Premiar capacidad cercana al mínimo requerido (evitar excesos)
+                capacity_score = 1 - min(1, max(0, (storage_cap - min_capacity) / min_capacity))
             
             candidates.append({
                 'metadata': metadata,
                 'similarity': similarities[i],
                 'price': price,
-                'type': storage_type.value
+                'type': storage_type.value,
+                'capacity': storage_cap,
+                'capacity_score': capacity_score
             })
         
-        # Ordenar por similitud y precio
+        # 5. Ordenar por similitud, capacidad y precio
         sorted_candidates = sorted(
             candidates,
-            key=lambda x: (-x['similarity'], x['price'])
+            key=lambda x: (
+                -x['similarity'],
+                -x['capacity_score'],  # Priorizar capacidades cercanas al mínimo
+                x['price']
+            )
         )
         
-        return sorted_candidates[:3]  # Top 3 recomendaciones
+        return sorted_candidates
+
+    def _get_required_capacity(self, requirements: HardwareRequirements) -> int:
+        """Obtiene la capacidad mínima requerida en bytes (0 si no se especifica)"""
+        if hasattr(requirements, 'storage') and hasattr(requirements.storage, 'capacity'):
+            return self._normalize_capacity(requirements.storage.capacity)
+        return 0
+
+    def _normalize_capacity(self, capacity_str: str) -> int:
+        """Convierte cualquier formato de capacidad a bytes"""
+        # Limpieza y estandarización del texto
+        capacity_str = str(capacity_str).strip().upper()
+        
+        # Extraer valor numérico
+        try:
+            num_part = ''.join(c for c in capacity_str if c.isdigit() or c == '.')
+            value = float(num_part) if num_part else 0.0
+        except ValueError:
+            return 0
+        
+        # Convertir a bytes según unidad
+        if 'TB' in capacity_str:
+            return int(value * 1_000_000_000_000)  # 1 TB = 10^12 bytes
+        elif 'GB' in capacity_str:
+            return int(value * 1_000_000_000)  # 1 GB = 10^9 bytes
+        elif 'MB' in capacity_str:
+            return int(value * 1_000_000)  # 1 MB = 10^6 bytes
+        elif 'KB' in capacity_str:
+            return int(value * 1_000)  # 1 KB = 10^3 bytes
+        return int(value)  # Asumir bytes si no se especifica unidad
 
     def _generate_requirement_text(self, requirements: HardwareRequirements, storage_type: StorageType) -> str:
         """Genera texto descriptivo de requisitos para embeddings"""
@@ -135,22 +181,6 @@ class StorageAgent:
                 text_parts.append("Para sistema compacto")
         
         return ". ".join(text_parts)
-
-    def _check_motherboard_compatibility(self, storage_metadata: Dict, mb_metadata: Dict) -> bool:
-        """Verifica compatibilidad con la motherboard seleccionada"""
-        # Verificar slots M.2 para SSDs
-        if storage_metadata.get('Form Factor_Form Factor', '').lower() == 'm.2':
-            m2_slots = int(mb_metadata.get('Storage - M.2 Slots', 0))
-            if m2_slots < 1:
-                return False
-        
-        # Verificar puertos SATA para HDDs/SSDs SATA
-        if 'SATA' in storage_metadata.get('Interface_Interface', ''):
-            sata_ports = int(mb_metadata.get('Storage - SATA Ports', 0))
-            if sata_ports < 1:
-                return False
-        
-        return True
 
     def get_recommendation_report(self, candidates: Dict[str, List[Dict]]) -> str:
         """Genera un informe detallado de recomendaciones"""
