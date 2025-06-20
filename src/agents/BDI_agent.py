@@ -33,6 +33,7 @@ class HardwareRequirements(BaseModel):
     constraints: List[str]  # ["low_noise", "small_form_factor"]
     cpu: str 
     gpu: str
+    storage: Dict[str, Any]
 
 class BDIAgent:
     def __init__(self, llm_client: LLMClient, blackboard: Blackboard):
@@ -90,11 +91,13 @@ class BDIAgent:
         
     def _ask_llm(self, text: str) -> Dict[str, Any]:
         """Consulta al modelo de lenguaje para extracción estructurada"""
-        prompt = f"""
+        
+        sytem_prompt = f"""
         Eres un experto en hardware de computadoras. Extrae los siguientes datos del texto:
         
-        Texto del usuario: "{text}"
-
+        Texto del usuario: "{text}" """
+        
+        anser_prompt = """
         Devuelve SOLO un JSON con esta estructura:
         {{
             "use_case": "gaming/video_editing/data_science/crypto_mining/server/machine_learning/web_development/general (puede ser combinación como 'gaming/video_editing', defualt 'general')",
@@ -113,6 +116,14 @@ class BDIAgent:
             }},
             "cpu" : "1 cpu minima según el uso del caso (ej: "Intel Core i5-12400F") (valor obligatorio, defualt '')",
             "gpu" : "1 gpu minima según el uso del caso (ej: "NVIDIA RTX 3060") (valor obligatorio, default '')",
+            "storage" : {
+                "prefer_ssd": boolean,       
+                "include_hdd": boolean,       
+                "capacity": "512GB/1TB/4TB (Capacidad mínima)",       
+                "performance": {
+                    "read_speed": "3500MB/s (Velocidad mínima lectura para SSDs)" 
+                }
+            },
             "constraints": ["lista de restricciones"]
         }}
         
@@ -139,10 +150,18 @@ class BDIAgent:
             "budget": {{"min": null, "max": 1500}},
             "performance": {{"resolution": "4K", "fps": 60, "software": ["Premiere Pro"]}},
             "aesthetics": {{"color": null, "rgb": true}},
+            "storage": {
+                "prefer_ssd": true,
+                "include_hdd": true,
+                "capacity": "1TB",
+                "performance": {
+                    "read_speed": "3500MB/s"
+                }
+            },
             "constraints": []
         }}
         """
-        
+        prompt = f"{sytem_prompt}\n{anser_prompt}"
         response = self.llm.generate(prompt)
         
         try:

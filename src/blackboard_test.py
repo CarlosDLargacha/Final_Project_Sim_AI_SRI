@@ -15,7 +15,6 @@ class User:
     def __init__(self, blackboard: Blackboard):
         
         self.blackboard = blackboard
-        self.agents_proposed = 4
                 
         self.blackboard.subscribe(event_type=EventType.USER_RESPONSE, callback=self.on_log)
     
@@ -47,7 +46,7 @@ def run_test_scenario():
     processor = CSVToEmbeddings()
 
     # Inicializar Blackboard
-    blackboard = Blackboard()
+    blackboard = Blackboard(4)
     
     cpu_db = processor.load_embeddings('CPU')
     gpu_db = processor.load_embeddings('GPU')

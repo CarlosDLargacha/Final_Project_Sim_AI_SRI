@@ -1,0 +1,186 @@
+
+----------------------------------------------------------------------------------
+
+Querie: Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU.
+
+Propuestas: 
+Motherboard: 79
+GPU: 1
+CPU: 27
+
+Response: 
+
+Build #1:
+
+CPU:
+**AMD Ryzen 7 8700G** ($309)
+- Núcleos/Hilos: 8-Core
+- Frecuencia Base: 4.2 GHz
+- Frecuencia Turbo: 5.1 GHz
+- Socket: Socket AM5
+- Cache (L3): 16MB
+- TDP: 65W
+- Tecnología: 4nm
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($179)
+- Socket: AM5
+- Chipset: AMD B650
+- Formato: ATX
+- RAM Soporte: Memory Support DDR5 6000+(OC)/ 5800(OC)/ 5600(OC)/ 5400(OC)/ 5200(OC)/ 5000(OC)/ 4800(JEDEC) MHz Max. overclocking frequency: 1DPC 1R Max speed up to 6000+ MHz 1DPC 2R Max speed up to 6000+ MHz 2DPC 1R Max speed up to 6000+ MHz 2DPC 2R Max speed up to 5400+ MHz
+- Slots M.2: 2x M.2 M.2_1 Source (From CPU) supports up to PCIe 4.0 x4 , supports 22110/2280 devices M.2_2 Source (From CPU) supports up to PCIe 4.0 x4 , supports 2280/2260 devices
+- Conectividad: Wi-Fi, Bluetooth, 2.5Gbps
+
+
+Build #2:
+
+CPU:
+**AMD Ryzen 7 8700G** ($309)
+- Núcleos/Hilos: 8-Core
+- Frecuencia Base: 4.2 GHz
+- Frecuencia Turbo: 5.1 GHz
+- Socket: Socket AM5
+- Cache (L3): 16MB
+- TDP: 65W
+- Tecnología: 4nm
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**GIGABYTE** ($179)
+- Socket: AM5
+- Chipset: AMD B850
+- Formato: Micro ATX
+- RAM Soporte: Up to DDR5 8200(O.C)
+- Slots M.2: 2 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 2.5Gbps
+
+
+Build #3:
+
+CPU:
+**AMD Ryzen 7 8700G** ($309)
+- Núcleos/Hilos: 8-Core
+- Frecuencia Base: 4.2 GHz
+- Frecuencia Turbo: 5.1 GHz
+- Socket: Socket AM5
+- Cache (L3): 16MB
+- TDP: 65W
+- Tecnología: 4nm
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**GIGABYTE** ($179)
+- Socket: AM5
+- Chipset: AMD B850
+- RAM Soporte: Up to DDR5 8200(O.C)
+- Conectividad: Wi-Fi, Bluetooth, Yes
+- Características: 1 x PCI Express 5.0 x16
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Necesito una PC para jugar en 1440p a 144fps con presupuesto de $1200
+
+Propuestas: 
+Motherboard: 60
+GPU: 1
+CPU: 27
+
+Response: 
+
+Build #1:
+
+CPU:
+**AMD Ryzen 7 8700G** ($309)
+- Núcleos/Hilos: 8-Core
+- Frecuencia Base: 4.2 GHz
+- Frecuencia Turbo: 5.1 GHz
+- Socket: Socket AM5
+- Cache (L3): 16MB
+- TDP: 65W
+- Tecnología: 4nm
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI** ($179)
+- Socket: AM5
+- Chipset: AMD B650
+- Formato: ATX
+- RAM Soporte: Memory Support DDR5 6000+(OC)/ 5800(OC)/ 5600(OC)/ 5400(OC)/ 5200(OC)/ 5000(OC)/ 4800(JEDEC) MHz Max. overclocking frequency: 1DPC 1R Max speed up to 6000+ MHz 1DPC 2R Max speed up to 6000+ MHz 2DPC 1R Max speed up to 6000+ MHz 2DPC 2R Max speed up to 5400+ MHz
+- Slots M.2: 2x M.2 M.2_1 Source (From CPU) supports up to PCIe 4.0 x4 , supports 22110/2280 devices M.2_2 Source (From CPU) supports up to PCIe 4.0 x4 , supports 2280/2260 devices
+- Conectividad: Wi-Fi, Bluetooth, 2.5Gbps
+
+
+Build #2:
+
+CPU:
+**AMD Ryzen 7 8700G** ($309)
+- Núcleos/Hilos: 8-Core
+- Frecuencia Base: 4.2 GHz
+- Frecuencia Turbo: 5.1 GHz
+- Socket: Socket AM5
+- Cache (L3): 16MB
+- TDP: 65W
+- Tecnología: 4nm
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**GIGABYTE** ($179)
+- Socket: AM5
+- Chipset: AMD B850
+- Formato: Micro ATX
+- RAM Soporte: Up to DDR5 8200(O.C)
+- Slots M.2: 2 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 2.5Gbps
+
+
+Build #3:
+
+CPU:
+**AMD Ryzen 7 8700G** ($309)
+- Núcleos/Hilos: 8-Core
+- Frecuencia Base: 4.2 GHz
+- Frecuencia Turbo: 5.1 GHz
+- Socket: Socket AM5
+- Cache (L3): 16MB
+- TDP: 65W
+- Tecnología: 4nm
+
+GPU:
+**AMD** ($499)
+- Tipo Memoria: HBM2
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**GIGABYTE** ($179)
+- Socket: AM5
+- Chipset: AMD B850
+- RAM Soporte: Up to DDR5 8200(O.C)
+- Conectividad: Wi-Fi, Bluetooth, Yes
+- Características: 1 x PCI Express 5.0 x16
+
+
+

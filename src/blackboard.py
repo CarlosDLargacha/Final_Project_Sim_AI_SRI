@@ -10,9 +10,10 @@ class EventType(Enum):
     USER_INPUT = 0
     REQUIREMENTS_UPDATED = 1
     COMPONENTS_PROPOSED = 2
-    COMPATIBILITY_CHECKED = 3
-    OPTIMIZATION_DONE = 4
-    USER_RESPONSE = 5
+    TRIGGER_COMPATIBILITY = 3
+    COMPATIBILITY_CHECKED = 4
+    OPTIMIZATION_DONE = 5
+    USER_RESPONSE = 6
 
 @dataclass
 class BlackboardEntry:
@@ -22,7 +23,7 @@ class BlackboardEntry:
     version: int = 1
 
 class Blackboard:
-    def __init__(self):
+    def __init__(self, components_agent_number = 4):
         # Estado estructurado del sistema
         self.state = {
             'user_input': None,
@@ -32,7 +33,7 @@ class Blackboard:
             'compatibility_issues': [],      # Problemas detectados
             'optimized_configs': [],         # Configuraciones finales
             'knowledge_updates': {},          # Datos para actualizar RAG
-            'compatibility_status': {'ready_for_optimization': False},
+            'compatibility_status': {'ready_for_compability': False},
             'errors': []
         }
         
@@ -42,6 +43,14 @@ class Blackboard:
         
         # Histórico de cambios (para debugging/experimentación)
         self.audit_log = []
+        
+        # Número de agentes que deben proponer componentes
+        self.total_components_agent_proposal = components_agent_number
+        self.actual_components_agent_proposal = 0
+        self.subscribe(
+            EventType.COMPONENTS_PROPOSED, 
+            self.trigger_compability_event
+        )
     
     def subscribe(self, event_type: EventType, callback: Callable):
         """Registra un agente para recibir notificaciones"""
@@ -73,6 +82,7 @@ class Blackboard:
                     'user_input': EventType.USER_INPUT,
                     'user_requirements': EventType.REQUIREMENTS_UPDATED,
                     'component_proposals': EventType.COMPONENTS_PROPOSED,
+                    'compatibility_status': EventType.TRIGGER_COMPATIBILITY,
                     'compatibility_issues': EventType.COMPATIBILITY_CHECKED,
                     'optimized_configs': EventType.OPTIMIZATION_DONE,
                     'user_response': EventType.USER_RESPONSE
@@ -99,7 +109,21 @@ class Blackboard:
         for callback in callbacks:
             threading.Thread(target=callback, daemon=True).start()
     
-    def get_consolidated_components(self, min_agents: int = 3) -> Dict[str, List]:
+    def trigger_compability_event(self):
+        self.actual_components_agent_proposal += 1
+        
+        if self.actual_components_agent_proposal < self.total_components_agent_proposal:
+            print(self.actual_components_agent_proposal)
+        else:
+            print(self.actual_components_agent_proposal, " OK")
+            self.update(
+                section='compatibility_status', 
+                data={'ready_for_compability': True}, 
+                agent_id='blackboard', 
+                notify=True
+            )
+    
+    def get_consolidated_components(self) -> Dict[str, List]:
         """
         Combina propuestas de múltiples agentes especializados
         :param min_agents: Mínimo de agentes que deben haber contribuido
@@ -108,7 +132,7 @@ class Blackboard:
         with self.lock:
             proposals = self.state.get('component_proposals', {})
             
-            if len(proposals) < min_agents:
+            if self.actual_components_agent_proposal < self.total_components_agent_proposal:
                 #raise ValueError(f"Faltan contribuciones de agentes. Solo {len(proposals)}/{min_agents}")
                 return []
             
@@ -145,9 +169,10 @@ class Blackboard:
             'compatibility_issues': [],      # Problemas detectados
             'optimized_configs': [],         # Configuraciones finales
             'knowledge_updates': {},          # Datos para actualizar RAG
-            'compatibility_status': {'ready_for_optimization': False},
+            'compatibility_status': {'ready_for_compability': False},
             'errors': []
         }
         
         # Histórico de cambios (para debugging/experimentación)
         self.audit_log = []
+        self.actual_components_agent_proposal = 0

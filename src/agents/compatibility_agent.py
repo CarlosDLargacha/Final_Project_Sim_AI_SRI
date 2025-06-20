@@ -9,7 +9,9 @@ class ComponentType(Enum):
     GPU = "GPU"
     MOTHERBOARD = "Motherboard"
     RAM = "RAM"
-    STORAGE = "Storage"
+    #STORAGE = "Storage"
+    SSD = "SSD"
+    HDD = "HDD"
     PSU = "Power Supply"
     CASE = "Case"
     COOLER = "Cooler"
@@ -36,7 +38,7 @@ class CompatibilityAgent:
         
         # Suscribirse a eventos de actualización de componentes
         self.blackboard.subscribe(
-            EventType.COMPONENTS_PROPOSED,
+            EventType.TRIGGER_COMPATIBILITY,
             self.check_compatibility
         )
 
@@ -140,7 +142,10 @@ class CompatibilityAgent:
             
             for proposal in proposals_list:
                 metadata = proposal['metadata']
-                model_name = metadata.get('Model_Name', 'Unknown')
+                model_name = metadata.get('Model_Name', 
+                             metadata.get('Model_Model', 
+                             metadata.get('Model - Model',             
+                            'Unknown')))
                 
                 # Extraer características clave según el tipo de componente
                 key_features = {}
@@ -197,8 +202,8 @@ class CompatibilityAgent:
         cpu_model = cpu.key_features.get('generation', '').lower()
         mobo_chipset = mobo.key_features.get('supported_gpu', '').lower()
         
-        print(cpu_model)
-        print(mobo_chipset)
+        # print(cpu_model)
+        # print(mobo_chipset)
         
         if '12th' in cpu_model:
             if '12th' in mobo_chipset:
