@@ -103,6 +103,7 @@ class StorageAgent:
             
             # Calcular puntaje de capacidad (mayor es mejor)
             capacity_score = 0
+            storage_cap = 128
             if min_capacity > 0:
                 storage_cap = self._normalize_capacity(metadata.get('Capacity', '0GB'))
                 # Premiar capacidad cercana al mínimo requerido (evitar excesos)

@@ -112,9 +112,7 @@ class Blackboard:
     def trigger_compability_event(self):
         self.actual_components_agent_proposal += 1
         
-        if self.actual_components_agent_proposal < self.total_components_agent_proposal:
-            print(self.actual_components_agent_proposal)
-        else:
+        if self.actual_components_agent_proposal >= self.total_components_agent_proposal:
             print(self.actual_components_agent_proposal, " OK")
             self.update(
                 section='compatibility_status', 
