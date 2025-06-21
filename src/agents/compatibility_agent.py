@@ -160,6 +160,7 @@ class CompatibilityAgent:
                     key_features = {
                         'socket': metadata.get('Supported CPU_CPU Socket TypeCPU Socket Type', ''),
                         'max_ram': metadata.get('Memory_Maximum Memory Supported', ''),
+                        'ram_type_spped': metadata.get('Memory_Memory Standard', ''),
                         'ram_slots': metadata.get('Memory_Number of Memory Slots', ''),
                         'pcie_slots': metadata.get('Expansion Slots_PCI Express 5.0 x16', ''),
                         'pcie_slots2': metadata.get('Memory_Buffer Supported', ''),
@@ -173,12 +174,18 @@ class CompatibilityAgent:
                     }
                 elif enum_type == ComponentType.SSD:
                     key_features = {
-                        'form_factor': metadata.get('Details_Form FactorForm Factor'),
-                        'protocol': metadata.get('Details_Protocol')
+                        'form_factor': metadata.get('Details_Form FactorForm Factor', ''),
+                        'protocol': metadata.get('Details_Protocol', '')
                     }
                     
                 elif enum_type == ComponentType.HDD:
                     key_features = {
+                        
+                    }
+                    
+                elif enum_type == ComponentType.RAM:
+                    key_features = {
+                        'ram_type_spped': metadata.get('Details_SpeedSpeed', '')
                     }
                     
                 components[enum_type].append(ComponentInfo(
@@ -281,34 +288,36 @@ class CompatibilityAgent:
         
         return True, "Dimensiones compatibles"
 
-    def _validate_ram_type_compatibility(self, ram: ComponentInfo, mobo: ComponentInfo) -> Tuple[bool, str]:
+    def _validate_ram_type_compatibility(self, mobo: ComponentInfo, ram: ComponentInfo) -> Tuple[bool, str]:
         """Valida que el tipo de RAM sea compatible con la motherboard"""
-        ram_type = ram.key_features.get('type', '').upper()
-        mobo_ram_types = mobo.key_features.get('ram_type', '').upper()
+        ram_type = ram.key_features.get('ram_type_spped', '').upper()
+        mobo_ram_types = mobo.key_features.get('ram_type_spped', '').upper()
         
         if not ram_type or not mobo_ram_types:
-            return True, "Información de RAM no disponible"
+            return False, "Información de RAM no disponible"
         
-        if ram_type not in mobo_ram_types:
-            return False, f"Tipo de RAM incompatible: {ram_type} vs soportado {mobo_ram_types}"
+        if 'DDR4' in ram_type and 'DDR4' in mobo_ram_types:
+            return True, "Tipo de RAM compatible (DDR4)"
+        
+        if 'DDR5' in ram_type and 'DDR5' in mobo_ram_types:
+            return True, "Tipo de RAM compatible (DDR5)"           
         
         return True, "Tipo de RAM compatible"
 
-    def _validate_ram_speed_compatibility(self, ram: ComponentInfo, mobo: ComponentInfo) -> Tuple[bool, str]:
+    def _validate_ram_speed_compatibility(self, mobo: ComponentInfo, ram: ComponentInfo) -> Tuple[bool, str]:
         """Valida que la velocidad de RAM sea compatible con la motherboard"""
-        ram_speed = ram.key_features.get('speed', '0 MHz')
-        mobo_max_speed = mobo.key_features.get('max_ram_speed', '0 MHz')
+        ram_speed = ram.key_features.get('ram_type_spped', '')
+        mobo_speed = mobo.key_features.get('ram_type_spped', '')
         
-        try:
-            ram_value = int(re.search(r'\d+', ram_speed).group())
-            mobo_value = int(re.search(r'\d+', mobo_max_speed).group())
-            
-            if ram_value > mobo_value:
-                return False, f"Velocidad RAM ({ram_speed}) excede soporte de motherboard ({mobo_max_speed})"
-        except (AttributeError, ValueError):
-            return True, "No se pudieron verificar velocidades"
+        ram_speed_match = re.search(r'\b\d{4}\b', ram_speed)
+        if not ram_speed_match:  return False, "No se encontró velocidad RAM válida"
         
-        return True, "Velocidad RAM compatible"
+        ram_speed = ram_speed_match.group()
+        
+        if ram_speed in mobo_speed: 
+            return True, "Velocidad RAM compatible"
+        
+        return False, "Velocidad de RAM no compatible"
 
     def _validate_tdp_compatibility(self, cpu: ComponentInfo, cooler: ComponentInfo) -> Tuple[bool, str]:
         """Valida que el cooler pueda manejar el TDP del CPU"""
