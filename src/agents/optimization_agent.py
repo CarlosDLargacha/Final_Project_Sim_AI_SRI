@@ -1,4 +1,4 @@
-from typing import Dict, List, Any, Tuple, Set
+from typing import Dict, List, Any, Tuple, Set, Optional
 from blackboard import Blackboard, EventType
 from agents.decorators import agent_error_handler
 from agents.compatibility_agent import ComponentType, CompatibilityIssue
@@ -30,9 +30,16 @@ class OptimizationAgent:
         url_set = set()
         for k, v in proposals.items():
             for comp in v:
-                if comp["metadata"].get('URL') not in url_set:
-                    domains[k].append(comp["metadata"])
-                    url_set.add(comp["metadata"].get('URL'))
+                meta = comp["metadata"]
+                if meta.get('URL') not in url_set:
+                    
+                    price = meta.get("price", meta.get("Price", 1e9))
+                    if isinstance(price, str):
+                        price = price.replace(',', '.')
+                    meta["Price"] = float(price)
+                    
+                    domains[k].append(meta)
+                    url_set.add(meta.get('URL'))
 
         reduced_domains = self._ac3(domains, issues)
         if any(len(v) == 0 for v in reduced_domains.values()):
@@ -43,34 +50,73 @@ class OptimizationAgent:
         max_budget = requirements.budget.get("max", float("inf"))
         conflict_set = self._build_conflict_set(issues)
 
-        valid_builds = self._backtrack(
-            assignment={},
-            variables=sorted(reduced_domains.keys()),
-            domains=reduced_domains,
-            budget_limit=max_budget,
-            compatibility_conflicts=conflict_set,
-            k=3
-        )
+        builds = []
 
-        print(f"[OptimizationAgent] {len(valid_builds)} builds válidas encontradas")
+        cheapest = self._find_cheapest_build(reduced_domains, max_budget, conflict_set)
+        if cheapest:
+            builds.append(self._package_build(cheapest, label="Build Más Económica"))
 
-        final_builds = []
-        for build in valid_builds:
-            total_price = sum(float(comp.get("price", comp.get("Price", 0))) for comp in build.values())
-            final_builds.append({
-                "components": build,
-                "total_price": round(total_price, 2),
-                "performance_rating": self._estimate_performance(build),
-                "compatibility_warnings": [],
-                "upgrade_paths": {}
-            })
+        # TODO: Agregar _find_best_price_perf_build y _find_best_performance_build
 
         self.blackboard.update(
             section="optimized_configs",
-            data=final_builds,
+            data=builds,
             agent_id="optimization_agent",
             notify=True
         )
+
+    def _find_cheapest_build(
+        self,
+        domains: Dict[str, List[Dict]],
+        max_budget: float,
+        compatibility_conflicts: Set[Tuple[Tuple[str, str], Tuple[str, str]]]
+    ) -> Optional[Dict[str, Dict]]:
+        variables = sorted(domains.keys())
+        domains_sorted = {
+            k: sorted(v, key=lambda c: float(c.get("Price", 1e9))) for k, v in domains.items()
+        }
+
+        def backtrack_cheapest(assignment):
+            if len(assignment) == len(variables):
+                if self._is_valid(assignment, max_budget):
+                    return assignment.copy()
+                return None
+
+            var = variables[len(assignment)]
+            for value in domains_sorted[var]:
+                model_name = value.get('Model_Name', value.get('Model_Model', value.get('Model - Model', 'Unknown')))
+                if not model_name:
+                    continue
+
+                conflict = False
+                for prev_type, prev_comp in assignment.items():
+                    prev_name = prev_comp.get('Model_Name', prev_comp.get('Model_Model', prev_comp.get('Model - Model', 'Unknown')))
+                    if ((var, model_name), (prev_type, prev_name)) in compatibility_conflicts:
+                        conflict = True
+                        break
+                if conflict:
+                    continue
+
+                assignment[var] = value
+                result = backtrack_cheapest(assignment)
+                if result:
+                    return result
+                del assignment[var]
+
+            return None
+
+        return backtrack_cheapest({})
+
+    def _package_build(self, build: Dict[str, Dict], label: str) -> Dict:
+        total_price = sum(float(comp.get("price", comp.get("Price", 0))) for comp in build.values())
+        return {
+            "components": build,
+            "total_price": round(total_price, 2),
+            "performance_rating": self._estimate_performance(build),
+            "compatibility_warnings": [],
+            "upgrade_paths": {},
+            "label": label
+        }
 
     def _ac3(self, domains: Dict[str, List[Dict]], issues: List[CompatibilityIssue]) -> Dict[str, List[Dict]]:
         queue: List[Tuple[str, str]] = []
@@ -124,45 +170,6 @@ class OptimizationAgent:
             conflict_set.add((a, b))
             conflict_set.add((b, a))
         return conflict_set
-
-    def _backtrack(
-        self,
-        assignment: Dict[str, Dict],
-        variables: List[str],
-        domains: Dict[str, List[Dict]],
-        budget_limit: float,
-        compatibility_conflicts: Set[Tuple[Tuple[str, str], Tuple[str, str]]],
-        k: int
-    ) -> List[Dict[str, Dict]]:
-        if len(assignment) == len(variables):
-            if self._is_valid(assignment, budget_limit):
-                return [assignment.copy()]
-            return []
-
-        var = variables[len(assignment)]
-        valid_builds = []
-
-        for value in domains[var]:
-            model_name = value.get('Model_Name', value.get('Model_Model', value.get('Model - Model', 'Unknown')))
-            if not model_name:
-                continue
-
-            conflict = False
-            for prev_type, prev_comp in assignment.items():
-                prev_name = prev_comp.get('Model_Name', prev_comp.get('Model_Model', prev_comp.get('Model - Model', 'Unknown')))
-                if ((var, model_name), (prev_type, prev_name)) in compatibility_conflicts:
-                    conflict = True
-                    break
-            if conflict:
-                continue
-
-            assignment[var] = value
-            valid_builds += self._backtrack(assignment, variables, domains, budget_limit, compatibility_conflicts, k)
-            if len(valid_builds) >= k:
-                return valid_builds[:k]
-            del assignment[var]
-
-        return valid_builds
 
     def _is_valid(self, build: Dict[str, Dict], max_budget: float) -> bool:
         total_price = 0
