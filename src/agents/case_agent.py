@@ -2,7 +2,7 @@ from typing import Dict, List, Any
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from blackboard import Blackboard, EventType
-from bdi_agent import HardwareRequirements
+from agents.BDI_agent import HardwareRequirements, UseCase
 
 class CaseAgent:
     def __init__(self, vector_db: Dict[str, Any], blackboard: Blackboard):
@@ -52,7 +52,7 @@ class CaseAgent:
             except (ValueError, TypeError):
                 price = float('inf')
             
-            max_case_budget = requirements.budget.get('max', float('inf')) * 0.10  # 10% para gabinete
+            max_case_budget = requirements.budget.get('max', float('inf'))
             if price > max_case_budget:
                 continue
             
@@ -73,8 +73,7 @@ class CaseAgent:
             )
         )
         
-        # Proponer las mejores opciones (máximo 5)
-        top_candidates = sorted_candidates[:5]
+        top_candidates = sorted_candidates
         
         # Actualizar el blackboard
         if top_candidates:

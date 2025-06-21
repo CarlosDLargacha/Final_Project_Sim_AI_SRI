@@ -187,6 +187,11 @@ class CompatibilityAgent:
                     key_features = {
                         'ram_type_spped': metadata.get('Details_SpeedSpeed', '')
                     }
+                
+                elif enum_type == ComponentType.CASE:
+                    key_features = {
+                        'max_gpu_length': metadata.get('Dimensions & Weight_Max GPU Length', '')
+                    }
                     
                 components[enum_type].append(ComponentInfo(
                     type=enum_type,
@@ -272,20 +277,24 @@ class CompatibilityAgent:
 
     def _validate_size_compatibility(self, gpu: ComponentInfo, case: ComponentInfo) -> Tuple[bool, str]:
         """Valida que la GPU quepa en el gabinete"""
-        gpu_length = gpu.key_features.get('length', '0 mm')
-        case_max_gpu = case.key_features.get('max_gpu_length', '0 mm')
+        gpu_length = gpu.key_features.get('length', '')
+        case_max_gpu = case.key_features.get('max_gpu_length', '')
         
         try:
             # Extraer valores numéricos (asumiendo formato "300 mm")
             gpu_value = float(re.search(r'[\d.]+', gpu_length).group())
             case_value = float(re.search(r'[\d.]+', case_max_gpu).group())
             
+            print(gpu_value)
+            print(case_value)
+            
             # Comparar valores (asumiendo misma unidad)
             if gpu_value > case_value:
                 return False, f"GPU ({gpu_length}) más grande que espacio disponible en gabinete ({case_max_gpu})"
+            
         except (AttributeError, ValueError):
             return True, "No se pudieron verificar dimensiones"
-        
+
         return True, "Dimensiones compatibles"
 
     def _validate_ram_type_compatibility(self, mobo: ComponentInfo, ram: ComponentInfo) -> Tuple[bool, str]:

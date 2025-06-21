@@ -65,8 +65,7 @@ class PSUAgent:
             )
         )
         
-        # Proponer las mejores opciones (máximo 5)
-        top_candidates = sorted_candidates[:5]
+        top_candidates = sorted_candidates
         
         # Actualizar el blackboard
         if top_candidates:

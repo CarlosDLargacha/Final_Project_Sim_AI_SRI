@@ -113,7 +113,8 @@ class BDIAgent:
             }},
             "aesthetics": {{
                 "color": "string",
-                "rgb": boolean
+                "rgb": boolean,
+                "window": boolean
             }},
             "cpu" : "1 cpu minima según el uso del caso (ej: "Intel Core i5-12400F") (valor obligatorio, defualt '')",
             "gpu" : "1 gpu minima según el uso del caso (ej: "NVIDIA RTX 3060") (valor obligatorio, default '')",
