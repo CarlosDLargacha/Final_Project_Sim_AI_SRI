@@ -29,13 +29,9 @@ class RAMAgent:
         
         # Obtener configuración de RAM de los requisitos del BDI
         ram_config = getattr(requirements, 'ram', {})
-        
-        print(ram_config)
         # Generar embedding para los requisitos
         requirement_text = self._generate_requirement_text(requirements, ram_config)
         requirement_embedding = self.embedding_model.encode([requirement_text])[0]
-        
-        print(requirement_embedding)
         
         # Calcular similitud con todos los módulos RAM
         similarities = cosine_similarity(
@@ -57,10 +53,6 @@ class RAMAgent:
             if price > max_ram_budget:
                 continue
             
-            print("======================================================================================================================")
-            print(metadata)
-            print("======================================================================================================================")
-            
             candidates.append({
                 'metadata': metadata,
                 'similarity': similarities[i],
@@ -78,8 +70,6 @@ class RAMAgent:
         )
         
         top_candidates = sorted_candidates
-        
-        print(top_candidates)
         
         # Actualizar el blackboard
         if top_candidates:

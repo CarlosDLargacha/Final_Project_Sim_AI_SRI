@@ -2,7 +2,7 @@ from typing import Dict, List, Any
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from blackboard import Blackboard, EventType
-from bdi_agent import HardwareRequirements
+from agents.BDI_agent import HardwareRequirements, UseCase
 
 class PSUAgent:
     def __init__(self, vector_db: Dict[str, Any], blackboard: Blackboard):
@@ -45,7 +45,7 @@ class PSUAgent:
             except (ValueError, TypeError):
                 price = float('inf')
             
-            max_psu_budget = requirements.budget.get('max', float('inf')) * 0.15  # 15% para PSU
+            max_psu_budget = requirements.budget.get('max', float('inf')) 
             if price > max_psu_budget:
                 continue
             
@@ -84,16 +84,49 @@ class PSUAgent:
             "Requisitos principales:"
         ]
         
-        # Caso de uso afecta recomendación de certificación
-        if requirements.use_case == UseCase.GAMING:
-            text_parts.append("Para sistema gaming de alto rendimiento")
-        elif requirements.use_case == UseCase.VIDEO_EDITING:
-            text_parts.append("Para estación de trabajo de edición")
+        # Descripción según caso de uso
+        case = requirements.use_case.value
+        if case == "gaming":
+            text_parts.append("Para sistema gaming de alto rendimiento con GPU potente")
+        elif case == "video_editing":
+            text_parts.append("Para estación de trabajo de edición de video profesional")
+        elif case == "data_science":
+            text_parts.append("Para estación de trabajo de ciencia de datos/análisis")
+        elif case == "server":
+            text_parts.append("Para servidor con alta disponibilidad")
+        elif case == "crypto_mining":
+            text_parts.append("Para sistema de minería de criptomonedas 24/7")
+        elif case == "machine_learning":
+            text_parts.append("Para sistema de entrenamiento de modelos de ML")
+        elif case == "web_development":
+            text_parts.append("Para estación de trabajo de desarrollo web")
+        elif case == "gaming/video_editing":
+            text_parts.append("Para sistema híbrido gaming/edición de video")
+        elif case == "gaming/data_science":
+            text_parts.append("Para sistema híbrido gaming/ciencia de datos")
+        elif case == "video_editing/data_science":
+            text_parts.append("Para estación de trabajo profesional edición/datos")
+        elif case == "gaming/video_editing/data_science":
+            text_parts.append("Para estación de trabajo multipropósito de alto rendimiento")
+        else:  # GENERAL
+            text_parts.append("Para sistema de uso general")
+        
+        # Requisitos de certificación basados en caso de uso
+        if case in ["gaming", "video_editing", "data_science", "machine_learning",
+                   "gaming/video_editing", "gaming/data_science", 
+                   "video_editing/data_science", "gaming/video_editing/data_science"]:
+            text_parts.append("Certificación 80 Plus Gold o superior recomendada")
+        elif case in ["crypto_mining", "server"]:
+            text_parts.append("Certificación 80 Plus Platinum/Titanium para eficiencia 24/7")
         
         # Restricciones de tamaño
         if hasattr(requirements, 'constraints'):
             if 'small_form_factor' in requirements.constraints:
                 text_parts.append("Para gabinete pequeño (SFX/L)")
+            if 'silent_operation' in requirements.constraints:
+                text_parts.append("Operación silenciosa preferible")
+            if 'high_reliability' in requirements.constraints:
+                text_parts.append("Alta confiabilidad requerida")
         
         return ". ".join(text_parts)
 

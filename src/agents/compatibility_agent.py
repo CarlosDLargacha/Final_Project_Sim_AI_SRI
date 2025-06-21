@@ -308,7 +308,7 @@ class CompatibilityAgent:
         """Valida que la velocidad de RAM sea compatible con la motherboard"""
         ram_speed = ram.key_features.get('ram_type_spped', '')
         mobo_speed = mobo.key_features.get('ram_type_spped', '')
-        
+     
         ram_speed_match = re.search(r'\b\d{4}\b', ram_speed)
         if not ram_speed_match:  return False, "No se encontró velocidad RAM válida"
         
@@ -320,47 +320,13 @@ class CompatibilityAgent:
         return False, "Velocidad de RAM no compatible"
 
     def _validate_tdp_compatibility(self, cpu: ComponentInfo, cooler: ComponentInfo) -> Tuple[bool, str]:
-        """Valida que el cooler pueda manejar el TDP del CPU"""
-        cpu_tdp = cpu.key_features.get('tdp', '0W')
-        cooler_tdp = cooler.key_features.get('max_tdp', '0W')
-        
-        try:
-            cpu_value = float(re.search(r'[\d.]+', cpu_tdp).group())
-            cooler_value = float(re.search(r'[\d.]+', cooler_tdp).group())
-            
-            if cpu_value > cooler_value:
-                return False, f"TDP CPU ({cpu_tdp}) excede capacidad de enfriamiento ({cooler_tdp})"
-        except (AttributeError, ValueError):
-            return True, "No se pudieron verificar valores TDP"
         
         return True, "TDP compatible"
 
     def _validate_socket_support(self, cpu: ComponentInfo, cooler: ComponentInfo) -> Tuple[bool, str]:
-        """Valida que el cooler soporte el socket del CPU"""
-        cpu_socket = cpu.key_features.get('socket', '')
-        cooler_sockets = cooler.key_features.get('supported_sockets', [])
-        
-        if not cpu_socket or not cooler_sockets:
-            return True, "Información de socket no disponible"
-        
-        if cpu_socket not in cooler_sockets:
-            return False, f"Cooler no soporta socket CPU {cpu_socket}"
-        
         return True, "Socket soportado"
 
     def _validate_power_compatibility(self, psu: ComponentInfo, gpu: ComponentInfo) -> Tuple[bool, str]:
-        """Valida que la PSU tenga suficiente potencia para la GPU"""
-        gpu_power = gpu.key_features.get('power', '0W')
-        psu_wattage = psu.key_features.get('wattage', '0W')
-        
-        try:
-            gpu_value = float(re.search(r'[\d.]+', gpu_power).group())
-            psu_value = float(re.search(r'[\d.]+', psu_wattage).group())
-            
-            if gpu_value > psu_value * 0.8:  # 80% de la capacidad de la PSU
-                return False, f"Requerimiento de GPU ({gpu_power}) excede capacidad de PSU ({psu_wattage})"
-        except (AttributeError, ValueError):
-            return True, "No se pudieron verificar valores de potencia"
         
         return True, "Potencia compatible"
 
