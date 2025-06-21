@@ -162,6 +162,7 @@ class CompatibilityAgent:
                         'max_ram': metadata.get('Memory_Maximum Memory Supported', ''),
                         'ram_slots': metadata.get('Memory_Number of Memory Slots', ''),
                         'pcie_slots': metadata.get('Expansion Slots_PCI Express 5.0 x16', ''),
+                        'pcie_slots2': metadata.get('Memory_Buffer Supported', ''),
                         'supported_gpu': metadata.get('Supported CPU_CPU Type', '')
                     }
                 elif enum_type == ComponentType.GPU:
@@ -170,7 +171,16 @@ class CompatibilityAgent:
                         'power': metadata.get('Details - Recommended PSU Wattage', ''),
                         'interface': metadata.get('Interface - InterfaceInterface', '')
                     }
-                
+                elif enum_type == ComponentType.SSD:
+                    key_features = {
+                        'form_factor': metadata.get('Details_Form FactorForm Factor'),
+                        'protocol': metadata.get('Details_Protocol')
+                    }
+                    
+                elif enum_type == ComponentType.HDD:
+                    key_features = {
+                    }
+                    
                 components[enum_type].append(ComponentInfo(
                     type=enum_type,
                     model_name=model_name,
@@ -237,23 +247,21 @@ class CompatibilityAgent:
         
         return True, "Compatibilidad de chipset asumida"
 
-    def _validate_pcie_compatibility(self, gpu: ComponentInfo, mobo: ComponentInfo) -> Tuple[bool, str]:
+    def _validate_pcie_compatibility(self, mobo: ComponentInfo, gpu: ComponentInfo) -> Tuple[bool, str]:
         """Valida compatibilidad de slot PCIe entre GPU y motherboard"""
-        gpu_interface = gpu.full_metadata.get('price', '').lower()
-        mobo_pcie_slots = mobo.key_features.get('pcie_slots', '0')
+        gpu_interface = gpu.key_features.get('interface', '').lower()
+        mobo_pcie_slots = mobo.key_features.get('pcie_slots', '').lower()
+        mobo_pcie_slots2 = mobo.key_features.get('pcie_slots2', '').lower()
         
-        #print('===================================================================================================')
-        #print(gpu.key_features)
-        #print(mobo.key_features)
-        #print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+        if '4.0' in gpu_interface:
+            if '4.0 x16' in mobo_pcie_slots2 or '5.0 x16' in mobo_pcie_slots:
+                return True, "PCIe compatible"
         
-        if 'pcie' not in gpu_interface:
-            return True, "Interfaz GPU no es PCIe"
+        if '5.0' in gpu_interface:
+            if '5.0 x16' in mobo_pcie_slots:
+               return True, "PCIe compatible"
         
-        if not mobo_pcie_slots.isdigit() or int(mobo_pcie_slots) < 1:
-            return False, "Motherboard no tiene slots PCIe x16 disponibles"
-        
-        return True, "PCIe compatible"
+        return False, "PCIe no compatible"
 
     def _validate_size_compatibility(self, gpu: ComponentInfo, case: ComponentInfo) -> Tuple[bool, str]:
         """Valida que la GPU quepa en el gabinete"""
