@@ -1,8 +1,9 @@
 from typing import Dict, List, Any
+import re
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from blackboard import Blackboard, EventType
-from bdi_agent import HardwareRequirements
+from agents.BDI_agent import HardwareRequirements
 
 class RAMAgent:
     def __init__(self, vector_db: Dict[str, Any], blackboard: Blackboard):
@@ -29,9 +30,12 @@ class RAMAgent:
         # Obtener configuración de RAM de los requisitos del BDI
         ram_config = getattr(requirements, 'ram', {})
         
+        print(ram_config)
         # Generar embedding para los requisitos
         requirement_text = self._generate_requirement_text(requirements, ram_config)
         requirement_embedding = self.embedding_model.encode([requirement_text])[0]
+        
+        print(requirement_embedding)
         
         # Calcular similitud con todos los módulos RAM
         similarities = cosine_similarity(
@@ -39,16 +43,9 @@ class RAMAgent:
             self.vector_db['embeddings']
         )[0]
         
-        # Obtener motherboard seleccionada si está disponible
-        mb_proposals = self.blackboard.get('component_proposals', {}).get('Motherboard', [])
-        mb_metadata = mb_proposals[0]['metadata'] if mb_proposals else {}
-        
         # Filtrar y ordenar candidatos
         candidates = []
         for i, metadata in enumerate(self.vector_db['metadata']):
-            # Verificar compatibilidad con la motherboard
-            if not self._check_motherboard_compatibility(metadata, mb_metadata):
-                continue
                 
             # Verificar presupuesto
             try:
@@ -56,22 +53,23 @@ class RAMAgent:
             except (ValueError, TypeError):
                 price = float('inf')
             
-            max_ram_budget = requirements.budget.get('max', float('inf')) * 0.10  # 10% para RAM
+            max_ram_budget = requirements.budget.get('max', float('inf'))
             if price > max_ram_budget:
                 continue
+            
+            print("======================================================================================================================")
+            print(metadata)
+            print("======================================================================================================================")
             
             candidates.append({
                 'metadata': metadata,
                 'similarity': similarities[i],
                 'price': price
             })
-        
-        # Agrupar por modelo y seleccionar la opción más barata
-        unique_candidates = self._select_cheapest_per_model(candidates)
-        
+
         # Ordenar por similitud, velocidad y latencia
         sorted_candidates = sorted(
-            unique_candidates,
+            candidates,
             key=lambda x: (
                 -x['similarity'],
                 -self._get_ram_speed(x['metadata']),
@@ -79,8 +77,9 @@ class RAMAgent:
             )
         )
         
-        # Proponer las mejores opciones (máximo 5)
-        top_candidates = sorted_candidates[:5]
+        top_candidates = sorted_candidates
+        
+        print(top_candidates)
         
         # Actualizar el blackboard
         if top_candidates:
@@ -117,29 +116,6 @@ class RAMAgent:
             text_parts.append("Perfil bajo preferible")
         
         return ". ".join(text_parts)
-
-    def _check_motherboard_compatibility(self, ram_metadata: Dict, mb_metadata: Dict) -> bool:
-        """Verifica compatibilidad con la motherboard seleccionada"""
-        # Verificar tipo de RAM (DDR4/DDR5)
-        ram_type = ram_metadata.get('Memory - Memory Type', '').upper()
-        mb_ram_types = mb_metadata.get('Memory - Memory Type', '').upper()
-        
-        if ram_type and mb_ram_types and ram_type not in mb_ram_types:
-            return False
-        
-        # Verificar velocidad soportada
-        ram_speed = self._get_ram_speed(ram_metadata)
-        mb_max_speed = int(mb_metadata.get('Memory - Max Speed', '0'))
-        if mb_max_speed > 0 and ram_speed > mb_max_speed:
-            return False
-        
-        # Verificar cantidad de módulos vs slots disponibles
-        ram_modules = int(ram_metadata.get('Memory - Modules', '1'))
-        mb_slots = int(mb_metadata.get('Memory - Slots', '0'))
-        if mb_slots > 0 and ram_modules > mb_slots:
-            return False
-        
-        return True
 
     def _get_ram_speed(self, metadata: Dict) -> int:
         """Extrae la velocidad de la RAM en MHz"""

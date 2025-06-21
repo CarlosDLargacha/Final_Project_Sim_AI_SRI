@@ -47,13 +47,12 @@ class MotherboardAgent:
             if not self._check_constraints(metadata, requirements.constraints):
                 continue
             
-            # Verificar presupuesto (hasta 20% del total para motherboard)
             try:
                 price = float(metadata.get('Price', float('inf')))
             except (ValueError, TypeError):
                 price = float('inf')
             
-            max_mb_budget = requirements.budget.get('max', float('inf')) * 0.2
+            max_mb_budget = requirements.budget.get('max', float('inf'))
             if price > max_mb_budget:
                 continue
             
@@ -72,7 +71,6 @@ class MotherboardAgent:
             )
         )
         
-        # Proponer las mejores opciones (máximo 5)
         top_candidates = sorted_candidates
         
         # Actualizar el blackboard

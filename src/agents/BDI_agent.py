@@ -34,6 +34,7 @@ class HardwareRequirements(BaseModel):
     cpu: str 
     gpu: str
     storage: Dict[str, Any]
+    ram: Dict[str, Any]
 
 class BDIAgent:
     def __init__(self, llm_client: LLMClient, blackboard: Blackboard):
@@ -124,8 +125,14 @@ class BDIAgent:
                     "read_speed": "3500MB/s (Velocidad mínima lectura para SSDs)" 
                 }
             },
+            "ram" : {
+                "capacity" : "32GB (Capacidad mínima)",
+                "type": "DDR3/DDR4/DDR5 (Tipo específico requerido)",
+                "speed": "5600 (Velocidad mínima en MHz)"  
+            }
             "constraints": ["lista de restricciones"]
         }}
+        
         
         Reglas estrictas:
         1. Para use_case usar SOLO estas opciones o combinaciones:

@@ -5,6 +5,7 @@ from agents.CPU_agent import CPUAgent
 from agents.GPU_agent import GPUAgent
 from agents.MB_agent import MotherboardAgent
 from agents.storage_agent import StorageAgent
+from agents.RAM_agent import RAMAgent
 from agents.compatibility_agent import CompatibilityAgent
 from agents.optimization_agent import OptimizationAgent
 from blackboard import Blackboard, EventType
@@ -46,13 +47,14 @@ def run_test_scenario():
     processor = CSVToEmbeddings()
 
     # Inicializar Blackboard
-    blackboard = Blackboard(4)
+    blackboard = Blackboard(5)
     
     cpu_db = processor.load_embeddings('CPU')
     gpu_db = processor.load_embeddings('GPU')
     mb_db = processor.load_embeddings('Motherboard')
     hdd_db = processor.load_embeddings('HDD')
     ssd_db = processor.load_embeddings('SSD')
+    ram_db = processor.load_embeddings('RAM')
     
     agents = {
         'bdi': BDIAgent(
@@ -76,6 +78,10 @@ def run_test_scenario():
         'storage': StorageAgent(
             ssd_vector_db=ssd_db,
             hdd_vector_db=hdd_db,
+            blackboard=blackboard
+        ),
+        'ram': RAMAgent(
+            vector_db=ram_db,
             blackboard=blackboard
         ),
         'comp': CompatibilityAgent(
