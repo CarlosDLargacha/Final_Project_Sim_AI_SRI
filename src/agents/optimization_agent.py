@@ -3,6 +3,7 @@ from blackboard import Blackboard, EventType
 from agents.decorators import agent_error_handler
 from agents.compatibility_agent import ComponentType, CompatibilityIssue
 import copy
+import re
 
 class OptimizationAgent:
     def __init__(self, blackboard: Blackboard):
@@ -28,16 +29,15 @@ class OptimizationAgent:
             for comp in v:
                 meta = comp["metadata"]
                 if meta.get('URL') not in url_set:
-                    
                     price = meta.get("price", meta.get("Price", 1e9))
                     if isinstance(price, str):
                         price = price.replace(',', '.')
                     meta["Price"] = float(price)
-                    
+
                     if k == ComponentType.CPU.value:
                         meta['score'] = comp['score']['score']
                         meta['multicore_score'] = comp['score']['multicore_score']
-                    
+
                     domains[k].append(meta)
                     url_set.add(meta.get('URL'))
 
@@ -56,9 +56,9 @@ class OptimizationAgent:
         if cheapest:
             builds.append(self._package_build(cheapest, label="Build Más Económica"))
 
-        best_price_perf = self._find_best_price_perf_build(reduced_domains, max_budget, conflict_set)
-        if best_price_perf:
-            builds.append(self._package_build(best_price_perf, label="Mejor Calidad/Precio"))
+        # best_price_perf = self._find_best_price_perf_build(reduced_domains, max_budget, conflict_set)
+        # if best_price_perf:
+        #     builds.append(self._package_build(best_price_perf, label="Mejor Calidad/Precio"))
 
         self.blackboard.update(
             section="optimized_configs",
@@ -73,7 +73,16 @@ class OptimizationAgent:
         max_budget: float,
         compatibility_conflicts: Set[Tuple[Tuple[str, str], Tuple[str, str]]]
     ) -> Optional[Dict[str, Dict]]:
-        variables = sorted(domains.keys())
+        max_perf = {
+            k: max((self._estimate_individual_perf(c) for c in comps), default=0) for k, comps in domains.items()
+        }
+
+        min_price = {
+            k: min((float(c.get("Price", 1e9)) for c in comps), default=1e9) for k, comps in domains.items()
+        }
+
+        # Reordenar variables por impacto (mayor rendimiento primero)
+        variables = sorted(domains.keys(), key=lambda k: -max_perf[k])
 
         domains_sorted = {
             k: sorted(v, key=self._estimate_comp_performance) for k, v in domains.items()
@@ -81,19 +90,24 @@ class OptimizationAgent:
 
         best_score = 0
         best_build = None
+        num_chop = [0, 0]
+        def backtrack(assignment, perf_so_far, price_so_far):
+            nonlocal best_score, best_build, num_chop
 
-        def backtrack(assignment):
-            nonlocal best_score, best_build
             if len(assignment) == len(variables):
-                if not self._is_valid(assignment, max_budget):
+                if price_so_far > max_budget:
                     return
-                score = self._build_score(assignment)
+                score = perf_so_far / price_so_far if price_so_far > 0 else 0
                 if score > best_score:
                     best_score = score
                     best_build = assignment.copy()
                 return
 
             var = variables[len(assignment)]
+            remaining_vars = variables[len(assignment)+1:]
+            max_remaining_perf = sum(max_perf[v] for v in remaining_vars)
+            min_remaining_price = sum(min_price[v] for v in remaining_vars)
+
             for value in domains_sorted[var]:
                 model_name = value.get('Model_Name', 'Unknown')
                 if not model_name:
@@ -106,13 +120,39 @@ class OptimizationAgent:
                         conflict = True
                         break
                 if conflict:
+                    num_chop[0] += 1
+                    continue
+
+                # Forward checking: asegurar consistencia futura
+                skip_branch = False
+                for next_var in remaining_vars:
+                    compatible = any(
+                        ((next_var, c.get("Model_Name", "Unknown")), (var, model_name)) not in compatibility_conflicts
+                        for c in domains_sorted[next_var]
+                    )
+                    if not compatible:
+                        skip_branch = True
+                        break
+                if skip_branch:
+                    continue
+
+                comp_price = float(value.get("Price", 1e9))
+                comp_perf = self._estimate_comp_performance(value)
+
+                price_est = price_so_far + comp_price + min_remaining_price
+                perf_est = perf_so_far + comp_perf + max_remaining_perf
+                upper_bound = perf_est / price_est if price_est > 0 else 0
+
+                if upper_bound < best_score:
+                    num_chop[1] += 1
                     continue
 
                 assignment[var] = value
-                backtrack(assignment)
+                backtrack(assignment, perf_so_far + comp_perf, price_so_far + comp_price)
                 del assignment[var]
 
-        backtrack({})
+        backtrack({}, 0, 0)
+        print(num_chop)
         return best_build
 
     def _find_cheapest_build(
@@ -230,25 +270,29 @@ class OptimizationAgent:
             except Exception:
                 return False
         return total_price <= max_budget
-    
+
     def _estimate_build_performance(self, build: Dict[str, Dict]) -> float:
         score = 0.0
         for comp in build.values():
             score += self._estimate_comp_performance(comp)
         return score
 
-    def _estimate_comp_performance(self,comp):
+    def _estimate_individual_perf(self, comp: Dict) -> float:
         perf = 0.0
-        if comp.get("score"):
+        if comp.get("Type") == "CPU":
             perf += comp.get("score", 0) + 0.5 * comp.get("multicore_score", 0)
-        if comp.get("Type") == "GPU":
+        elif comp.get("Type") == "GPU":
             perf *= 1.5
+        else:
+            perf = 1
 
-        # Aplicar penalización suave si el ranking es malo
         rank = self._extract_best_seller_rank(comp)
         if rank < float("inf"):
             perf *= 1 + (100 - min(rank, 100)) / 500
+        return perf
 
+    def _estimate_comp_performance(self, comp):
+        perf = self._estimate_individual_perf(comp)
         price = float(comp.get("Price", 1e9))
         return -perf / price if price > 0 else float("inf")
 
@@ -258,10 +302,8 @@ class OptimizationAgent:
         return perf / price if price > 0 else 0
 
     def _extract_best_seller_rank(self, comp: Dict) -> float:
-        """Extrae la posición numérica del Best Seller Ranking"""
-        import re
-        raw = comp.get("Best Seller Ranking", "")
-        match = re.search(r"#(\\d+)", raw)
+        raw = comp.get("_Best Seller Ranking", "")
+        match = re.search(r"#(\d+)", raw)
         if match:
             return int(match.group(1))
-        return float("inf")  # No rank disponible = poco confiable
+        return float("inf")
