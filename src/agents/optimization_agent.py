@@ -22,10 +22,6 @@ class OptimizationAgent:
         if not proposals:
             return
 
-        # domains: Dict[str, List[Dict]] = {
-        #     k: [comp["metadata"] for comp in v] for k, v in proposals.items()
-        # }
-        
         domains = { k : [] for k in proposals}
         url_set = set()
         for k, v in proposals.items():
@@ -37,6 +33,10 @@ class OptimizationAgent:
                     if isinstance(price, str):
                         price = price.replace(',', '.')
                     meta["Price"] = float(price)
+                    
+                    if k == ComponentType.CPU.value:
+                        meta['score'] = comp['score']['score']
+                        meta['multicore_score'] = comp['score']['multicore_score']
                     
                     domains[k].append(meta)
                     url_set.add(meta.get('URL'))
@@ -56,7 +56,9 @@ class OptimizationAgent:
         if cheapest:
             builds.append(self._package_build(cheapest, label="Build Más Económica"))
 
-        # TODO: Agregar _find_best_price_perf_build y _find_best_performance_build
+        best_price_perf = self._find_best_price_perf_build(reduced_domains, max_budget, conflict_set)
+        if best_price_perf:
+            builds.append(self._package_build(best_price_perf, label="Mejor Calidad/Precio"))
 
         self.blackboard.update(
             section="optimized_configs",
@@ -64,6 +66,54 @@ class OptimizationAgent:
             agent_id="optimization_agent",
             notify=True
         )
+
+    def _find_best_price_perf_build(
+        self,
+        domains: Dict[str, List[Dict]],
+        max_budget: float,
+        compatibility_conflicts: Set[Tuple[Tuple[str, str], Tuple[str, str]]]
+    ) -> Optional[Dict[str, Dict]]:
+        variables = sorted(domains.keys())
+
+        domains_sorted = {
+            k: sorted(v, key=self._estimate_comp_performance) for k, v in domains.items()
+        }
+
+        best_score = 0
+        best_build = None
+
+        def backtrack(assignment):
+            nonlocal best_score, best_build
+            if len(assignment) == len(variables):
+                if not self._is_valid(assignment, max_budget):
+                    return
+                score = self._build_score(assignment)
+                if score > best_score:
+                    best_score = score
+                    best_build = assignment.copy()
+                return
+
+            var = variables[len(assignment)]
+            for value in domains_sorted[var]:
+                model_name = value.get('Model_Name', 'Unknown')
+                if not model_name:
+                    continue
+
+                conflict = False
+                for prev_type, prev_comp in assignment.items():
+                    prev_name = prev_comp.get('Model_Name', 'Unknown')
+                    if ((var, model_name), (prev_type, prev_name)) in compatibility_conflicts:
+                        conflict = True
+                        break
+                if conflict:
+                    continue
+
+                assignment[var] = value
+                backtrack(assignment)
+                del assignment[var]
+
+        backtrack({})
+        return best_build
 
     def _find_cheapest_build(
         self,
@@ -84,13 +134,13 @@ class OptimizationAgent:
 
             var = variables[len(assignment)]
             for value in domains_sorted[var]:
-                model_name = value.get('Model_Name', value.get('Model_Model', value.get('Model - Model', 'Unknown')))
+                model_name = value.get('Model_Name', 'Unknown')
                 if not model_name:
                     continue
 
                 conflict = False
                 for prev_type, prev_comp in assignment.items():
-                    prev_name = prev_comp.get('Model_Name', prev_comp.get('Model_Model', prev_comp.get('Model - Model', 'Unknown')))
+                    prev_name = prev_comp.get('Model_Name', 'Unknown')
                     if ((var, model_name), (prev_type, prev_name)) in compatibility_conflicts:
                         conflict = True
                         break
@@ -112,7 +162,7 @@ class OptimizationAgent:
         return {
             "components": build,
             "total_price": round(total_price, 2),
-            "performance_rating": self._estimate_performance(build),
+            "performance_rating": self._estimate_build_performance(build),
             "compatibility_warnings": [],
             "upgrade_paths": {},
             "label": label
@@ -142,8 +192,8 @@ class OptimizationAgent:
             revised = False
             new_domain = []
             for x in domains[Xi]:
-                name_x = x.get('Model_Name', x.get('Model_Model', x.get('Model - Model', 'Unknown')))
-                consistent = any(((Xi, name_x), (Xj, y.get('Model_Name', y.get('Model_Model', y.get('Model - Model', 'Unknown'))))) not in conflicts for y in domains[Xj])
+                name_x = x.get('Model_Name', 'Unknown')
+                consistent = any(((Xi, name_x), (Xj, y.get('Model_Name', 'Unknown'))) not in conflicts for y in domains[Xj])
                 if consistent:
                     new_domain.append(x)
                 else:
@@ -180,18 +230,38 @@ class OptimizationAgent:
             except Exception:
                 return False
         return total_price <= max_budget
-
-    def _estimate_performance(self, build: Dict[str, Dict]) -> float:
+    
+    def _estimate_build_performance(self, build: Dict[str, Dict]) -> float:
         score = 0.0
-        if "CPU" in build:
-            s = build["CPU"].get("score", {})
-            score += s.get("score", 0) + 0.5 * s.get("multicore_score", 0)
-        if "GPU" in build:
-            s = build["GPU"].get("score", {})
-            score += 1.5 * s.get("multicore_score", 0)
+        for comp in build.values():
+            score += self._estimate_comp_performance(comp)
         return score
 
+    def _estimate_comp_performance(self,comp):
+        perf = 0.0
+        if comp.get("score"):
+            perf += comp.get("score", 0) + 0.5 * comp.get("multicore_score", 0)
+        if comp.get("Type") == "GPU":
+            perf *= 1.5
+
+        # Aplicar penalización suave si el ranking es malo
+        rank = self._extract_best_seller_rank(comp)
+        if rank < float("inf"):
+            perf *= 1 + (100 - min(rank, 100)) / 500
+
+        price = float(comp.get("Price", 1e9))
+        return -perf / price if price > 0 else float("inf")
+
     def _build_score(self, build: Dict[str, Dict]) -> float:
-        perf = self._estimate_performance(build)
+        perf = self._estimate_build_performance(build)
         price = sum(float(comp.get("price", comp.get("Price", 0))) for comp in build.values())
         return perf / price if price > 0 else 0
+
+    def _extract_best_seller_rank(self, comp: Dict) -> float:
+        """Extrae la posición numérica del Best Seller Ranking"""
+        import re
+        raw = comp.get("Best Seller Ranking", "")
+        match = re.search(r"#(\\d+)", raw)
+        if match:
+            return int(match.group(1))
+        return float("inf")  # No rank disponible = poco confiable
