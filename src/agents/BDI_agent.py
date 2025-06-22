@@ -166,6 +166,11 @@ class BDIAgent:
                     "read_speed": "3500MB/s"
                 }
             },
+            "ram": {
+                "capacity": "32GB",
+                "type": "DDR4",
+                "speed": 3200
+            },
             "constraints": []
         }}
         """
@@ -265,7 +270,7 @@ class BDIAgent:
             response = ""
             for i, build in enumerate(optimized_builds):
                 
-                response += f"Build #{i+1}:\n\n" 
+                response += f"{build.get('label', f'Build #{i}')}:\n\n" 
                 for _, comps in build.items():
                     for comp_name, meta in comps.items():
                         response += comp_name + ":\n" + self._format_component_description(comp_name, meta) + "\n"
@@ -381,50 +386,122 @@ class BDIAgent:
         adaptándose dinámicamente a los campos disponibles en los metadatos.
         """
         meta = component.get("metadata", component)
-        name = f"{meta.get('Model_Brand', '')} {meta.get('Model_Name', meta.get('Model - Model', ''))}".strip()
+        name = f"{meta.get('Model_Brand', '')} {meta.get('Model_Name', '')}".strip()
         price = meta.get("Price", meta.get("price", "N/A"))
         
         # Diccionario de campos relevantes por tipo de componente
-        relevant_fields = {
-            "CPU": {
-                "Núcleos/Hilos": meta.get("Details_# of Cores# of Cores") or meta.get("Details_# of Cores"),
-                "Frecuencia Base": meta.get("Details_Operating FrequencyOperating Frequency") or meta.get("Details_Operating Frequency"),
-                "Frecuencia Turbo": meta.get("Details_Max Turbo FrequencyMax Turbo Frequency") or meta.get("Details_Max Turbo Frequency"),
-                "Socket": meta.get("Details_CPU Socket TypeCPU Socket Type") or meta.get("CPU Socket Type_CPU Socket Type"),
-                "Cache (L3)": meta.get("Details_L3 CacheL3 Cache") or meta.get("Details_L3 Cache"),
-                "TDP": meta.get("Details_Thermal Design PowerThermal Design Power") or meta.get("Details_Thermal Design Power"),
-                "Tecnología": meta.get("Details_Manufacturing TechManufacturing Tech") or meta.get("Details_Manufacturing Tech")
-            },
-            "GPU": {
-                "Memoria": meta.get("Memory - Memory Size") or meta.get("Details_Memory Size"),
-                "Tipo Memoria": meta.get("Memory - Memory Type"),
-                "Interfaz": meta.get("Interface - InterfaceInterface") or meta.get("Interface - Interface"),
-                "TDP": meta.get("Details - Thermal Design PowerThermal Design Power") or meta.get("Details - Thermal Design Power"),
-                "Conectores": meta.get("Details - Power Connector"),
-                "Longitud": meta.get("Form Factor & Dimensions - Max GPU Length"),
-                "Puertos": self._extract_ports(meta)
-            },
-            "Motherboard": {
-                "Socket": meta.get("Supported CPU_CPU Socket TypeCPU Socket Type"),
-                "Chipset": meta.get("Chipsets_ChipsetChipset"),
-                "Formato": meta.get("Physical Spec_Form Factor"),
-                "RAM Soporte": meta.get("Memory_Memory Standard"),
-                "Slots M.2": meta.get("Storage Devices_M.2"),
-                "Conectividad": self._extract_connectivity(meta),
-                "Características": meta.get("Features_Features")
-            }
-        }
+        match comp_type:
+            case "CPU": 
+                relevant_fields = {
+                    "Núcleos/Hilos": meta.get("Details_# of Cores# of Cores") or meta.get("Details_# of Cores"),
+                    "Frecuencia Base": meta.get("Details_Operating FrequencyOperating Frequency") or meta.get("Details_Operating Frequency"),
+                    "Frecuencia Turbo": meta.get("Details_Max Turbo FrequencyMax Turbo Frequency") or meta.get("Details_Max Turbo Frequency"),
+                    "Socket": meta.get("Details_CPU Socket TypeCPU Socket Type") or meta.get("CPU Socket Type_CPU Socket Type"),
+                    "Cache (L3)": meta.get("Details_L3 CacheL3 Cache") or meta.get("Details_L3 Cache"),
+                    "TDP": meta.get("Details_Thermal Design PowerThermal Design Power") or meta.get("Details_Thermal Design Power"),
+                    "Tecnología": meta.get("Details_Manufacturing TechManufacturing Tech") or meta.get("Details_Manufacturing Tech")
+                }
+            case "GPU": 
+                relevant_fields = {
+                    "Memoria": meta.get("Memory - Memory Size") or meta.get("Details_Memory Size"),
+                    "Tipo Memoria": meta.get("Memory - Memory Type"),
+                    "Interfaz": meta.get("Interface - InterfaceInterface") or meta.get("Interface - Interface"),
+                    "TDP": meta.get("Details - Thermal Design PowerThermal Design Power") or meta.get("Details - Thermal Design Power"),
+                    "Conectores": meta.get("Details - Power Connector"),
+                    "Longitud": meta.get("Form Factor & Dimensions - Max GPU Length"),
+                    "Puertos": self._extract_ports(meta)
+                }
+            case "Motherboard": 
+                relevant_fields = {
+                    "Socket": meta.get("Supported CPU_CPU Socket TypeCPU Socket Type"),
+                    "Chipset": meta.get("Chipsets_ChipsetChipset"),
+                    "Formato": meta.get("Physical Spec_Form Factor"),
+                    "RAM Soporte": meta.get("Memory_Memory Standard"),
+                    "Slots M.2": meta.get("Storage Devices_M.2"),
+                    "Conectividad": self._extract_connectivity(meta),
+                    "Características": meta.get("Features_Features")
+                }
+            case "HDD": 
+                relevant_fields = {
+                    "Capacidad": meta.get("Performance_Capacity"),
+                    "Interfaz": meta.get("Performance_InterfaceInterface"),
+                    "Velocidad (RPM)": meta.get("Performance_RPMRPM"),
+                    "Caché": meta.get("Performance_CacheCache"),
+                    "Tecnología": meta.get("Performance_Recording Technology"),
+                    "Factor de Forma": meta.get("Dimensions_Form FactorForm Factor"),
+                    "Latencia": meta.get("Performance_Average LatencyAverage Latency")
+                }
+            case "SSD": 
+                relevant_fields = {
+                    "Capacidad": meta.get("Details_Capacity"),
+                    "Interfaz": meta.get("Details_Interface"),
+                    "Protocolo": meta.get("Details_Protocol"),
+                    "Lectura (MB/s)": meta.get("Performance_Max Sequential Read"),
+                    "Escritura (MB/s)": meta.get("Performance_Max Sequential Write"),
+                    "Factor de Forma": meta.get("Details_Form FactorForm Factor"),
+                    "Durabilidad (TBW)": meta.get("Performance_Terabytes Written (TBW)")
+                } 
+            case "Case": 
+                relevant_fields = {
+                    "Tipo": meta.get("Details_TypeType"),
+                    "Material": meta.get("Details_Case Material"),
+                    "Compatibilidad": meta.get("Details_Motherboard CompatibilityMotherboard Compatibility"),
+                    "Ventana Lateral": meta.get("Details_Side Panel WindowSide Panel Window"),
+                    "Bahías 3.5\"": meta.get("Expansion_Internal 3.5\" Drive Bays"),
+                    "Bahías 2.5\"": meta.get("Expansion_Internal 2.5\" Drive Bays"),
+                    "Longitud Máx. GPU": meta.get("Dimensions & Weight_Max GPU Length"),
+                    "Altura Máx. Cooler": meta.get("Dimensions & Weight_Max CPU Cooler Height"),
+                    "Refrigeración": self._extract_cooling_info(meta),  # Método para combinar fan/radiator options
+                    "Puertos Frontales": meta.get("Front Panel Ports_Front Ports"),
+                    "Incluye Fuente": meta.get("Details_With Power Supply")
+                } 
+            case "Motherboard": 
+                relevant_fields = {
+                    "Socket": meta.get("Supported CPU_CPU Socket TypeCPU Socket Type"),
+                    "Chipset": meta.get("Chipsets_ChipsetChipset"),
+                    "Formato": meta.get("Physical Spec_Form Factor"),
+                    "RAM": f"{meta.get('Memory_Number of Memory Slots', '?')}x {meta.get('Memory_Memory Standard', 'DDR?')}",
+                    "Almacenamiento": f"{meta.get('Storage Devices_SATA 6Gb/sSATA 6Gb/s', '?')}x SATA, {meta.get('Storage Devices_M.2', '?')}x M.2",
+                    "Slots PCIe": self._extract_pcie_slots(meta),  # Método para combinar slots PCIe
+                    "Red": self._extract_network_info(meta),  # Combina LAN/Wi-Fi/Bluetooth
+                    "Audio": meta.get("Onboard Audio_Audio ChipsetAudio Chipset"),
+                    "Puertos Traseros": meta.get("Rear Panel Ports_Back I/O Ports"),
+                    "RGB": meta.get("Physical Spec_LED Lighting")
+                }
+            case "PSU": 
+                relevant_fields = {
+                    "Potencia": meta.get("Details_Maximum PowerMaximum Power") or meta.get("Details_Maximum Power"),
+                    "Eficiencia": meta.get("Details_EfficiencyEfficiency") or meta.get("Details_Efficiency"),
+                    "Modular": meta.get("Details_ModularModular") or meta.get("Details_Modular"),
+                    "Conectores CPU": meta.get("Details_Main ConnectorMain Connector") or meta.get("Details_Main Connector"),
+                    "Conectores PCIe": meta.get("Details_PCI-Express ConnectorPCI-Express Connector"),
+                    "Conectores SATA": meta.get("Details_SATA Power ConnectorSATA Power Connector"),
+                    "Ventilador": meta.get("Details_FansFans") or meta.get("Details_Fans"),
+                    "Protecciones": self._extract_protections(meta),  # Método para combinar protecciones
+                    "Formato": meta.get("Details_Type"),
+                    "MTBF": meta.get("Details_MTBFMTBF") or meta.get("Details_MTBF")
+                } 
+            case "RAM": 
+                relevant_fields = {
+                    "Capacidad": meta.get("Details_Capacity"),
+                    "Tipo": meta.get("Details_Type"),
+                    "Velocidad": meta.get("Details_SpeedSpeed") or meta.get("Details_Speed"),
+                    "Latencia (CL)": meta.get("Details_CAS LatencyCAS Latency") or meta.get("Details_CAS Latency"),
+                    "Timings": meta.get("Details_TimingTiming") or meta.get("Details_Timing"),
+                    "Voltaje": meta.get("Details_VoltageVoltage") or meta.get("Details_Voltage"),
+                    "Kit": meta.get("Details_Multi-channel Kit"),
+                    "Perfil XMP/EXPO": meta.get("Details_BIOS/Performance ProfileBIOS/Performance Profile"),
+                    "ECC/Registrada": self._extract_ecc_info(meta),  # Método para combinar ECC y Registrada
+                    "RGB/Color": meta.get("Details_LED Color") or meta.get("Details_Color")
+                }
         
         # Construcción de la descripción
         desc = f"**{name}** (${price})\n"
-        fields = relevant_fields.get(comp_type, {})
         
-        # Añadir solo campos con valores existentes (máximo 7)
-        added = 0
-        for field_name, field_value in fields.items():
-            if field_value and field_value != "N/A" and added < 7:
+        for field_name in relevant_fields:
+            field_value = relevant_fields[field_name]
+            if field_value and field_value != "N/A":
                 desc += f"- {field_name}: {field_value}\n"
-                added += 1
         
         return desc
 
@@ -443,4 +520,56 @@ class BDIAgent:
         if meta.get("Onboard LAN_Bluetooth"): connectivity.append("Bluetooth")
         if meta.get("Onboard LAN_Max LAN Speed"): connectivity.append(meta["Onboard LAN_Max LAN Speed"])
         return ", ".join(connectivity) if connectivity else "N/A"
+    
+    def _extract_cooling_info(self, meta: Dict) -> str:
+        fan_options = meta.get("Cooling System_Fan Options", "")
+        radiator_options = meta.get("Cooling System_Radiator Options", "")
+        cooling_info = []
         
+        if fan_options:
+            cooling_info.append(f"Ventiladores: {fan_options}")
+        if radiator_options:
+            cooling_info.append(f"Radiadores: {radiator_options}")
+        
+        return "; ".join(cooling_info) if cooling_info else "No especificado"
+    
+    def _extract_pcie_slots(self, meta: Dict) -> str:
+        pcie_slots = []
+        for version in ["5.0", "4.0", "3.0"]:
+            slot = meta.get(f"Expansion Slots_PCI Express {version} x16")
+            if slot:
+                pcie_slots.append(f"PCIe {version} x16: {slot}")
+        return "; ".join(pcie_slots) if pcie_slots else "No especificado"
+    
+    def _extract_network_info(self, meta: Dict) -> str:
+        network_info = []
+        if meta.get("Onboard LAN_Max LAN Speed"):
+            network_info.append(f"LAN: {meta['Onboard LAN_Max LAN Speed']}")
+        if meta.get("Onboard LAN_Wireless LAN"):
+            network_info.append(f"Wi-Fi: {meta['Onboard LAN_Wireless LAN']}")
+        if meta.get("Onboard LAN_Bluetooth"):
+            network_info.append(f"BT: {meta['Onboard LAN_Bluetooth']}")
+        return ", ".join(network_info) if network_info else "No especificado"
+    
+    def _extract_protections(self, meta: Dict) -> str:
+        protections = []
+        protection_fields = [
+            "Details_Protection",
+            "Details_Over Voltage ProtectionOver Voltage Protection",
+            "Details_Overload ProtectionOverload Protection"
+        ]
+        for field in protection_fields:
+            if meta.get(field):
+                protections.append(meta[field])
+        return ", ".join(protections) if protections else "Estándar"
+    
+    def _extract_ecc_info(self, meta: Dict) -> str:
+        ecc = meta.get("Details_ECCECC") or meta.get("Details_ECC")
+        buffered = meta.get("Details_Buffered/RegisteredBuffered/Registered") or meta.get("Details_Buffered/Registered")
+        info = []
+        if ecc and ecc.lower() != "no":
+            info.append("ECC Sí")
+        if buffered and "unbuffered" not in buffered.lower():
+            info.append(buffered)
+        return ", ".join(info) if info else "No"
+    

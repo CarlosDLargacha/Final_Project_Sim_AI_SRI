@@ -142,10 +142,7 @@ class CompatibilityAgent:
             
             for proposal in proposals_list:
                 metadata = proposal['metadata']
-                model_name = metadata.get('Model_Name', 
-                             metadata.get('Model_Model', 
-                             metadata.get('Model - Model',             
-                            'Unknown')))
+                model_name = metadata.get('Model_Name', 'Unknown')
                 
                 # Extraer características clave según el tipo de componente
                 key_features = {}

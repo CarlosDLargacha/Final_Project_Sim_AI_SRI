@@ -77,7 +77,7 @@ class GPUAgent:
         # Filtrar GPUs que cumplan con requisitos
         candidates = []
         for i, metadata in enumerate(self.vector_db['metadata']):
-            gpu_name = metadata.get('Model - Model', '')
+            gpu_name = metadata.get('Model_Name', '')
             gpu_bench = self._find_matching_gpu(gpu_name)
             
             if not gpu_bench:
@@ -203,7 +203,7 @@ class GPUAgent:
         model_map = {}
         
         for candidate in candidates:
-            model_name = self._normalize_gpu_name(candidate['metadata'].get('Model - Model', ''))
+            model_name = self._normalize_gpu_name(candidate['metadata'].get('Model_Name', ''))
             if model_name not in model_map or candidate['price'] < model_map[model_name]['price']:
                 model_map[model_name] = candidate
         
