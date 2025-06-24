@@ -23,7 +23,7 @@ class BlackboardEntry:
     version: int = 1
 
 class Blackboard:
-    def __init__(self, components_agent_number = 4):
+    def __init__(self, components_agent_number = 7):
         # Estado estructurado del sistema
         self.state = {
             'user_input': None,

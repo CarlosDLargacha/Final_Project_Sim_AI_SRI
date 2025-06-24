@@ -1,6 +1,7 @@
 from typing import Dict, List, Any
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+from agents.decorators import agent_error_handler
 from blackboard import Blackboard, EventType
 from agents.BDI_agent import HardwareRequirements, UseCase
 
@@ -20,6 +21,7 @@ class CaseAgent:
             self.process_requirements
         )
 
+    @agent_error_handler
     def process_requirements(self):
         """Procesa los requisitos del usuario para recomendar gabinetes"""
         requirements = self.blackboard.get('user_requirements')
@@ -83,6 +85,8 @@ class CaseAgent:
                 agent_id='case_agent',
                 notify=True
             )
+
+        print("[CaseAgent] Componentes propuestos")
 
     def _generate_requirement_text(self, requirements: HardwareRequirements) -> str:
         """Genera texto descriptivo de requisitos para embeddings"""

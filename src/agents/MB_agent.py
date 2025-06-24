@@ -81,6 +81,8 @@ class MotherboardAgent:
             notify=True
         )
 
+        print("[MBAgent] Componentes propuestos")
+
     def _generate_requirement_text(self, requirements: HardwareRequirements) -> str:
         """Genera texto descriptivo de requisitos para embeddings"""
         text_parts = [

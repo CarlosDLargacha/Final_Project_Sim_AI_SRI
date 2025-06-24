@@ -75,6 +75,8 @@ class OptimizationAgent:
             notify=True
         )
 
+        print("[OptimizationAgent] Build creadas")
+
     def _find_best_price_perf_build(
         self,
         domains: Dict[str, List[Dict]],

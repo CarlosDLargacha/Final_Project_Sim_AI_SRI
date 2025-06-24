@@ -2,6 +2,7 @@ from typing import Dict, List, Any
 from enum import Enum
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+from agents.decorators import agent_error_handler
 from blackboard import Blackboard, EventType
 from agents.BDI_agent import HardwareRequirements
 
@@ -26,6 +27,7 @@ class StorageAgent:
             self.process_requirements
         )
 
+    @agent_error_handler
     def process_requirements(self):
         """Procesa los requisitos del usuario para recomendar almacenamiento"""
         requirements = self.blackboard.get('user_requirements')
@@ -66,6 +68,8 @@ class StorageAgent:
                 agent_id='storage_agent',
                 notify=True
             )
+
+        print("[StorageAgent] Componentes propuestos")
 
     def _recommend_storage(self, storage_type: StorageType, vector_db: Dict[str, Any], requirements: HardwareRequirements) -> List[Dict]:
         """Recomienda unidades de almacenamiento que cumplan con la capacidad mínima requerida"""

@@ -128,6 +128,8 @@ class CompatibilityAgent:
             notify=True
         )
 
+        print("[CompatibilityAgent] Reglas de compatibilidad definidas")
+
     def _extract_component_info(self, proposals: Dict[str, List[Dict]]) -> Dict[ComponentType, List[ComponentInfo]]:
         """Convierte las propuestas en una estructura más manejable"""
         components = {}

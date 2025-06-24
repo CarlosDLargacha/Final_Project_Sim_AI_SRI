@@ -117,7 +117,7 @@ def run_test_scenario(querie):
     
     while(True):
         if(blackboard.get('user_response')):
-            sleep(3)
+            sleep(15)
             break
 
 if __name__ == "__main__":

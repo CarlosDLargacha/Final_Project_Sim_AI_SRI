@@ -166,6 +166,8 @@ class CPUAgent:
             agent_id='cpu_agent',
             notify=True
         )
+
+        print("[CPUAgent] Componentes propuestos")
     
     def _select_cheapest_per_model(self, candidates: List[Dict]) -> List[Dict]:
         """

@@ -105,7 +105,7 @@ def run_test_scenario():
     }
     
     user_agent = User(blackboard=blackboard)
-    user_agent.make_request("Armar setup gamer económico para 1080p que corra Fortnite a 120fps")
+    user_agent.make_request("PC familiar económica para oficina y Netflix")
     
     sleep(600)
 

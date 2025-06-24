@@ -5,9 +5,16 @@ from dotenv import load_dotenv
 from agents.MB_agent import MotherboardAgent
 from agents.compatibility_agent import CompatibilityAgent
 from blackboard import Blackboard, EventType
-from agents.BDI_agent import BDIAgent
+from agents.BDI_agent import BDIAgent, HardwareRequirements
 from agents.CPU_agent import CPUAgent
 from agents.GPU_agent import GPUAgent
+from agents.MB_agent import MotherboardAgent
+from agents.storage_agent import StorageAgent
+from agents.RAM_agent import RAMAgent
+from agents.PSU_agent import PSUAgent
+from agents.case_agent import CaseAgent
+from agents.compatibility_agent import CompatibilityAgent
+from agents.optimization_agent import OptimizationAgent
 from agents.optimization_agent import OptimizationAgent
 from model.vectorDB import CSVToEmbeddings
 from model.LLMClient import OpenAIClient, GeminiClient
@@ -35,13 +42,15 @@ if "model" not in st.session_state:
     st.session_state.model = MODEL_OPTIONS["openai"][0]
 
 if "blackboard" not in st.session_state:
-    st.session_state.blackboard = Blackboard()
+    st.session_state.blackboard = Blackboard(7)
 
 if "user_response" not in st.session_state:
     st.session_state.user_response = None
 
 # --- Inicializar sistema y agentes ---
 def init_agents():
+    st.session_state.init_agents = True
+
     processor = CSVToEmbeddings()
     blackboard = st.session_state.blackboard
 
@@ -50,7 +59,12 @@ def init_agents():
     cpu_db = processor.load_embeddings('CPU')
     gpu_db = processor.load_embeddings('GPU')
     mb_db = processor.load_embeddings('Motherboard')
-    rule_db = [ cpu_db, gpu_db, mb_db ]
+    hdd_db = processor.load_embeddings('HDD')
+    ssd_db = processor.load_embeddings('SSD')
+    ram_db = processor.load_embeddings('RAM')
+    psu_db = processor.load_embeddings('PSU')
+    case_db = processor.load_embeddings('case')
+    
     
     agents = {
         'bdi': BDIAgent(
@@ -71,21 +85,36 @@ def init_agents():
             vector_db=mb_db,
             blackboard=blackboard
         ),
+        'storage': StorageAgent(
+            ssd_vector_db=ssd_db,
+            hdd_vector_db=hdd_db,
+            blackboard=blackboard
+        ),
+        'ram': RAMAgent(
+            vector_db=ram_db,
+            blackboard=blackboard
+        ),
+        'psu': PSUAgent(
+            vector_db=psu_db,
+            blackboard=blackboard
+        ),
+        'case': CaseAgent(
+            vector_db=case_db, 
+            blackboard=blackboard
+        ),
         'comp': CompatibilityAgent(
             blackboard=blackboard,
-            rules_db=rule_db
         ),
         'opt': OptimizationAgent(
             blackboard=blackboard,
         )
     }
-
+    
     def handle_user_response():
         st.session_state.user_response = blackboard.get("user_response")
         
-    blackboard.subscribe(event_type=EventType.USER_RESPONSE, callback=handle_user_response)
-
-init_agents()
+if not st.session_state.get("init_agents"):
+    init_agents()
 
 # --- Sidebar de configuración ---
 with st.sidebar:
@@ -128,7 +157,8 @@ if prompt := st.chat_input("Describe tu necesidad de hardware..."):
     with st.chat_message("assistant"):
         with st.spinner("Analizando componentes y generando configuración óptima..."):
             for _ in range(60):
-                if st.session_state.user_response:
+                st.session_state.user_response = st.session_state.blackboard.get("user_response").get("response")
+                if st.session_state.user_response or st.session_state.blackboard.state['errors']:
                     break
                 sleep(1)
 

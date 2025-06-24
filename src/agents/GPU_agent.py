@@ -135,6 +135,8 @@ class GPUAgent:
             notify=True
         )
 
+        print("[GPUAgent] Componentes propuestos")
+
     def _get_min_performance(self, use_case: UseCase, performance: Dict) -> Dict[str, float]:
         """Determina los requisitos mínimos de rendimiento"""
         # Valores base para 1080p @ 60fps

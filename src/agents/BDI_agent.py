@@ -96,6 +96,8 @@ class BDIAgent:
             agent_id='bdi_agent',
             notify=True  # Dispara EventType.REQUIREMENTS_UPDATED
         )
+
+        print("[BDIAgent] Requerimientos extraíos")
         
     def _ask_llm(self, text: str, cpu_names, gpu_names) -> Dict[str, Any]:
         """Consulta al modelo de lenguaje para extracción estructurada"""

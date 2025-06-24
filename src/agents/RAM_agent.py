@@ -2,6 +2,7 @@ from typing import Dict, List, Any
 import re
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+from agents.decorators import agent_error_handler
 from blackboard import Blackboard, EventType
 from agents.BDI_agent import HardwareRequirements
 
@@ -21,6 +22,7 @@ class RAMAgent:
             self.process_requirements
         )
 
+    @agent_error_handler
     def process_requirements(self):
         """Procesa los requisitos del usuario para recomendar módulos RAM"""
         requirements = self.blackboard.get('user_requirements')
@@ -79,6 +81,8 @@ class RAMAgent:
                 agent_id='ram_agent',
                 notify=True
             )
+
+        print("[RAMAgent] Componentes propuestos")
 
     def _generate_requirement_text(self, requirements: HardwareRequirements, ram_config: Dict) -> str:
         """Genera texto descriptivo de requisitos para embeddings"""
