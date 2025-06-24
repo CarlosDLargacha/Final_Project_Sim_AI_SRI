@@ -11,7 +11,7 @@ class GeneticOptimizer:
         compatibility_conflicts: Set[Tuple[Tuple[str, str], Tuple[str, str]]],
         fitness_mode: str = "quality_price",
         population_size: int = 50,
-        generations: int = 10000,
+        generations: int = 100,
         mutation_rate: float = 0.1,
         elite_ratio: float = 0.1,
         timeout: float = 5.0  # segundos

@@ -32,7 +32,7 @@ class OptimizationAgent:
                 if meta.get('URL') not in url_set:
                     price = meta.get("price", meta.get("Price", 1e9))
                     if isinstance(price, str):
-                        price = price.replace(',', '.')
+                        price = price.replace(',', '')
                     meta["Price"] = float(price)
 
                     if k == ComponentType.CPU.value:
@@ -61,26 +61,12 @@ class OptimizationAgent:
             domains=reduced_domains,
             budget_limit=max_budget,
             compatibility_conflicts=conflict_set,
-            fitness_mode='quality_price'
-        )
-
-        best_price_perf = optimizer.run()
-        if best_price_perf:
-            builds.append(self._package_build(best_price_perf, label="Build Con Mejor Calidad/Precio"))
-
-
-        optimizer = GeneticOptimizer(
-            domains=reduced_domains,
-            budget_limit=max_budget,
-            compatibility_conflicts=conflict_set,
             fitness_mode='performance'
         )
 
         performance = optimizer.run()
         if performance:
             builds.append(self._package_build(performance, label="Build Con Mejor Rendimiento"))
-
-
 
         self.blackboard.update(
             section="optimized_configs",
