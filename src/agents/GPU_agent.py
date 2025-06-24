@@ -89,7 +89,7 @@ class GPUAgent:
                 
             # Verificar presupuesto (hasta 40% del total para GPU)
             try:
-                price = float(metadata.get('price', float('inf')))
+                price = float(metadata.get('Price', float('inf')))
             except (ValueError, TypeError):
                 price = float('inf')
 

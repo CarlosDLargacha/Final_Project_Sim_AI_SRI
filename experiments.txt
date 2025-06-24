@@ -4,90 +4,163 @@
 Querie: Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU.
 
 Propuestas: 
-Motherboard: 79
-GPU: 1
-CPU: 27
+SSD: 71
+Case: 107
+Motherboard: 129
+RAM: 106
+GPU: 5
+PSU: 123
+CPU: 26
 
 Response: 
 
-Build #1:
+Build Más Económica:
 
 CPU:
-**AMD Ryzen 7 8700G** ($309)
-- Núcleos/Hilos: 8-Core
-- Frecuencia Base: 4.2 GHz
-- Frecuencia Turbo: 5.1 GHz
-- Socket: Socket AM5
-- Cache (L3): 16MB
-- TDP: 65W
-- Tecnología: 4nm
+**Intel Core i7-12700KF** ($179.0)
+- Núcleos/Hilos: 12-Core (8P+4E)
+- Frecuencia Base: P-core Base Frequency: 3.6 GHz E-core Base Frequency: 2.7 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.0 GHz Single P-core Turbo Frequency: Up to 4.9 GHz Single E-core Turbo Frequency: Up to 3.8 GHz
+- Socket: LGA 1700
+- Cache (L3): 25MB
+- TDP: Processor Base Power: 125W Maximum Turbo Power: 190W
+- Tecnología: Intel 7
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
 
 GPU:
-**AMD** ($499)
-- Tipo Memoria: HBM2
+**MSI RTX 3060 Ventus 2X 12G OC** ($329.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 170W
+- Conectores: 1 x 8-pin
+- Longitud: 235 mm
 - Puertos: HDMI, DisplayPort, DVI
 
 Motherboard:
-**MSI** ($179)
-- Socket: AM5
-- Chipset: AMD B650
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
 - Formato: ATX
-- RAM Soporte: Memory Support DDR5 6000+(OC)/ 5800(OC)/ 5600(OC)/ 5400(OC)/ 5200(OC)/ 5000(OC)/ 4800(JEDEC) MHz Max. overclocking frequency: 1DPC 1R Max speed up to 6000+ MHz 1DPC 2R Max speed up to 6000+ MHz 2DPC 1R Max speed up to 6000+ MHz 2DPC 2R Max speed up to 5400+ MHz
-- Slots M.2: 2x M.2 M.2_1 Source (From CPU) supports up to PCIe 4.0 x4 , supports 22110/2280 devices M.2_2 Source (From CPU) supports up to PCIe 4.0 x4 , supports 2280/2260 devices
-- Conectividad: Wi-Fi, Bluetooth, 2.5Gbps
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-6000J3636F16GX2-FX5** ($89.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL36
+- Timings: 36-36-36-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- ECC/Registrada: No
+- RGB/Color: None
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
 
 
-Build #2:
+Build Con Mejor Rendimiento:
 
 CPU:
-**AMD Ryzen 7 8700G** ($309)
-- Núcleos/Hilos: 8-Core
-- Frecuencia Base: 4.2 GHz
-- Frecuencia Turbo: 5.1 GHz
-- Socket: Socket AM5
-- Cache (L3): 16MB
-- TDP: 65W
-- Tecnología: 4nm
+**Intel Core i7-12700K** ($219.0)
+- Núcleos/Hilos: 12-Core (8P+4E)
+- Frecuencia Base: P-core Base Frequency: 3.6 GHz E-core Base Frequency: 2.7 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.0 GHz Single P-core Turbo Frequency: Up to 4.9 GHz Single E-core Turbo Frequency: Up to 3.8 GHz
+- Socket: LGA 1700
+- Cache (L3): 25MB
+- TDP: Processor Base Power: 125W Maximum Turbo Power:
+- Tecnología: Intel 7
+
+Case:
+**Phanteks NV5 MK2** ($131.0)
+- Tipo: ATX Mid Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: ATX, Rear-Connect ATX, micro-ATX, mini-ITX, E-ATX (up to 280mm without GPU Support Bracket)
+- Ventana Lateral: Front and Side Tempered Glass
+- Bahías 3.5": 3
+- Bahías 2.5": 4
+- Longitud Máx. GPU: 440 mm Length, 170 mm Width
+- Altura Máx. Cooler: 180 mm
+- Refrigeración: Ventiladores: Bottom - 1 x 120mm / Rear - 1 x 120mm / Side - 3 x 120mm / Top - 3 x 120mm; Radiadores: Rear - Up to 120mm / Side - Up to 360mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 3.0, USB-C Gen 2, 1 x Audio
+- Incluye Fuente: No
 
 GPU:
-**AMD** ($499)
-- Tipo Memoria: HBM2
+**AMD AMD Radeon RX 6700XT** ($344.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 240W
+- Conectores: 1 x 6-Pin + 1 x 8-Pin
 - Puertos: HDMI, DisplayPort, DVI
 
 Motherboard:
-**GIGABYTE** ($179)
-- Socket: AM5
-- Chipset: AMD B850
-- Formato: Micro ATX
-- RAM Soporte: Up to DDR5 8200(O.C)
-- Slots M.2: 2 x M.2
-- Conectividad: Wi-Fi, Bluetooth, 2.5Gbps
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
 
+PSU:
+**N/A N/A** ($89.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: ATX 3.0 Compatible
 
-Build #3:
+RAM:
+**CORSAIR CMH32GX5M2X7000C36** ($134.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 7000 (PC5 56000)
+- Latencia (CL): CL36
+- Timings: 36-46-46-82
+- Voltaje: 1.45V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: ECC Sí, N/A
+- RGB/Color: RGB
 
-CPU:
-**AMD Ryzen 7 8700G** ($309)
-- Núcleos/Hilos: 8-Core
-- Frecuencia Base: 4.2 GHz
-- Frecuencia Turbo: 5.1 GHz
-- Socket: Socket AM5
-- Cache (L3): 16MB
-- TDP: 65W
-- Tecnología: 4nm
-
-GPU:
-**AMD** ($499)
-- Tipo Memoria: HBM2
-- Puertos: HDMI, DisplayPort, DVI
-
-Motherboard:
-**GIGABYTE** ($179)
-- Socket: AM5
-- Chipset: AMD B850
-- RAM Soporte: Up to DDR5 8200(O.C)
-- Conectividad: Wi-Fi, Bluetooth, Yes
-- Características: 1 x PCI Express 5.0 x16
+SSD:
+**Team Group TM8FFD001T0C101** ($60.0)
+- Capacidad: 1TB
+- Interfaz: PCIe 4.0 x4 with NVMe
+- Protocolo: NVMe 1.4
+- Lectura (MB/s): Up to 7400 MBps
+- Escritura (MB/s): Up to 6200 MBps
+- Factor de Forma: M.2 2280
+- Durabilidad (TBW): 512TBW
 
 
 
@@ -97,90 +170,2112 @@ Motherboard:
 Querie: Necesito una PC para jugar en 1440p a 144fps con presupuesto de $1200
 
 Propuestas: 
-Motherboard: 60
-GPU: 1
+SSD: 71
+Motherboard: 129
+RAM: 106
+PSU: 123
+Case: 107
+GPU: 5
+CPU: 26
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**Intel Core i7-12700KF** ($179.0)
+- Núcleos/Hilos: 12-Core (8P+4E)
+- Frecuencia Base: P-core Base Frequency: 3.6 GHz E-core Base Frequency: 2.7 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.0 GHz Single P-core Turbo Frequency: Up to 4.9 GHz Single E-core Turbo Frequency: Up to 3.8 GHz
+- Socket: LGA 1700
+- Cache (L3): 25MB
+- TDP: Processor Base Power: 125W Maximum Turbo Power: 190W
+- Tecnología: Intel 7
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**MSI RTX 3060 Ventus 2X 12G OC** ($329.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 170W
+- Conectores: 1 x 8-pin
+- Longitud: 235 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-6000J3636F16GX2-FX5** ($89.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL36
+- Timings: 36-36-36-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- ECC/Registrada: No
+- RGB/Color: None
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+Build Con Mejor Rendimiento:
+
+CPU:
+**Intel Core i5-14600K** ($192.0)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+Case:
+**Thermaltake CA-1Y4-00S1WN-00** ($148.0)
+- Tipo: Micro-ATX Tower Chassis
+- Material: SPCC
+- Compatibilidad: Mini ITX (6.7" x 6.7") Micro ATX (9.6" x 9.6")
+- Ventana Lateral: 3mm Thick Tempered Glass x 3 (Front/Left/Right)
+- Bahías 3.5": 3
+- Bahías 2.5": 3
+- Longitud Máx. GPU: 280mm(With radiator on the right side) / 400mm(Without radiator on the right side)
+- Altura Máx. Cooler: 210 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm, 1 x 120mm 2 x 140mm, 1 x 140mm Rear: 2 x 120mm, 1 x 120mm 2 x 140mm, 1 x 140mm Right Side(In front of M/B Tray): 3 x 120mm, 2 x 120mm, 1 x 120mm 3 x 140mm, 2 x 140mm, 1 x 140mm Bottom(On the power cover): 1 x 120mm 1 x 140mm; Radiadores: Right Side(In front of M/B Tray): 1 x 360mm, 1 x 240mm, 1 x 120mm 1 x 420mm, 1 x 280mm, 1 x 140mm
+- Puertos Frontales: USB 3.2 (Gen 2) Type C x 1, USB 3.0 x 2, HD Audio x 1
+- Incluye Fuente: No
+
+GPU:
+**MSI RTX 3060 Ventus 2X 12G OC** ($329.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 170W
+- Conectores: 1 x 8-pin
+- Longitud: 235 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**N/A N/A** ($129.0)
+- Protecciones: OVP,  OCP, OTP, OPP , SCP, UVP, N/A, N/A
+- Formato: ATX12V
+
+RAM:
+**CORSAIR CMH32GX5M2E6000C36** ($94.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL36
+- Timings: 36-44-44-96
+- Voltaje: 1.40V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: ECC Sí, N/A
+- RGB/Color: RGB
+
+SSD:
+**Team Group TM8FFE002T0C129** ($105.0)
+- Capacidad: 2TB
+- Interfaz: PCIe 4.0 x4 with NVMe 1.4
+- Protocolo: NVMe 1.4
+- Lectura (MB/s): Up to 5000 MBps
+- Escritura (MB/s): Up to 4500 MBps
+- Factor de Forma: M.2 2280
+- Durabilidad (TBW): 1300TB
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Armar setup gamer económico para 1080p que corra Fortnite a 120fps
+
+Propuestas: 
+Motherboard: 132
+SSD: 88
+RAM: 106
+Case: 107
+PSU: 135
+GPU: 8
 CPU: 27
 
 Response: 
 
-Build #1:
+Build Más Económica:
 
 CPU:
-**AMD Ryzen 7 8700G** ($309)
-- Núcleos/Hilos: 8-Core
-- Frecuencia Base: 4.2 GHz
-- Frecuencia Turbo: 5.1 GHz
+**AMD Ryzen 5 8500G** ($154.0)
+- Núcleos/Hilos: 6-Core
+- Frecuencia Base: 3.5 GHz
+- Frecuencia Turbo: 5.0 GHz
 - Socket: Socket AM5
 - Cache (L3): 16MB
 - TDP: 65W
 - Tecnología: 4nm
 
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
 GPU:
-**AMD** ($499)
-- Tipo Memoria: HBM2
+**MSI RTX 3060 Ventus 2X 12G OC** ($329.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 170W
+- Conectores: 1 x 8-pin
+- Longitud: 235 mm
 - Puertos: HDMI, DisplayPort, DVI
 
 Motherboard:
-**MSI** ($179)
+**ASRock B650M Pro RS WiFi** ($139.0)
 - Socket: AM5
 - Chipset: AMD B650
+- Formato: 1 x 24 pin ATX Power Connector 1 x 8 pin 12V Power Connector (Hi-Density Power Connector)
+- RAM Soporte: Supports DDR5 ECC/non-ECC, un-buffered memory up to 7200+(OC)*
+- Conectividad: Wi-Fi, Bluetooth, Bluetooth 5.2 + High speed class II
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-7200J3445G16GX2-TZ5RK** ($134.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 7200 (PC5 57600)
+- Latencia (CL): CL34
+- Timings: 34-45-45-115
+- Voltaje: 1.40V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+Build Con Mejor Rendimiento:
+
+CPU:
+**Intel Core i9-12900KF** ($269.0)
+- Núcleos/Hilos: 16-Core (8P+8E)
+- Frecuencia Base: P-core Base Frequency: 3.2 GHz E-core Base Frequency: 2.4 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.2 GHz Single P-core Turbo Frequency: Up to 5.1 GHz Single E-core Turbo Frequency: Up to 3.9 GHz
+- Socket: LGA 1700
+- Cache (L3): 30MB
+- TDP: Processor Base Power: 125W Maximum Turbo Power: 241W
+- Tecnología: Intel 7
+
+Case:
+**Rosewill Helium NAS** ($79.0)
+- Tipo: ATX Mid Tower
+- Material: Steel / Plastic
+- Compatibilidad: ATX / ITX / Micro ATX
+- Ventana Lateral: Mesh
+- Bahías 3.5": 10
+- Bahías 2.5": 3
+- Longitud Máx. GPU: 280 mm
+- Altura Máx. Cooler: 180 mm
+- Refrigeración: Ventiladores: Front: 3 x 120mm, 3 x 140mm (3x 140mm Included) Top: 3 x 120mm, 2 x 140mm Rear: 1x 120mm, 1 x 140mm (1 x 140mm Included); Radiadores: Front: 360mm / 280mm / 240mm Top: 360mm / 280mm / 240mm Rear: 120mm
+- Puertos Frontales: 1 x USB 3.1 Type-C / 2 x USB 3.0 / Audio
+- Incluye Fuente: No
+
+GPU:
+**MSI RX 6700 XT MECH 2X 12G** ($789.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 230W
+- Conectores: 2 x 8-Pin
+- Longitud: 247 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
 - Formato: ATX
-- RAM Soporte: Memory Support DDR5 6000+(OC)/ 5800(OC)/ 5600(OC)/ 5400(OC)/ 5200(OC)/ 5000(OC)/ 4800(JEDEC) MHz Max. overclocking frequency: 1DPC 1R Max speed up to 6000+ MHz 1DPC 2R Max speed up to 6000+ MHz 2DPC 1R Max speed up to 6000+ MHz 2DPC 2R Max speed up to 5400+ MHz
-- Slots M.2: 2x M.2 M.2_1 Source (From CPU) supports up to PCIe 4.0 x4 , supports 22110/2280 devices M.2_2 Source (From CPU) supports up to PCIe 4.0 x4 , supports 2280/2260 devices
-- Conectividad: Wi-Fi, Bluetooth, 2.5Gbps
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**N/A N/A** ($178.0)
+- Potencia: 1000 W
+- Modular: Full Modular
+- Ventilador: 1 x 135 mm Fluid Dynamic Bearing
+- Protecciones: OCP / OVP / OPP / OTP / SCP / UVP, N/A, N/A
+- Formato: Intel ATX 12V
+
+RAM:
+**G.SKILL F5-6400J3239G32GX2-TZ5RK** ($224.0)
+- Capacidad: 64GB (2 x 32GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6400 (PC5 51200)
+- Latencia (CL): CL32
+- Timings: 32-39-39-102
+- Voltaje: 1.40V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: ECC Sí, N/A
+- RGB/Color: RGB
+
+SSD:
+**Western Digital WDS200T2X0E** ($152.0)
+- Capacidad: 2TB
+- Interfaz: PCI-Express 4.0 x4
+- Protocolo: NVMe
+- Lectura (MB/s): Up to 7300 MBps
+- Escritura (MB/s): Up to 6600 MBps
+- Factor de Forma: M.2 2280
+- Durabilidad (TBW): 1200TB
 
 
-Build #2:
+
+
+----------------------------------------------------------------------------------
+
+Querie: PC high-end para 4K/120Hz en juegos AAA, sin límite de presupuesto
+
+Propuestas: 
+SSD: 88
+Motherboard: 132
+PSU: 135
+GPU: 125
+RAM: 106
+Case: 107
+CPU: 5
+
+Response: 
+
+Build Más Económica:
 
 CPU:
-**AMD Ryzen 7 8700G** ($309)
+**Intel Core i9-14900KF** ($434.0)
+- Núcleos/Hilos: 24-Core (8P+16E)
+- Frecuencia Base: Performance-core Base Frequency: 3.2 GHz Efficient-core Base Frequency: 2.4 GHz
+- Frecuencia Turbo: Intel Thermal Velocity Boost Frequency: Up to 6.0 GHz Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.8 GHz P-core Max Turbo Frequency: Up to 5.6 GHz E-core Max Turbo Frequency: Up to 4.4 GHz
+- Socket: LGA 1700
+- Cache (L3): 36MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**PowerColor AXRX 6500XT 4GBD6-DH/OC** ($169.0)
+- Memoria: 4GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 107W
+- Conectores: 6-Pin
+- Longitud: 191 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-6000J3636F16GX2-FX5** ($89.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL36
+- Timings: 36-36-36-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- ECC/Registrada: No
+- RGB/Color: None
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+Build Con Mejor Rendimiento:
+
+CPU:
+**AMD Ryzen 9 9950X** ($519.0)
+- Núcleos/Hilos: 16-Core
+- Frecuencia Base: 4.3 GHz
+- Frecuencia Turbo: Up to 5.7 GHz
+- Socket: Socket AM5
+- Cache (L3): 64MB
+- TDP: 170W
+- Tecnología: Zen 5 - TSMC 4nm FinFET
+
+Case:
+**Rosewill Helium Air RGB White** ($89.0)
+- Tipo: ATX Mid Tower
+- Material: Steel / Plastic
+- Compatibilidad: ATX / E-ATX / ITX / Micro ATX
+- Ventana Lateral: Mesh
+- Bahías 3.5": 3
+- Bahías 2.5": 4
+- Longitud Máx. GPU: 390 mm
+- Altura Máx. Cooler: 183 mm
+- Refrigeración: Ventiladores: Front: 3 x 120mm, 3 x 140mm, 2x 160mm (2 x 160mm Included) Top: 3 x 120mm, 2 x 140mm Rear: 1x 120mm, 1 x 140mm (1 x 140mm Included); Radiadores: Front: 360mm / 240mm Top: 360mm / 280mm / 240mm Rear: 120mm
+- Puertos Frontales: 1 x USB 3.1 Type-C / 2 x USB 3.0 / Audio
+- Incluye Fuente: No
+
+GPU:
+**PNY VCG4080S16TFXPB1-O** ($1999.0)
+- Memoria: 16GB
+- Tipo Memoria: GDDR6X
+- Interfaz: PCI Express 4.0 x16
+- TDP: 320W
+- Conectores: 1 x 16-Pin
+- Longitud: 340 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS CROSSHAIR X870E EXTREME** ($999.0)
+- Socket: AM5
+- Chipset: AMD X870E
+- Formato: 1 x 24-pin Main Power connector 2 x 8-pin +12V CPU Power connector 1 x 8-pin PCIe Power connector
+- RAM Soporte: DDR5 4400 / DDR5 4800 / DDR5 5000 / DDR5 5200 / DDR5 5400 / DDR5 5600 / DDR5 5800 / DDR5 6000 / DDR5 6200 / DDR5 6400 / DDR5 6600 / DDR5 6666 / DDR5 6800 / DDR5 7000 / DDR5 7200 / DDR5 7400 / DDR5 7600 / DDR5 7800 / DDR5 7900 / DDR5 7950 / DDR5 8000 / DDR5 8200 / DDR5 8266 / DDR5 8333 / DDR5 8400 / DDR5 8600
+- Conectividad: Wi-Fi, Bluetooth, Bluetooth 5.4
+- Características: AMD Ryzen 9000 & 7000 Series Desktop Processors* 2 x PCIe 5.0 x16 slots with Q-Release Slim (supports x16 or x8/x8** or x8/x4/x4 modes***) ** When you use both PCIEX16(G5)_1 and PCIEX16(G5)_2, PCIEX16(G5)_1 and PCIEX16(G5)_2 will run x8. ***When M.2_3 is enabled, PCIEX16(G5)_1 will run x8, and  PCIEX16(G5)_2 will run x4. **** When M.2_2 and M.2_3 are enabled simultaneously, PCIEX16(G5)_2 will be disabled.
+
+PSU:
+**Tripp Lite SR48SIDE** ($139.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Rack Enclosure
+
+RAM:
+**G.SKILL F5-6000J3038F16GX2-TZ5NR** ($117.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL30
+- Timings: 30-38-38-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**KingSpec XF-2TB-2280** ($95.0)
+- Capacidad: 2TB
+- Interfaz: PCI-Express 4.0 x4
+- Lectura (MB/s): Up to 4800 MBps
+- Escritura (MB/s): Up to 4500 MBps
+- Factor de Forma: M.2 2280
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Recomienda componentes para streaming y gaming simultáneo (presupuesto $2000)
+
+Propuestas: 
+Motherboard: 130
+Case: 107
+GPU: 2
+RAM: 106
+PSU: 126
+CPU: 9
+SSD: 80
+HDD: 64
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**AMD Ryzen 7 7700X** ($285.0)
 - Núcleos/Hilos: 8-Core
-- Frecuencia Base: 4.2 GHz
-- Frecuencia Turbo: 5.1 GHz
+- Frecuencia Base: 4.5 GHz
+- Frecuencia Turbo: Up to 5.4 GHz
+- Socket: Socket AM5
+- Cache (L3): 32MB
+- TDP: 105W
+- Tecnología: Zen 4 - TSMC 5nm FinFET
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**MSI RTX 3080 VENTUS 3X 10G OC** ($1145.0)
+- Memoria: 10GB
+- Tipo Memoria: GDDR6X
+- Interfaz: PCI Express 4.0
+- TDP: 320W
+- Conectores: 2 x 8-Pin
+- Longitud: 305 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+HDD:
+**Seagate ST1000DM010** ($39.0)
+- Capacidad: 1TB
+- Interfaz: SATA 6.0Gb/s
+- Velocidad (RPM): 7200 RPM
+- Caché: 64MB
+- Factor de Forma: 3.5"
+
+Motherboard:
+**ASRock B650M Pro RS WiFi** ($139.0)
+- Socket: AM5
+- Chipset: AMD B650
+- Formato: 1 x 24 pin ATX Power Connector 1 x 8 pin 12V Power Connector (Hi-Density Power Connector)
+- RAM Soporte: Supports DDR5 ECC/non-ECC, un-buffered memory up to 7200+(OC)*
+- Conectividad: Wi-Fi, Bluetooth, Bluetooth 5.2 + High speed class II
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-7200J3445G16GX2-TZ5RK** ($134.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 7200 (PC5 57600)
+- Latencia (CL): CL34
+- Timings: 34-45-45-115
+- Voltaje: 1.40V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Setup compacto para gaming en LAN parties (max $1000, preferencia AMD)
+
+Propuestas: 
+Case: 107
+RAM: 106
+SSD: 62
+Motherboard: 129
+GPU: 11
+PSU: 123
+CPU: 26
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**Intel Core i7-12700KF** ($179.0)
+- Núcleos/Hilos: 12-Core (8P+4E)
+- Frecuencia Base: P-core Base Frequency: 3.6 GHz E-core Base Frequency: 2.7 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.0 GHz Single P-core Turbo Frequency: Up to 4.9 GHz Single E-core Turbo Frequency: Up to 3.8 GHz
+- Socket: LGA 1700
+- Cache (L3): 25MB
+- TDP: Processor Base Power: 125W Maximum Turbo Power: 190W
+- Tecnología: Intel 7
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**ASRock RX6600 CLD 8G** ($219.0)
+- Memoria: 8GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 132W
+- Conectores: 8-Pin
+- Longitud: 269 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-7200J3445G16GX2-TZ5RK** ($134.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 7200 (PC5 57600)
+- Latencia (CL): CL34
+- Timings: 34-45-45-115
+- Voltaje: 1.40V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: PC para esports (Valorant, CS2) que alcance 240fps estables
+
+Propuestas: 
+Motherboard: 132
+RAM: 106
+GPU: 8
+Case: 107
+SSD: 88
+PSU: 135
+CPU: 25
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**Intel Core i7-12700KF** ($179.0)
+- Núcleos/Hilos: 12-Core (8P+4E)
+- Frecuencia Base: P-core Base Frequency: 3.6 GHz E-core Base Frequency: 2.7 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.0 GHz Single P-core Turbo Frequency: Up to 4.9 GHz Single E-core Turbo Frequency: Up to 3.8 GHz
+- Socket: LGA 1700
+- Cache (L3): 25MB
+- TDP: Processor Base Power: 125W Maximum Turbo Power: 190W
+- Tecnología: Intel 7
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**MSI RTX 3060 Ventus 2X 12G OC** ($329.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 170W
+- Conectores: 1 x 8-pin
+- Longitud: 235 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-6000J3636F16GX2-FX5** ($89.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL36
+- Timings: 36-36-36-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- ECC/Registrada: No
+- RGB/Color: None
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+Build Con Mejor Rendimiento:
+
+CPU:
+**Intel Core i7-12700KF** ($179.0)
+- Núcleos/Hilos: 12-Core (8P+4E)
+- Frecuencia Base: P-core Base Frequency: 3.6 GHz E-core Base Frequency: 2.7 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.0 GHz Single P-core Turbo Frequency: Up to 4.9 GHz Single E-core Turbo Frequency: Up to 3.8 GHz
+- Socket: LGA 1700
+- Cache (L3): 25MB
+- TDP: Processor Base Power: 125W Maximum Turbo Power: 190W
+- Tecnología: Intel 7
+
+Case:
+**Montech KING 95 PRO (B)** ($159.0)
+- Tipo: ATX Mid Tower
+- Material: SPCC / Tempered Glass
+- Compatibilidad: ATX / Micro ATX / Mini ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 8
+- Bahías 2.5": 5
+- Longitud Máx. GPU: 420 mm
+- Altura Máx. Cooler: 175 mm
+- Refrigeración: Ventiladores: Side: 120mm*2/140mm*2 Top: 120mm*3/140mm*2 Rear: 120mm*1 Bottom: 120mm*3/140mm*2 Pre-installed Fans: Side: 140mm*2 (Reversed ARGB PWM Fans) Top: 120mm*3(Reversed ARGB PWM Fans) Rear: 120mm*1 (ARGB PWM Fans); Radiadores: Side: 120/140/240/280mm Top: 120/140/240/280/360mm Rear: 120mm
+- Puertos Frontales: 1 x USB Type-C, 2 x USB 3.0, 2 x Audio, 1 x Button
+- Incluye Fuente: No
+
+GPU:
+**MSI RX 6700 XT MECH 2X 12G** ($789.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 230W
+- Conectores: 2 x 8-Pin
+- Longitud: 247 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**Athena Power HG2-6400P** ($295.0)
+- Ventilador: One 80mm DC Fan
+- Protecciones: N/A, N/A, N/A
+- Formato: ATX 2.03, ATX12V(P4), EPS12V, WTX, AMD-GES
+
+RAM:
+**G.SKILL F5-6000J3038F16GX2-TZ5NR** ($117.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL30
+- Timings: 30-38-38-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**Team Group TM8FFE001T0C129** ($57.0)
+- Capacidad: 1TB
+- Interfaz: PCIe 4.0 x4 with NVMe 1.4
+- Protocolo: NVMe 1.4
+- Lectura (MB/s): Up to 5000 MBps
+- Escritura (MB/s): Up to 4800 MBps
+- Factor de Forma: M.2 2280
+- Durabilidad (TBW): 650TB
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Configuración VR-ready para Half-Life Alyx (presupuesto $1500)
+
+Propuestas: 
+Motherboard: 130
+SSD: 71
+RAM: 106
+PSU: 125
+Case: 107
+GPU: 7
+CPU: 27
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**AMD Ryzen 5 8500G** ($154.0)
+- Núcleos/Hilos: 6-Core
+- Frecuencia Base: 3.5 GHz
+- Frecuencia Turbo: 5.0 GHz
 - Socket: Socket AM5
 - Cache (L3): 16MB
 - TDP: 65W
 - Tecnología: 4nm
 
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
 GPU:
-**AMD** ($499)
-- Tipo Memoria: HBM2
+**MSI RTX 3060 Ventus 2X 12G OC** ($329.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 170W
+- Conectores: 1 x 8-pin
+- Longitud: 235 mm
 - Puertos: HDMI, DisplayPort, DVI
 
 Motherboard:
-**GIGABYTE** ($179)
+**ASRock B650M Pro RS WiFi** ($139.0)
 - Socket: AM5
-- Chipset: AMD B850
-- Formato: Micro ATX
-- RAM Soporte: Up to DDR5 8200(O.C)
-- Slots M.2: 2 x M.2
-- Conectividad: Wi-Fi, Bluetooth, 2.5Gbps
+- Chipset: AMD B650
+- Formato: 1 x 24 pin ATX Power Connector 1 x 8 pin 12V Power Connector (Hi-Density Power Connector)
+- RAM Soporte: Supports DDR5 ECC/non-ECC, un-buffered memory up to 7200+(OC)*
+- Conectividad: Wi-Fi, Bluetooth, Bluetooth 5.2 + High speed class II
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-7200J3445G16GX2-TZ5RK** ($134.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 7200 (PC5 57600)
+- Latencia (CL): CL34
+- Timings: 34-45-45-115
+- Voltaje: 1.40V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
 
 
-Build #3:
+Build Con Mejor Rendimiento:
 
 CPU:
-**AMD Ryzen 7 8700G** ($309)
+**AMD Ryzen 7 7800X3D** ($419.0)
 - Núcleos/Hilos: 8-Core
 - Frecuencia Base: 4.2 GHz
-- Frecuencia Turbo: 5.1 GHz
+- Frecuencia Turbo: Up to 5.0 GHz
 - Socket: Socket AM5
-- Cache (L3): 16MB
-- TDP: 65W
-- Tecnología: 4nm
+- Cache (L3): 96MB
+- TDP: 120W
+- Tecnología: Zen 4 - TSMC 5nm FinFET
+
+Case:
+**Fractal Design FD-C-NOR1X-05** ($179.0)
+- Tipo: ATX Full Tower
+- Material: Steel
+- Compatibilidad: ATX / Mini ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 2
+- Bahías 2.5": 4
+- Longitud Máx. GPU: 413 mm
+- Altura Máx. Cooler: 169 mm
+- Refrigeración: Ventiladores: Front - 3 x 120mm / Rear - 1 x 120mm / Top - 2 x 140mm / Top - 3 x 120mm; Radiadores: Front - Up to 420mm / Rear - Up to 120mm / Top - Up to 280mm
+- Puertos Frontales: 1x USB 3.2 Gen 2x2 Type-C, 2x USB 3.0, Audio & Mic
+- Incluye Fuente: No
 
 GPU:
-**AMD** ($499)
-- Tipo Memoria: HBM2
+**AMD AMD Radeon RX 6700XT** ($344.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 240W
+- Conectores: 1 x 6-Pin + 1 x 8-Pin
 - Puertos: HDMI, DisplayPort, DVI
 
 Motherboard:
-**GIGABYTE** ($179)
+**MSI MAG B650 TOMAHAWK WIFI** ($209.0)
 - Socket: AM5
-- Chipset: AMD B850
-- RAM Soporte: Up to DDR5 8200(O.C)
+- Chipset: AMD B650
+- Formato: 1x 24-pin ATX main power connector 2x 8-pin EPS 12V power connectors
+- RAM Soporte: Memory Support DDR5 6600+(OC)/ 6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600(OC)/ 5400(OC)/ 5200(OC)/ 5000(OC)/ 4800(JEDEC) MHz
+- Conectividad: Wi-Fi, Bluetooth, Supports Bluetooth 5.2* * Bluetooth 5.2 will be ready in Windows 10 21H1 and Windows 11.
+
+PSU:
+**N/A N/A** ($89.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: ATX 3.0 Compatible
+
+RAM:
+**G.SKILL F5-6000J3038F16GX2-FX5** ($104.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL30
+- Timings: 30-38-38-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- ECC/Registrada: ECC Sí, N/A
+- RGB/Color: None
+
+SSD:
+**Crucial CT1000P310SSD8** ($74.0)
+- Capacidad: 1TB
+- Interfaz: PCI-Express 4.0 x4 NVMe
+- Protocolo: NVMe 2.0
+- Lectura (MB/s): Up to 7100 MBps
+- Escritura (MB/s): Up to 6000 MBps
+- Factor de Forma: M.2 2280
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Build silenciosa para gaming nocturno (sin RGB, max $1300)
+
+Propuestas: 
+SSD: 71
+Motherboard: 130
+Case: 107
+RAM: 106
+GPU: 7
+PSU: 125
+CPU: 26
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**Intel Core i7-12700KF** ($179.0)
+- Núcleos/Hilos: 12-Core (8P+4E)
+- Frecuencia Base: P-core Base Frequency: 3.6 GHz E-core Base Frequency: 2.7 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.0 GHz Single P-core Turbo Frequency: Up to 4.9 GHz Single E-core Turbo Frequency: Up to 3.8 GHz
+- Socket: LGA 1700
+- Cache (L3): 25MB
+- TDP: Processor Base Power: 125W Maximum Turbo Power: 190W
+- Tecnología: Intel 7
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**MSI RTX 3060 Ventus 2X 12G OC** ($329.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 170W
+- Conectores: 1 x 8-pin
+- Longitud: 235 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-6000J3636F16GX2-FX5** ($89.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL36
+- Timings: 36-36-36-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- ECC/Registrada: No
+- RGB/Color: None
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+Build Con Mejor Rendimiento:
+
+CPU:
+**Intel Core i5-12600K** ($180.0)
+- Núcleos/Hilos: 10-Core (6P+4E)
+- Frecuencia Base: P-core Base Frequency: 3.7 GHz E-core Base Frequency: 2.8 GHz
+- Frecuencia Turbo: Single P-core Turbo Frequency: Up to 4.9 GHz Single E-core Turbo Frequency: Up to 3.6 GHz
+- Socket: LGA 1700
+- Cache (L3): 20MB
+- TDP: Processor Base Power: 125W Maximum Turbo Power: 150W
+- Tecnología: Intel 7
+
+Case:
+**DIYPC ARGB-N5-BK** ($59.0)
+- Tipo: ATX case
+- Material: Steel / Tempered Glass
+- Compatibilidad: ATX / E-ATX / Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 2
+- Longitud Máx. GPU: 420 mm
+- Altura Máx. Cooler: 180 mm
+- Refrigeración: Ventiladores: Top: 3 x 120mm fan (Optional) Bottom: 3 x 120mm fan (Optional) MB Side: 2 x 120mm ARGB Reverse Blade PWM Fan (pre-installed) Rear: 1 x 120mm ARGB PWM Fan (pre-installed); Radiadores: Top support up to 360mm ,rear x 120mm liquid cooler
+- Puertos Frontales: 2 x USB 3.0 / 1 x Type C / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**AMD AMD Radeon RX 6700XT** ($344.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 240W
+- Conectores: 1 x 6-Pin + 1 x 8-Pin
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**iStarUSA TC-1U30FX8** ($97.0)
+- Conectores CPU: 20+4Pin
+- Ventilador: 1
+- Protecciones: Output Over Voltage Protection Short Circuit Protection Over Current Protection, N/A, N/A
+- Formato: Flex ATX / ATX12V
+
+RAM:
+**Crucial CP2K32G56C46U5** ($152.0)
+- Capacidad: 64GB (2 x 32GB)
+- Velocidad: DDR5 5600 (PC5 44800)
+- Latencia (CL): CL46
+- Voltaje: 1.10V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0 / AMD EXPO
+- ECC/Registrada: No
+- RGB/Color: None
+
+SSD:
+**Team Group TM8FPK001T0C101** ($59.0)
+- Capacidad: 1TB
+- Interfaz: PCIe 4.0 x4 with NVMe 1.4
+- Protocolo: NVMe 1.4
+- Lectura (MB/s): Up to 5000 MBps
+- Escritura (MB/s): Up to 4500 MBps
+- Factor de Forma: M.2 2280
+- Durabilidad (TBW): 600TB
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: PC futurista con mucho RGB para juegos en 1440p ($1800)
+
+Propuestas: 
+GPU: 7
+SSD: 78
+Motherboard: 130
+Case: 107
+RAM: 106
+PSU: 126
+CPU: 26
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Recomendación para upgrade de GPU manteniendo mi Ryzen 5 3600
+
+Propuestas: 
+Case: 107
+PSU: 135
+SSD: 88
+GPU: 1
+Motherboard: 132
+RAM: 106
+CPU: 27
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Workstation para edición 4K en Premiere (budget $2500)
+
+Propuestas: 
+Motherboard: 130
+GPU: 116
+PSU: 127
+RAM: 106
+Case: 107
+CPU: 18
+SSD: 83
+HDD: 73
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**Intel Core i5-14600K** ($192.0)
+- Núcleos/Hilos: 14-Core (6P+8E)
+- Frecuencia Base: Performance-core Base Frequency: 3.5 GHz Efficient-core Base Frequency: 2.6 GHz
+- Frecuencia Turbo: P-core Max Turbo Frequency: Up to 5.3 GHz E-core Max Turbo Frequency: Up to 4.0 GHz
+- Socket: LGA 1700
+- Cache (L3): 24MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**PowerColor AXRX 6500XT 4GBD6-DH/OC** ($169.0)
+- Memoria: 4GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 107W
+- Conectores: 6-Pin
+- Longitud: 191 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+HDD:
+**Seagate ST1000DM010** ($39.0)
+- Capacidad: 1TB
+- Interfaz: SATA 6.0Gb/s
+- Velocidad (RPM): 7200 RPM
+- Caché: 64MB
+- Factor de Forma: 3.5"
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-6000J3636F16GX2-FX5** ($89.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL36
+- Timings: 36-36-36-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- ECC/Registrada: No
+- RGB/Color: None
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+Build Con Mejor Rendimiento:
+
+CPU:
+**AMD Ryzen 9 9900X3D** ($599.0)
+- Núcleos/Hilos: 12-Core
+- Frecuencia Base: 4.4 GHz
+- Frecuencia Turbo: Up to 5.5 GHz
+- Socket: Socket AM5
+- Cache (L3): 128MB
+- TDP: 120W
+- Tecnología: TSMC 4nm FinFET
+
+Case:
+**DIYPC ARGB-N5-BK** ($59.0)
+- Tipo: ATX case
+- Material: Steel / Tempered Glass
+- Compatibilidad: ATX / E-ATX / Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 2
+- Longitud Máx. GPU: 420 mm
+- Altura Máx. Cooler: 180 mm
+- Refrigeración: Ventiladores: Top: 3 x 120mm fan (Optional) Bottom: 3 x 120mm fan (Optional) MB Side: 2 x 120mm ARGB Reverse Blade PWM Fan (pre-installed) Rear: 1 x 120mm ARGB PWM Fan (pre-installed); Radiadores: Top support up to 360mm ,rear x 120mm liquid cooler
+- Puertos Frontales: 2 x USB 3.0 / 1 x Type C / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**ASUS DUAL-RTX4070S-O12G** ($833.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6X
+- Interfaz: PCI Express 4.0
+- TDP: 250W
+- Conectores: 1 x 16-Pin
+- Longitud: 267 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+HDD:
+**WD WD80EFPX** ($179.0)
+- Capacidad: 8TB
+- Interfaz: SATA 6.0Gb/s
+- Velocidad (RPM): 5640 RPM
+- Caché: 256MB
+- Factor de Forma: 3.5"
+
+Motherboard:
+**MSI MPG X870E EDGE TI WIFI** ($379.0)
+- Socket: AM5
+- Chipset: AMD X870E
+- RAM Soporte: 4x DDR5 UDIMM, Maximum Memory Capacity 256GB Memory Support DDR5 8400 - 5600 (OC) MT/s / 5600 - 4800 (JEDEC) MT/s Ryzen™ 9000 Series Processors max. overclocking frequency: • 1DPC 1R Max speed up to 8400+ MT/s • 1DPC 2R Max speed up to 6400+ MT/s • 2DPC 1R Max speed up to 6400+ MT/s • 2DPC 2R Max speed up to 4800+ MT/s Supports AMD POR Speed and JEDEC Speed Supports Memory Overclocking and AMD EXPOTM Supports Dual-Channel mode Supports Non-ECC, Un-buffered memory Supports CUDIMM, Clock Driver bypass mode only* * CUDIMM support and POR boot frequency may vary by CPU series, with manual overclocking available after boot. Certain CPUs may fail to boot, but future BIOS updates will improve compatibility. • The DIMM slots on this motherboard only have single-sided latche. • Memory compatibility and supported speeds can vary depending on the CPU and memory configuration. For detailed information, please refer to the Memory Compatibility List available on the product’s Support page or visit https://www.msi.com/support/.
 - Conectividad: Wi-Fi, Bluetooth, Yes
 - Características: 1 x PCI Express 5.0 x16
+
+PSU:
+**N/A N/A** ($129.0)
+- Protecciones: OVP,  OCP, OTP, OPP , SCP, UVP, N/A, N/A
+- Formato: ATX12V
+
+RAM:
+**Team FF4D532G6400HC32ADC01** ($99.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6400 (PC5 51200)
+- Latencia (CL): CL32
+- Timings: 32-39-39-84
+- Voltaje: 1.35V
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**KingSpec XF-2TB-2280** ($95.0)
+- Capacidad: 2TB
+- Interfaz: PCI-Express 4.0 x4
+- Lectura (MB/s): Up to 4800 MBps
+- Escritura (MB/s): Up to 4500 MBps
+- Factor de Forma: M.2 2280
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: PC económica para diseño gráfico (Photoshop/Illustrator)
+
+Propuestas: 
+SSD: 88
+Motherboard: 132
+Case: 107
+PSU: 135
+RAM: 106
+GPU: 8
+CPU: 27
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**AMD Ryzen 5 8500G** ($154.0)
+- Núcleos/Hilos: 6-Core
+- Frecuencia Base: 3.5 GHz
+- Frecuencia Turbo: 5.0 GHz
+- Socket: Socket AM5
+- Cache (L3): 16MB
+- TDP: 65W
+- Tecnología: 4nm
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**MSI RTX 3060 Ventus 2X 12G OC** ($329.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 170W
+- Conectores: 1 x 8-pin
+- Longitud: 235 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASRock B650M Pro RS WiFi** ($139.0)
+- Socket: AM5
+- Chipset: AMD B650
+- Formato: 1 x 24 pin ATX Power Connector 1 x 8 pin 12V Power Connector (Hi-Density Power Connector)
+- RAM Soporte: Supports DDR5 ECC/non-ECC, un-buffered memory up to 7200+(OC)*
+- Conectividad: Wi-Fi, Bluetooth, Bluetooth 5.2 + High speed class II
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-7200J3445G16GX2-TZ5RK** ($134.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 7200 (PC5 57600)
+- Latencia (CL): CL34
+- Timings: 34-45-45-115
+- Voltaje: 1.40V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+Build Con Mejor Rendimiento:
+
+CPU:
+**AMD Ryzen 9 7950X** ($488.0)
+- Núcleos/Hilos: 16-Core
+- Frecuencia Base: 4.5 GHz
+- Frecuencia Turbo: Up to 5.7 GHz
+- Socket: Socket AM5
+- Cache (L3): 64MB
+- TDP: 170W
+- Tecnología: Zen 4 - TSMC 5nm FinFET
+
+Case:
+**Fractal Design FD-C-NOR1C-01** ($139.0)
+- Tipo: ATX Mid Tower
+- Material: Steel
+- Compatibilidad: ATX / Micro ATX / Mini ITX
+- Ventana Lateral: No
+- Bahías 3.5": 3 (2 included)
+- Bahías 2.5": 2 dedicated + 3 on drive trays (2 trays included)
+- Longitud Máx. GPU: 355 mm with front fan mounted
+- Altura Máx. Cooler: 145 mm w/ fan bracket, 170 mm total
+- Refrigeración: Ventiladores: Total fan mounts: 8 x 120 mm or 6 x 140 mm Front: 3 x 120 or 2 x 140 mm (2 x Aspect 140 mm PWM included) Top: 2 x 120/140 mm Rear: 1 x 120 mm Side Bracket: 2 x 120/140 mm; Radiadores: Front: Up to 360/280 mm Top: Up to 240 mm (max 35 mm RAM height) Rear: 120 mm (w/ side bracket in lowest position)
+- Puertos Frontales: 1 x USB 3.2 Gen 2x2 Type-C, 2 x USB 3.0, 2 x Audio
+- Incluye Fuente: No
+
+GPU:
+**NVIDIA GEFORCE RTX 3090 Ti FE** ($2399.0)
+- Memoria: 24GB
+- Tipo Memoria: GDDR6X
+- Interfaz: PCI Express 4.0
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**MSI MAG B650 TOMAHAWK WIFI** ($209.0)
+- Socket: AM5
+- Chipset: AMD B650
+- Formato: 1x 24-pin ATX main power connector 2x 8-pin EPS 12V power connectors
+- RAM Soporte: Memory Support DDR5 6600+(OC)/ 6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600(OC)/ 5400(OC)/ 5200(OC)/ 5000(OC)/ 4800(JEDEC) MHz
+- Conectividad: Wi-Fi, Bluetooth, Supports Bluetooth 5.2* * Bluetooth 5.2 will be ready in Windows 10 21H1 and Windows 11.
+
+PSU:
+**Athena Power P2H-5400V** ($281.0)
+- Conectores CPU: ATX Connector 24 (20+4) pin x 1 P4-12V 4 Pin x 1 EPS 12V 8 Pin x 2 SATA 15 Pin x 3 Molex 4 Pin x 3                                                                                                                                                                                            Floppy 4Pin x 2
+- Protecciones: N/A, N/A, N/A
+- MTBF: 100,000 Hours on Maximum Load at +25 degree C
+
+RAM:
+**G.SKILL F5-6000J2836G16GX2-TR5NS** ($149.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL28
+- Timings: 28-36-36-96
+- Voltaje: 1.40V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- RGB/Color: RGB
+
+SSD:
+**Western Digital WDS200T2X0E** ($152.0)
+- Capacidad: 2TB
+- Interfaz: PCI-Express 4.0 x4
+- Protocolo: NVMe
+- Lectura (MB/s): Up to 7300 MBps
+- Escritura (MB/s): Up to 6600 MBps
+- Factor de Forma: M.2 2280
+- Durabilidad (TBW): 1200TB
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Configuración para renderizado 3D en Blender (sin límite de precio)
+
+Propuestas: 
+Case: 107
+PSU: 135
+Motherboard: 132
+RAM: 106
+GPU: 125
+CPU: 7
+SSD: 88
+HDD: 85
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**AMD Ryzen 9 9900X** ($377.0)
+- Núcleos/Hilos: 12-Core
+- Frecuencia Base: 4.4 GHz
+- Frecuencia Turbo: Up to 5.6 GHz
+- Socket: Socket AM5
+- Cache (L3): 64MB
+- TDP: 120W
+- Tecnología: Zen 5 TSMC 4nm FinFET
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**PowerColor AXRX 6500XT 4GBD6-DH/OC** ($169.0)
+- Memoria: 4GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 107W
+- Conectores: 6-Pin
+- Longitud: 191 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+HDD:
+**Seagate ST1000DM010** ($39.0)
+- Capacidad: 1TB
+- Interfaz: SATA 6.0Gb/s
+- Velocidad (RPM): 7200 RPM
+- Caché: 64MB
+- Factor de Forma: 3.5"
+
+Motherboard:
+**ASRock B650M Pro RS WiFi** ($139.0)
+- Socket: AM5
+- Chipset: AMD B650
+- Formato: 1 x 24 pin ATX Power Connector 1 x 8 pin 12V Power Connector (Hi-Density Power Connector)
+- RAM Soporte: Supports DDR5 ECC/non-ECC, un-buffered memory up to 7200+(OC)*
+- Conectividad: Wi-Fi, Bluetooth, Bluetooth 5.2 + High speed class II
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-7200J3445G16GX2-TZ5RK** ($134.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 7200 (PC5 57600)
+- Latencia (CL): CL34
+- Timings: 34-45-45-115
+- Voltaje: 1.40V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+Build Con Mejor Rendimiento:
+
+CPU:
+**AMD Ryzen 9 9950X** ($519.0)
+- Núcleos/Hilos: 16-Core
+- Frecuencia Base: 4.3 GHz
+- Frecuencia Turbo: Up to 5.7 GHz
+- Socket: Socket AM5
+- Cache (L3): 64MB
+- TDP: 170W
+- Tecnología: Zen 5 - TSMC 4nm FinFET
+
+Case:
+**GAMEMAX N/A** ($97.0)
+- Tipo: ATX Full Tower
+- Material: ABS / Mesh / Tempered Glass / Metal
+- Compatibilidad: Micro ATX / ATX / ITX / E-ATX
+- Bahías 3.5": 8
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 420 mm
+- Altura Máx. Cooler: 170 mm
+- Refrigeración: Ventiladores: Front: 3 x 120mm(FN-12Rainbow-C9,Fan included) Top: 3 x 120mm ,2x140mm (Fan optional) Rear: 1 x 120mm (FN-12Rainbow-C9,Fan included) Bottom: 1 x 120mm (Fan optional); Radiadores: Front - Up to 240mm / Rear - Up to 120mm / Top - Up to 280mm / Top - Up to 360mm
+
+GPU:
+**MSI RTX 3050 Ventus 2X 8G OC** ($358.0)
+- Memoria: 8GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 130W
+- Conectores: 8-Pin
+- Longitud: 235 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+HDD:
+**Seagate ST4000NT001** ($129.0)
+- Capacidad: 4TB
+- Interfaz: SATA 6.0Gb/s
+- Velocidad (RPM): 7200 RPM
+- Caché: 256MB
+- Tecnología: CMR
+- Factor de Forma: 3.5"
+
+Motherboard:
+**ASUS CROSSHAIR X870E EXTREME** ($999.0)
+- Socket: AM5
+- Chipset: AMD X870E
+- Formato: 1 x 24-pin Main Power connector 2 x 8-pin +12V CPU Power connector 1 x 8-pin PCIe Power connector
+- RAM Soporte: DDR5 4400 / DDR5 4800 / DDR5 5000 / DDR5 5200 / DDR5 5400 / DDR5 5600 / DDR5 5800 / DDR5 6000 / DDR5 6200 / DDR5 6400 / DDR5 6600 / DDR5 6666 / DDR5 6800 / DDR5 7000 / DDR5 7200 / DDR5 7400 / DDR5 7600 / DDR5 7800 / DDR5 7900 / DDR5 7950 / DDR5 8000 / DDR5 8200 / DDR5 8266 / DDR5 8333 / DDR5 8400 / DDR5 8600
+- Conectividad: Wi-Fi, Bluetooth, Bluetooth 5.4
+- Características: AMD Ryzen 9000 & 7000 Series Desktop Processors* 2 x PCIe 5.0 x16 slots with Q-Release Slim (supports x16 or x8/x8** or x8/x4/x4 modes***) ** When you use both PCIEX16(G5)_1 and PCIEX16(G5)_2, PCIEX16(G5)_1 and PCIEX16(G5)_2 will run x8. ***When M.2_3 is enabled, PCIEX16(G5)_1 will run x8, and  PCIEX16(G5)_2 will run x4. **** When M.2_2 and M.2_3 are enabled simultaneously, PCIEX16(G5)_2 will be disabled.
+
+PSU:
+**DELL N/A** ($76.0)
+- Protecciones: N/A, N/A, N/A
+
+RAM:
+**CORSAIR CMH32GX5M2X7000C36** ($134.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 7000 (PC5 56000)
+- Latencia (CL): CL36
+- Timings: 36-46-46-82
+- Voltaje: 1.45V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: ECC Sí, N/A
+- RGB/Color: RGB
+
+SSD:
+**Silicon Power UD90** ($97.0)
+- Capacidad: 2TB
+- Interfaz: PCI-Express 4.0 x4
+- Lectura (MB/s): Up to 5000 MBps
+- Escritura (MB/s): Up to 4800 MBps
+- Factor de Forma: M.2 2280
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Build optimizada para After Effects con previews fluidas
+
+Propuestas: 
+Motherboard: 132
+SSD: 88
+RAM: 106
+Case: 107
+GPU: 8
+PSU: 135
+CPU: 11
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**Intel Core i7-14700KF** ($319.0)
+- Núcleos/Hilos: 20-Core (8P+12E)
+- Frecuencia Base: Performance-core Base Frequency: 3.4 GHz Efficient-core Base Frequency: 2.5 GHz
+- Frecuencia Turbo: Intel Turbo Boost Max Technology 3.0 Frequency: Up to 5.6 GHz P-core Max Turbo Frequency: Up to 5.5 GHz E-core Max Turbo Frequency: Up to 4.3 GHz
+- Socket: LGA 1700
+- Cache (L3): 33MB
+- TDP: 125W
+- Tecnología: Intel 7
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**MSI RTX 3060 Ventus 2X 12G OC** ($329.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 170W
+- Conectores: 1 x 8-pin
+- Longitud: 235 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS Z790 GAMING WIFI7** ($179.0)
+- Socket: LGA 1700
+- Chipset: Intel Z790
+- Formato: ATX
+- RAM Soporte: DDR5 7200+(OC)/7000(OC)/6800(OC)/6600(OC)/6400(OC)/ 6200(OC)/ 6000(OC)/ 5800(OC)/ 5600/ 5400/ 5200/ 5000/ 4800 Non-ECC, Un-buffered Memory*
+- Slots M.2: 3 x M.2
+- Conectividad: Wi-Fi, Bluetooth, 1 x Realtek 1Gb Ethernet
+- Características: Special Features ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage Protection - SafeSlot Core+ - Stainless-Steel Back I/O ASUS Q-Design - Q-DIMM - Q-Slot - Q-LED Core ASUS Thermal Solution - VRM heatsink design ASUS EZ DIY - ProCool Aura Sync - Aura RGB header - Addressable Gen 2 headers Software Features ASUS Exclusive Software Armoury Crate - Aura Sync - Fan Xpert 4 (with AI Cooling II) - Power Saving -Two-Way AI Noise Cancelation AI Suite 3 -TurboV EVO -PC Cleaner -DIGI+ VRM ASUS CPU-Z MyASUS Norton 360 Deluxe (60 Days Free Trial) WinRAR UEFI BIOS ASUS EZ DIY - ASUS CrashFree BIOS 3 - ASUS EZ Flash 3 - ASUS UEFI BIOS EZ Mode
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-6000J3636F16GX2-FX5** ($89.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL36
+- Timings: 36-36-36-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: AMD EXPO
+- ECC/Registrada: No
+- RGB/Color: None
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+Build Con Mejor Rendimiento:
+
+CPU:
+**AMD Ryzen 9 9950X3D** ($719.0)
+- Núcleos/Hilos: 16-Core
+- Frecuencia Base: 4.3 GHz
+- Frecuencia Turbo: Up to 5.7 GHz
+- Socket: Socket AM5
+- Cache (L3): 128MB
+- TDP: 170W
+- Tecnología: TSMC 4nm FinFET
+
+Case:
+**LIAN LI O11DERGBW** ($172.0)
+- Tipo: ATX / Micro ATX Mid Tower
+- Material: Steel, Aluminum, Tempered glass
+- Compatibilidad: EATX(under 280mm)/ATX/MICRO-ATX/MINI-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": Hard Drive Cage: 2 X 3.5" HDD or 2.5" SSD Side fan Bracket: 2 X 3.5" HDD or 4x 2.5" SSD
+- Bahías 2.5": Behind MB Tray: 2 X 2.5" SSD
+- Longitud Máx. GPU: 455.7 mm(Max)
+- Altura Máx. Cooler: 167 mm(Max)
+- Refrigeración: Ventiladores: Side: 120mm x3 / 140mm x3 Bottom: 120mm x3/ 140mm x3 Rear: 120 mm x1 Top: 120mm x3 / 140mm x3; Radiadores: Side: 360 / 280 /240 Bottom: 360 / 280 /240 Top: 360/ 420 /240
+- Puertos Frontales: 2 x USB 3.0, 1 x Audio, 3 x Buttons
+- Incluye Fuente: No
+
+GPU:
+**NVIDIA GEFORCE RTX 3090 Ti FE** ($2399.0)
+- Memoria: 24GB
+- Tipo Memoria: GDDR6X
+- Interfaz: PCI Express 4.0
+- Puertos: HDMI, DisplayPort, DVI
+
+Motherboard:
+**ASUS CROSSHAIR X870E EXTREME** ($999.0)
+- Socket: AM5
+- Chipset: AMD X870E
+- Formato: 1 x 24-pin Main Power connector 2 x 8-pin +12V CPU Power connector 1 x 8-pin PCIe Power connector
+- RAM Soporte: DDR5 4400 / DDR5 4800 / DDR5 5000 / DDR5 5200 / DDR5 5400 / DDR5 5600 / DDR5 5800 / DDR5 6000 / DDR5 6200 / DDR5 6400 / DDR5 6600 / DDR5 6666 / DDR5 6800 / DDR5 7000 / DDR5 7200 / DDR5 7400 / DDR5 7600 / DDR5 7800 / DDR5 7900 / DDR5 7950 / DDR5 8000 / DDR5 8200 / DDR5 8266 / DDR5 8333 / DDR5 8400 / DDR5 8600
+- Conectividad: Wi-Fi, Bluetooth, Bluetooth 5.4
+- Características: AMD Ryzen 9000 & 7000 Series Desktop Processors* 2 x PCIe 5.0 x16 slots with Q-Release Slim (supports x16 or x8/x8** or x8/x4/x4 modes***) ** When you use both PCIEX16(G5)_1 and PCIEX16(G5)_2, PCIEX16(G5)_1 and PCIEX16(G5)_2 will run x8. ***When M.2_3 is enabled, PCIEX16(G5)_1 will run x8, and  PCIEX16(G5)_2 will run x4. **** When M.2_2 and M.2_3 are enabled simultaneously, PCIEX16(G5)_2 will be disabled.
+
+PSU:
+**N/A N/A** ($119.0)
+- Potencia: 1000 W
+- Eficiencia: Up to 92%
+- Modular: Full Modular
+- Conectores CPU: 20+4Pin
+- Conectores PCIe: 4 x 6+2-Pin & 1x 12+4-Pin
+- Conectores SATA: 8.0
+- Ventilador: 1 x Silent 120mm FDB fan
+- Protecciones: N/A, Yes, Yes
+- Formato: ATX 3.0 Compatible / ATX 3.1 Compatible
+
+RAM:
+**Team FF4D532G6400HC32ADC01** ($99.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6400 (PC5 51200)
+- Latencia (CL): CL32
+- Timings: 32-39-39-84
+- Voltaje: 1.35V
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**Crucial CT2000P310SSD8** ($128.0)
+- Capacidad: 2TB
+- Interfaz: PCI-Express 4.0 x4 NVMe
+- Protocolo: NVMe 2.0
+- Lectura (MB/s): Up to 7100 MBps
+- Escritura (MB/s): Up to 6000 MBps
+- Factor de Forma: M.2 2280
+
+
+
+
+----------------------------------------------------------------------------------
+
+Querie: Estación de trabajo para ingeniería CAD (Autodesk, SolidWorks)
+
+Propuestas: 
+Case: 107
+GPU: 7
+PSU: 135
+RAM: 106
+Motherboard: 132
+CPU: 21
+SSD: 88
+HDD: 85
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: PC para producción musical con baja latencia (presupuesto $1500)
+
+Propuestas: 
+Case: 107
+SSD: 71
+PSU: 126
+Motherboard: 130
+RAM: 106
+GPU: 0
+CPU: 25
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.
+
+----------------------------------------------------------------------------------
+
+Querie: Setup para streamer que haga diseño en vivo (multitarea intensiva)
+
+Propuestas: 
+RAM: 106
+Motherboard: 132
+Case: 107
+PSU: 135
+GPU: 8
+CPU: 9
+SSD: 88
+HDD: 85
+
+Response: 
+
+Build Más Económica:
+
+CPU:
+**AMD Ryzen 7 7700X** ($285.0)
+- Núcleos/Hilos: 8-Core
+- Frecuencia Base: 4.5 GHz
+- Frecuencia Turbo: Up to 5.4 GHz
+- Socket: Socket AM5
+- Cache (L3): 32MB
+- TDP: 105W
+- Tecnología: Zen 4 - TSMC 5nm FinFET
+
+Case:
+**DIYPC ARGB-G5-BK** ($56.0)
+- Tipo: Micro ATX Tower
+- Material: Steel / Tempered Glass
+- Compatibilidad: Micro ATX / Mini-ITX
+- Ventana Lateral: Yes
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 340 mm
+- Altura Máx. Cooler: 165 mm
+- Refrigeración: Ventiladores: Top: 2 x 120mm or 2 x 140mm fan (Optional) Front: 3 x 120mm ARGB Fan (pre-installed) Rear: 1 x 120mm ARGB LED fan (pre-installed) PSU Top: 2 x 120mm fan (Optional); Radiadores: Rear - Up to 120mm / Top - Up to 360mm
+- Puertos Frontales: 2 x USB 2.0 / 1 x USB 3.0 / Audio In & Out (HD)
+- Incluye Fuente: No
+
+GPU:
+**MSI RTX 3060 Ventus 2X 12G OC** ($329.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6
+- Interfaz: PCI Express 4.0
+- TDP: 170W
+- Conectores: 1 x 8-pin
+- Longitud: 235 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+HDD:
+**Seagate ST1000DM010** ($39.0)
+- Capacidad: 1TB
+- Interfaz: SATA 6.0Gb/s
+- Velocidad (RPM): 7200 RPM
+- Caché: 64MB
+- Factor de Forma: 3.5"
+
+Motherboard:
+**ASRock B650M Pro RS WiFi** ($139.0)
+- Socket: AM5
+- Chipset: AMD B650
+- Formato: 1 x 24 pin ATX Power Connector 1 x 8 pin 12V Power Connector (Hi-Density Power Connector)
+- RAM Soporte: Supports DDR5 ECC/non-ECC, un-buffered memory up to 7200+(OC)*
+- Conectividad: Wi-Fi, Bluetooth, Bluetooth 5.2 + High speed class II
+
+PSU:
+**HPE N/A** ($49.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: Cache Memory
+
+RAM:
+**G.SKILL F5-7200J3445G16GX2-TZ5RK** ($134.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 7200 (PC5 57600)
+- Latencia (CL): CL34
+- Timings: 34-45-45-115
+- Voltaje: 1.40V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: No
+- RGB/Color: RGB
+
+SSD:
+**Team Group T253TZ001T0C101** ($53.0)
+- Capacidad: 1TB
+- Interfaz: SATA III
+- Protocolo: SATA
+- Lectura (MB/s): Up to 550 MBps
+- Escritura (MB/s): Up to 500 MBps
+- Factor de Forma: 2.5"
+- Durabilidad (TBW): 800TB
+
+
+Build Con Mejor Rendimiento:
+
+CPU:
+**AMD Ryzen 7 9700X** ($309.0)
+- Núcleos/Hilos: 8-Core
+- Frecuencia Base: 3.8 GHz
+- Frecuencia Turbo: Up to 5.5 GHz
+- Socket: Socket AM5
+- Cache (L3): 32MB
+- TDP: 65W
+- Tecnología: Zen 5 - TSMC 4nm FinFET
+
+Case:
+**LIAN LI A3- mATX Black** ($72.0)
+- Tipo: MicroATX Chassis
+- Material: Steel
+- Compatibilidad: Micro ATX / ITX
+- Bahías 3.5": 1
+- Bahías 2.5": 2
+- Longitud Máx. GPU: 430 mm
+- Altura Máx. Cooler: 167 mm
+- Refrigeración: Ventiladores: Top: 3 x 120mm or 2 x 140mm Side: 3 x 120mm or 2 x 140mm Bottom: 3 x 120mm or 2 x 140mm Rear: 1 x 120mm; Radiadores: Top: 1 x 360/280/240mm Side: 1 x 360/280/240mm Bottom: 1 x 280/240mm
+- Puertos Frontales: 1 x Power Button, 2 x USB 3.0 Type-A, 1 x USB 3.1 Type-C, 2 x Audio,
+
+GPU:
+**ASUS ROG-STRIX-RTX3080TI-O12G-GAMING** ($1179.0)
+- Memoria: 12GB
+- Tipo Memoria: GDDR6X
+- Interfaz: PCI Express 4.0
+- Conectores: 3 x 8-Pin
+- Longitud: 319 mm
+- Puertos: HDMI, DisplayPort, DVI
+
+HDD:
+**Seagate ST24000DM001** ($299.0)
+- Capacidad: 24TB
+- Interfaz: SATA 6.0Gb/s
+- Velocidad (RPM): 7200 RPM
+- Caché: 512MB
+- Tecnología: CMR
+- Factor de Forma: 3.5"
+
+Motherboard:
+**ASUS X870 AYW GAMING WIFI W** ($219.0)
+- Socket: AM5
+- Chipset: AMD X870
+- Formato: ATX
+- RAM Soporte: Up to 8000+MT/s (OC)
+- Slots M.2: AMD Ryzen 9000 & 7000 Series Desktop Processors M.2_1 slot (Key M), type 2280 (supports PCIe 5.0 x4 mode) M.2_2 slot (Key M), type 2242/2260/2280 (supports PCIe 4.0 x4 mode)** AMD Ryzen 8000 Series Desktop Processors M.2_1 slot (Key M), type 2280 (supports PCIe 4.0 x4 mode) M.2_2 slot (Key M), type 2242/2260/2280 (supports PCIe 4.0 x4/x2 mode)** AMD X870 Chipset M.2_3 slot (Key M), type 2280 (supports PCIe 4.0 x4 mode)** ** Specifications vary by CPU types.
+- Conectividad: Wi-Fi, Bluetooth, 2.5Gbps
+- Características: ASUS 5X PROTECTION III - DIGI+ VRM (- Digital power design with DrMOS) - LANGuard - Overvoltage protection - SafeSlot - Stainless-steel back I/O ASUS Q-Design - M.2 Q-Latch - PCIe Slot Q-Release - Q-Dashboard - Q-DIMM - Q-LED (CPU [red], DRAM [yellow], VGA [white], Boot Device [yellow green]) - Q-Slot ASUS Thermal Solution - M.2 heatsink - VRM heatsink design ASUS EZ DIY - BIOS FlashBack button - BIOS FlashBack LED - ProCool - Pre-mounted I/O shield - SafeSlot Aura Sync - Addressable RGB Gen 2 headers
+
+PSU:
+**N/A N/A** ($89.0)
+- Protecciones: N/A, N/A, N/A
+- Formato: ATX 3.0 Compatible
+
+RAM:
+**G.SKILL F5-6000J3636F16GX2-TZ5RK** ($94.0)
+- Capacidad: 32GB (2 x 16GB)
+- Tipo: 288-Pin PC RAM
+- Velocidad: DDR5 6000 (PC5 48000)
+- Latencia (CL): CL36
+- Timings: 36-36-36-96
+- Voltaje: 1.35V
+- Kit: Dual Channel Kit
+- Perfil XMP/EXPO: Intel XMP 3.0
+- ECC/Registrada: ECC Sí, N/A
+- RGB/Color: RGB
+
+SSD:
+**SAMSUNG MZ-VAP2T0B/AM** ($269.0)
+- Capacidad: 2TB
+- Interfaz: PCI-Express 5.0 x4
+- Protocolo: NVMe 2.0
+- Lectura (MB/s): Up to 14700 MBps
+- Escritura (MB/s): Up to 13400 MBps
+- Factor de Forma: M.2 2280
+- Durabilidad (TBW): 1200TB
 
 
 

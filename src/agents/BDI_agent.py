@@ -1,6 +1,7 @@
 from typing import Dict, Any, List
 import json
 from enum import Enum
+import pandas as pd
 from pydantic import BaseModel
 from blackboard import Blackboard, EventType
 from model.LLMClient import LLMClient
@@ -69,7 +70,13 @@ class BDIAgent:
         """
         # Paso 1: Extraer información cruda con LLM
 
-        raw_data = self._ask_llm(self.blackboard.get("user_input"))
+        cpu = pd.read_csv('src/data/component_specs/CPU_specs.csv')
+        cpu_names = cpu['Model_Name'].unique().tolist()
+        
+        gpu = pd.read_csv('src/data/component_specs/GPU_specs.csv')
+        gpu_names = cpu['Model_Name'].unique().tolist()
+
+        raw_data = self._ask_llm(self.blackboard.get("user_input"), cpu_names, gpu_names)
         
         # Paso 2: Validar y normalizar
         try:
@@ -90,91 +97,96 @@ class BDIAgent:
             notify=True  # Dispara EventType.REQUIREMENTS_UPDATED
         )
         
-    def _ask_llm(self, text: str) -> Dict[str, Any]:
+    def _ask_llm(self, text: str, cpu_names, gpu_names) -> Dict[str, Any]:
         """Consulta al modelo de lenguaje para extracción estructurada"""
         
         sytem_prompt = f"""
-        Eres un experto en hardware de computadoras. Extrae los siguientes datos del texto:
-        
-        Texto del usuario: "{text}" """
-        
+            Eres un experto en hardware de computadoras. Extrae los siguientes datos del texto:
+            
+            Texto del usuario: "{text}" 
+            """
+            
         anser_prompt = """
-        Devuelve SOLO un JSON con esta estructura:
-        {{
-            "use_case": "gaming/video_editing/data_science/crypto_mining/server/machine_learning/web_development/general (puede ser combinación como 'gaming/video_editing', defualt 'general')",
-            "budget": {{
-                "min": número o None,
-                "max": número o None
-            }},
-            "performance": {{
-                "resolution": "1080p/1440p/4K",
-                "fps": número (si no es especificado en dependencia del use_case seleciona el mas usado en esa catogoría),
-                "software": ["nombres de programas"]
-            }},
-            "aesthetics": {{
-                "color": "string",
-                "rgb": boolean,
-                "window": boolean
-            }},
-            "cpu" : "1 cpu minima según el uso del caso (ej: "Intel Core i5-12400F") (valor obligatorio, defualt '')",
-            "gpu" : "1 gpu minima según el uso del caso (ej: "NVIDIA RTX 3060") (valor obligatorio, default '')",
-            "storage" : {
-                "prefer_ssd": boolean,       
-                "include_hdd": boolean,       
-                "capacity": "512GB/1TB/4TB (Capacidad mínima)",       
-                "performance": {
-                    "read_speed": "3500MB/s (Velocidad mínima lectura para SSDs)" 
+            Devuelve SOLO un JSON con esta estructura:
+            {{
+                "use_case": "gaming/video_editing/data_science/crypto_mining/server/machine_learning/web_development/general (puede ser combinación como 'gaming/video_editing', defualt 'general')",
+                "budget": {{
+                    "min": número o None,
+                    "max": número o None
+                }},
+                "performance": {{
+                    "resolution": "1080p/1440p/4K",
+                    "fps": número (si no es especificado en dependencia del use_case seleciona el mas usado en esa catogoría),
+                    "software": ["nombres de programas"]
+                }},
+                "aesthetics": {{
+                    "color": "string",
+                    "rgb": boolean,
+                    "window": boolean
+                }},
+                "cpu" : "1 cpu minima según el uso del caso (ej: "Intel Core i5-12400F") (valor obligatorio, defualt '')",
+                "gpu" : "1 gpu minima según el uso del caso (ej: "NVIDIA RTX 3060") (valor obligatorio, default '')",
+                "storage" : {
+                    "prefer_ssd": boolean,       
+                    "include_hdd": boolean,       
+                    "capacity": "512GB/1TB/4TB (Capacidad mínima)",       
+                    "performance": {
+                        "read_speed": "3500MB/s (Velocidad mínima lectura para SSDs)" 
+                    }
+                },
+                "ram" : {
+                    "capacity" : "32GB (Capacidad mínima)",
+                    "type": "DDR3/DDR4/DDR5 (Tipo específico requerido)",
+                    "speed": "5600 (Velocidad mínima en MHz)"  
                 }
-            },
-            "ram" : {
-                "capacity" : "32GB (Capacidad mínima)",
-                "type": "DDR3/DDR4/DDR5 (Tipo específico requerido)",
-                "speed": "5600 (Velocidad mínima en MHz)"  
-            }
-            "constraints": ["lista de restricciones"]
-        }}
-        
-        
-        Reglas estrictas:
-        1. Para use_case usar SOLO estas opciones o combinaciones:
-        - gaming
-        - video_editing
-        - data_science
-        - general
-        - crypto_mining
-        - server
-        - machine_learning
-        - web_development
-        - gaming/video_editing
-        - gaming/data_science
-        - video_editing/data_science
-        - gaming/video_editing/data_science
-        2. Las combinaciones deben usar exactamente el formato 'tipo1/tipo2'
-        3. Si el caso de uso no coincide con ninguno de los definidos, entonces usar "general"
+                "constraints": ["lista de restricciones"]
+            }} 
 
-        Ejemplo para "Necesito PC para editar 4K bajo $1500 con RGB":
-        {{
-            "use_case": "video_editing",
-            "budget": {{"min": null, "max": 1500}},
-            "performance": {{"resolution": "4K", "fps": 60, "software": ["Premiere Pro"]}},
-            "aesthetics": {{"color": null, "rgb": true}},
-            "storage": {
-                "prefer_ssd": true,
-                "include_hdd": true,
-                "capacity": "1TB",
-                "performance": {
-                    "read_speed": "3500MB/s"
-                }
-            },
-            "ram": {
-                "capacity": "32GB",
-                "type": "DDR4",
-                "speed": 3200
-            },
-            "constraints": []
-        }}
-        """
-        prompt = f"{sytem_prompt}\n{anser_prompt}"
+            Ejemplo para "Necesito PC para editar 4K bajo $1500 con RGB":
+            {{
+                "use_case": "video_editing",
+                "budget": {{"min": null, "max": 1500}},
+                "performance": {{"resolution": "4K", "fps": 60, "software": ["Premiere Pro"]}},
+                "aesthetics": {{"color": null, "rgb": true}},
+                "storage": {
+                    "prefer_ssd": true,
+                    "include_hdd": true,
+                    "capacity": "1TB",
+                    "performance": {
+                        "read_speed": "3500MB/s"
+                    }
+                },
+                "ram": {
+                    "capacity": "32GB",
+                    "type": "DDR4",
+                    "speed": 3200
+                },
+                "constraints": []
+            }} 
+            """
+        
+        rules = f"""
+            Reglas estrictas:
+            1. Para use_case usar SOLO estas opciones o combinaciones:
+            - gaming
+            - video_editing
+            - data_science
+            - general
+            - crypto_mining
+            - server
+            - machine_learning
+            - web_development
+            - gaming/video_editing
+            - gaming/data_science
+            - video_editing/data_science
+            - gaming/video_editing/data_science
+            2. Las combinaciones deben usar exactamente el formato 'tipo1/tipo2'
+            3. Si el caso de uso no coincide con ninguno de los definidos, entonces usar "general"
+            4. Estas son la listas de donde debes sacas los nombres de las cpu minini y gpu minima segun el prompt del usuario:
+            - cpu : {cpu_names}
+            - gpu : {gpu_names}
+            """
+        prompt = f"{sytem_prompt}\n{anser_prompt}\n{rules}"        
         response = self.llm.generate(prompt)
         
         try:

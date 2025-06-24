@@ -5,6 +5,10 @@ from agents.BDI_agent import BDIAgent, HardwareRequirements
 from agents.CPU_agent import CPUAgent
 from agents.GPU_agent import GPUAgent
 from agents.MB_agent import MotherboardAgent
+from agents.storage_agent import StorageAgent
+from agents.RAM_agent import RAMAgent
+from agents.PSU_agent import PSUAgent
+from agents.case_agent import CaseAgent
 from agents.compatibility_agent import CompatibilityAgent
 from agents.optimization_agent import OptimizationAgent
 from blackboard import Blackboard, EventType
@@ -52,13 +56,17 @@ processor = CSVToEmbeddings()
 cpu_db = processor.load_embeddings('CPU')
 gpu_db = processor.load_embeddings('GPU')
 mb_db = processor.load_embeddings('Motherboard')
-rule_db = [ cpu_db, gpu_db, mb_db ]
+hdd_db = processor.load_embeddings('HDD')
+ssd_db = processor.load_embeddings('SSD')
+ram_db = processor.load_embeddings('RAM')
+psu_db = processor.load_embeddings('PSU')
+case_db = processor.load_embeddings('case')
 
 
 def run_test_scenario(querie):
     
     # Inicializar Blackboard
-    blackboard = Blackboard()
+    blackboard = Blackboard(7)
     
     agents = {
         'bdi': BDIAgent(
@@ -79,9 +87,25 @@ def run_test_scenario(querie):
             vector_db=mb_db,
             blackboard=blackboard
         ),
+        'storage': StorageAgent(
+            ssd_vector_db=ssd_db,
+            hdd_vector_db=hdd_db,
+            blackboard=blackboard
+        ),
+        'ram': RAMAgent(
+            vector_db=ram_db,
+            blackboard=blackboard
+        ),
+        'psu': PSUAgent(
+            vector_db=psu_db,
+            blackboard=blackboard
+        ),
+        'case': CaseAgent(
+            vector_db=case_db, 
+            blackboard=blackboard
+        ),
         'comp': CompatibilityAgent(
             blackboard=blackboard,
-            rules_db=rule_db
         ),
         'opt': OptimizationAgent(
             blackboard=blackboard,
@@ -99,26 +123,26 @@ def run_test_scenario(querie):
 if __name__ == "__main__":
     user_queries = [
         # Gaming
-        "Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU.",
-        "Necesito una PC para jugar en 1440p a 144fps con presupuesto de $1200",
-        "Armar setup gamer económico para 1080p que corra Fortnite a 120fps",
-        "PC high-end para 4K/120Hz en juegos AAA, sin límite de presupuesto",
-        "Recomienda componentes para streaming y gaming simultáneo (presupuesto $2000)",
-        "Setup compacto para gaming en LAN parties (max $1000, preferencia AMD)",
-        "PC para esports (Valorant, CS2) que alcance 240fps estables",
-        "Configuración VR-ready para Half-Life Alyx (presupuesto $1500)",
-        "Build silenciosa para gaming nocturno (sin RGB, max $1300)",
-        "PC futurista con mucho RGB para juegos en 1440p ($1800)",
-        "Recomendación para upgrade de GPU manteniendo mi Ryzen 5 3600",
+        # "Quiero una PC para gaming en 4K con presupuesto máximo de $1500. Prefiero NVIDIA para la GPU.",
+        # "Necesito una PC para jugar en 1440p a 144fps con presupuesto de $1200",
+        # "Armar setup gamer económico para 1080p que corra Fortnite a 120fps",
+        # "PC high-end para 4K/120Hz en juegos AAA, sin límite de presupuesto",
+        # "Recomienda componentes para streaming y gaming simultáneo (presupuesto $2000)",
+        # "Setup compacto para gaming en LAN parties (max $1000, preferencia AMD)",
+        # "PC para esports (Valorant, CS2) que alcance 240fps estables",
+        # "Configuración VR-ready para Half-Life Alyx (presupuesto $1500)",
+        # "Build silenciosa para gaming nocturno (sin RGB, max $1300)",
+        # "PC futurista con mucho RGB para juegos en 1440p ($1800)",
+        # "Recomendación para upgrade de GPU manteniendo mi Ryzen 5 3600",
         
-        # Diseño/Edición
-        "Workstation para edición 4K en Premiere (budget $2500)",
-        "PC económica para diseño gráfico (Photoshop/Illustrator)",
-        "Configuración para renderizado 3D en Blender (sin límite de precio)",
-        "Build optimizada para After Effects con previews fluidas",
-        "Estación de trabajo para ingeniería CAD (Autodesk, SolidWorks)",
-        "PC para producción musical con baja latencia (presupuesto $1500)",
-        "Setup para streamer que haga diseño en vivo (multitarea intensiva)",
+        # # Diseño/Edición
+        # "Workstation para edición 4K en Premiere (budget $2500)",
+        # "PC económica para diseño gráfico (Photoshop/Illustrator)",
+        # "Configuración para renderizado 3D en Blender (sin límite de precio)",
+        # "Build optimizada para After Effects con previews fluidas",
+        # "Estación de trabajo para ingeniería CAD (Autodesk, SolidWorks)",
+        # "PC para producción musical con baja latencia (presupuesto $1500)",
+        # "Setup para streamer que haga diseño en vivo (multitarea intensiva)",
         "Recomendación para animación 2D/3D (medio alcance, $1700)",
         "PC para arquitectura con renders en tiempo real (Enscape, V-Ray)",
         "Workstation móvil para fotógrafo profesional (ITX compacta)",
