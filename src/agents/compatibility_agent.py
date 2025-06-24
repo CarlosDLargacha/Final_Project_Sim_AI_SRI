@@ -282,8 +282,8 @@ class CompatibilityAgent:
             gpu_value = float(re.search(r'[\d.]+', gpu_length).group())
             case_value = float(re.search(r'[\d.]+', case_max_gpu).group())
             
-            print(gpu_value)
-            print(case_value)
+            # print(gpu_value)
+            # print(case_value)
             
             # Comparar valores (asumiendo misma unidad)
             if gpu_value > case_value:

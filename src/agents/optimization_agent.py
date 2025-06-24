@@ -2,6 +2,7 @@ from typing import Dict, List, Any, Tuple, Set, Optional
 from blackboard import Blackboard, EventType
 from agents.decorators import agent_error_handler
 from agents.compatibility_agent import ComponentType, CompatibilityIssue
+from model.GeneticOptimizer import GeneticOptimizer
 import copy
 import re
 
@@ -56,9 +57,30 @@ class OptimizationAgent:
         if cheapest:
             builds.append(self._package_build(cheapest, label="Build Más Económica"))
 
-        # best_price_perf = self._find_best_price_perf_build(reduced_domains, max_budget, conflict_set)
-        # if best_price_perf:
-        #     builds.append(self._package_build(best_price_perf, label="Mejor Calidad/Precio"))
+        optimizer = GeneticOptimizer(
+            domains=reduced_domains,
+            budget_limit=max_budget,
+            compatibility_conflicts=conflict_set,
+            fitness_mode='quality_price'
+        )
+
+        best_price_perf = optimizer.run()
+        if best_price_perf:
+            builds.append(self._package_build(best_price_perf, label="Build Con Mejor Calidad/Precio"))
+
+
+        optimizer = GeneticOptimizer(
+            domains=reduced_domains,
+            budget_limit=max_budget,
+            compatibility_conflicts=conflict_set,
+            fitness_mode='performance'
+        )
+
+        performance = optimizer.run()
+        if performance:
+            builds.append(self._package_build(performance, label="Build Con Mejor Rendimiento"))
+
+
 
         self.blackboard.update(
             section="optimized_configs",
