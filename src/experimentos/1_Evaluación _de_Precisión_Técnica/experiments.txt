@@ -2279,3 +2279,20 @@ SSD:
 
 
 
+
+----------------------------------------------------------------------------------
+
+Querie: Recomendación para animación 2D/3D (medio alcance, $1700)
+
+Propuestas: 
+GPU: 5
+Motherboard: 129
+RAM: 106
+Case: 107
+PSU: 123
+SSD: 74
+CPU: 26
+
+Response: 
+
+No se encontraron configuraciones que cumplan con los requisitos del usuario.

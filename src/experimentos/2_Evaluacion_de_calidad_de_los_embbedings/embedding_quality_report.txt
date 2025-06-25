@@ -1,0 +1,672 @@
+=== EVALUACIÓN DE CALIDAD DE EMBEDDINGS ===
+
+QUERY: Estación de trabajo para machine learning con GPU NVIDIA y 64GB RAM
+--------------------------------------------------------------------------------
+
+Componente: CPU
+  Top resultados recuperados:
+    1. Core i7-720QM
+    2. Core i7-720QM
+    3. Core i7-720QM
+    4. Core i7-720QM
+    5. Core i7-720QM
+    6. Core i7-720QM
+    7. Core i7-720QM
+    8. Core Ultra 5 245KF
+    9. Ryzen 7 8700G
+    10. Ryzen 7 8700G
+    11. Ryzen 7 8700G
+    12. Ryzen 7 8700G
+    13. Ryzen 7 8700G
+    14. Ryzen 7 8700G
+    15. Ryzen 7 8700G
+
+  Resultados esperados:
+    AMD Ryzen 9 7950X
+    Intel Core i9-13900K
+    AMD Threadripper 3960X
+
+Componente: GPU
+  Top resultados recuperados:
+    1. k80
+    2. GV-N5090AORUS M-32GD
+    3. N/A
+    4. 8346-00178
+    5. GV-N407SGAMING OC-12GD
+    6. 08G-P5-3755-KR
+    7. GV-N5080AORUS M-16GD
+    8. N/A
+    9. GT 1030
+    10. GV-R79XTGAMING OC-20GD
+    11. RTX 5090 32G VANGUARD SOC
+    12. N/A
+    13. GV-N5080GAMING OC-16GD
+    14. 900-5G132-2560-000
+    15. VCG407012TFXXPB1
+
+  Resultados esperados:
+    NVIDIA RTX 4090
+    NVIDIA RTX 3090 Ti
+    NVIDIA RTX A6000
+
+Componente: RAM
+  Top resultados recuperados:
+    1. CP2K32G56C46U5
+    2. CP2K32G56C46U5
+    3. CP2K32G56C46U5
+    4. F5-6400J3239G16GX2-TZ5RK
+    5. F5-6400J3239G16GX2-TZ5RK
+    6. F5-6400J3239G16GX2-TZ5RK
+    7. F5-6400J3239G32GX2-TZ5RK
+    8. F5-7200J3445G16GX2-TZ5RK
+    9. F5-7200J3445G16GX2-TZ5RK
+    10. F5-7200J3445G16GX2-TZ5RK
+    11. CP2K16G4DFRA32A
+    12. CP2K16G4DFRA32A
+    13. CP2K16G4DFRA32A
+    14. F5-6000J3636F16GX2-TZ5RK
+    15. F5-6000J3636F16GX2-TZ5RK
+
+  Resultados esperados:
+    Corsair Vengeance 64GB DDR5 5200MHz
+    G.Skill Ripjaws S5 64GB DDR5 5600MHz
+
+Componente: MB
+  Top resultados recuperados:
+    1. B650E A ELITE X ICE
+    2. B650E A ELITE X ICE
+    3. MAG X870 TOMAHAWK WIFI
+    4. N/A
+    5. N/A
+    6. X870E AORUS PRO ICE
+    7. X870E AORUS PRO ICE
+    8. X870E AORUS ELITE WIFI7
+    9. CROSSHAIR X870E EXTREME
+    10. CROSSHAIR X870E EXTREME
+    11. CROSSHAIR X870E EXTREME
+    12. B650E A ELITE X ICE
+    13. B650E A ELITE X ICE
+    14. B650M GAMING PLUS WIFI
+    15. Z890 AORUS ELITE WIFI7
+
+  Resultados esperados:
+    ASUS ROG Crosshair X670E Hero
+    MSI MEG X670E ACE
+
+Componente: PSU
+  Top resultados recuperados:
+    1. N/A
+    2. N/A
+    3. N/A
+    4. N/A
+    5. N/A
+    6. N/A
+    7. N/A
+    8. N/A
+    9. N/A
+    10. N/A
+    11. N/A
+    12. N/A
+    13. N/A
+    14. N/A
+    15. N/A
+
+  Resultados esperados:
+    Corsair HX1200
+    Seasonic PRIME TX-1000
+
+Componente: Case
+  Top resultados recuperados:
+    1. FD-C-NOR1C-02
+    2. FD-C-NOR1C-02
+    3. FD-C-NOR1C-02
+    4. FD-C-NOR1C-04
+    5. FD-C-NOR1C-04
+    6. FD-C-NOR1X-05
+    7. FD-C-NOR1X-05
+    8. FD-C-NOR1X-05
+    9. FD-C-NOR1X-05
+    10. FD-C-NOR1C-01
+    11. FD-C-NOR1C-01
+    12. FD-C-NOR1C-01
+    13. FD-C-NOR1C-01
+    14. Pop XL Air
+    15. ARGB-G5-BK
+
+  Resultados esperados:
+    Fractal Design Meshify 2 XL
+    Lian Li Lancool III
+
+================================================================================
+
+QUERY: Necesito una PC para gaming en 1080p con presupuesto de $1000
+--------------------------------------------------------------------------------
+
+Componente: CPU
+  Top resultados recuperados:
+    1. Core Ultra 5 245K
+    2. Core Ultra 5 245K
+    3. Core Ultra 5 245K
+    4. Core Ultra 5 245K
+    5. Core Ultra 5 245K
+    6. Core Ultra 5 245K
+    7. Core Ultra 5 245KF
+    8. Core Ultra 5 245KF
+    9. Core Ultra 5 245KF
+    10. Core Ultra 5 245KF
+    11. Core Ultra 5 245KF
+    12. Core Ultra 9 285K
+    13. Core Ultra 9 285K
+    14. Core Ultra 9 285K
+    15. Core Ultra 9 285K
+
+  Resultados esperados:
+    Intel Core i5-12400F
+    AMD Ryzen 5 5600X
+    Intel Core i5-13400F
+
+Componente: GPU
+  Top resultados recuperados:
+    1. GV-N5080GAMING OC-16GD
+    2. RTX 5080 16G GAMING TRIO OC WHITE
+    3. RTX 5080 16G GAMING TRIO OC
+    4. RTX 5070 12G GAMING TRIO OC
+    5. GV-N5070GAMING OC-12GD
+    6. RTX 4060 TI GAMING X SLIM 16G
+    7. GV-N5090GAMING OC-32GD
+    8. GV-R76GAMING OC-8GD
+    9. GV-N4060GAMING OC-8GD
+    10. RTX 5070 Ti 16G GAMING TRIO OC
+    11. RTX 5090 32G GAMING TRIO OC
+    12. RTX 5070 Ti 16G GAMING TRIO OC PLUS
+    13. 8346-00178
+    14. RTX 5060 Ti 16G GAMING TRIO OC
+    15. GV-N507TGAMING OC-16GD
+
+  Resultados esperados:
+    NVIDIA RTX 3060
+    AMD RX 6600
+    NVIDIA RTX 3060 Ti
+
+Componente: RAM
+  Top resultados recuperados:
+    1. CP2K16G4DFRA32A
+    2. CP2K16G4DFRA32A
+    3. CP2K16G4DFRA32A
+    4. CP2K32G4DFRA32A
+    5. CP2K32G4DFRA32A
+    6. CP2K32G4DFRA32A
+    7. F4-3200C16D-16GVKB
+    8. F4-3200C16D-16GVKB
+    9. F4-3200C16D-32GVK
+    10. F4-3200C16D-32GVK
+    11. F4-3200C16D-32GVK
+    12. F4-3200C16D-32GVK
+    13. F4-3600C16D-32GVKC
+    14. F4-3600C16D-32GVKC
+    15. F4-3600C16D-32GVKC
+
+  Resultados esperados:
+    Corsair Vengeance LPX 16GB DDR4 3200MHz
+    G.Skill Ripjaws V 16GB DDR4 3200MHz
+
+Componente: MB
+  Top resultados recuperados:
+    1. B650 GAMING PLUS WIFI
+    2. X870 AYW GAMING WIFI W
+    3. B650E MAX GAMING WIFI W
+    4. B650E MAX GAMING WIFI W
+    5. B650E MAX GAMING WIFI W
+    6. N/A
+    7. N/A
+    8. ROG STRIX B760-I GAMING WIFI
+    9. B850M GAMING X WIFI6E
+    10. B850M GAMING X WIFI6E
+    11. B850M GAMING X WIFI6E
+    12. B650E A ELITE X ICE
+    13. B650E A ELITE X ICE
+    14. B850M GAMING X WIFI6E
+    15. B650 GAMING PLUS WIFI
+
+  Resultados esperados:
+    MSI B660M-A
+    ASUS TUF B550-PLUS
+
+Componente: PSU
+  Top resultados recuperados:
+    1. N/A
+    2. N/A
+    3. N/A
+    4. N/A
+    5. TC-1200PD8G
+    6. TC-1200PD8G
+    7. N/A
+    8. N/A
+    9. N/A
+    10. AP-MPS3ATX80EP8
+    11. AP-MPS3ATX80EP8
+    12. AP-MPS3ATX80EP8
+    13. AP-MPS3ATX80EP8
+    14. N/A
+    15. N/A
+
+  Resultados esperados:
+    EVGA 600W 80+ Gold
+    Corsair CX650M
+
+Componente: Case
+  Top resultados recuperados:
+    1. 3500X White
+    2. 3500X White
+    3. FD-C-NOR1C-02
+    4. FD-C-NOR1C-02
+    5. FD-C-NOR1C-02
+    6. ARGB-G5-BK
+    7. ARGB-G5-BK
+    8. ARGB-G5-BK
+    9. ARGB-G5-BK
+    10. FD-C-NOR1C-04
+    11. FD-C-NOR1C-04
+    12. FD-C-NOR1C-01
+    13. FD-C-NOR1C-01
+    14. FD-C-NOR1C-01
+    15. FD-C-NOR1C-01
+
+  Resultados esperados:
+    NZXT H510
+    Fractal Design Focus G
+
+================================================================================
+
+QUERY: PC compacta para gaming en LAN parties con RGB, máximo $1200
+--------------------------------------------------------------------------------
+
+Componente: CPU
+  Top resultados recuperados:
+    1. Core Ultra 5 245K
+    2. Core Ultra 5 245K
+    3. Core Ultra 5 245K
+    4. Core Ultra 5 245K
+    5. Core Ultra 5 245K
+    6. Core Ultra 5 245K
+    7. Core Ultra 5 245KF
+    8. Core Ultra 5 245KF
+    9. Core Ultra 5 245KF
+    10. Core Ultra 5 245KF
+    11. Core Ultra 5 245KF
+    12. Core Ultra 9 285K
+    13. Core Ultra 9 285K
+    14. Core Ultra 9 285K
+    15. Core Ultra 9 285K
+
+  Resultados esperados:
+    AMD Ryzen 7 7700X
+    Intel Core i5-13600KF
+
+Componente: GPU
+  Top resultados recuperados:
+    1. GV-N5080GAMING OC-16GD
+    2. RTX 4060 TI GAMING X SLIM 16G
+    3. GV-N3060GAMING OC-12GD (rev. 2.0)
+    4. GV-N5070GAMING OC-12GD
+    5. VCG407012TFXXPB1
+    6. RTX 5070 12G GAMING TRIO OC
+    7. GT 1030
+    8. GV-N407SGAMING OC-12GD
+    9. GV-N4060GAMING OC-8GD
+    10. 8346-00178
+    11. RTX 5080 16G GAMING TRIO OC
+    12. GV-N507TGAMING OC-16GD
+    13. RTX 5080 16G GAMING TRIO OC WHITE
+    14. GV-R76GAMING OC-8GD
+    15. GV-N407TSGAMING OC-16GD
+
+  Resultados esperados:
+    NVIDIA RTX 4070
+    NVIDIA RTX 4060 Ti
+
+Componente: RAM
+  Top resultados recuperados:
+    1. CP2K32G56C46U5
+    2. CP2K32G56C46U5
+    3. CP2K32G56C46U5
+    4. F5-6400J3239G16GX2-TZ5RK
+    5. F5-6400J3239G16GX2-TZ5RK
+    6. F5-6400J3239G16GX2-TZ5RK
+    7. F5-6400J3239G32GX2-TZ5RK
+    8. CP2K16G4DFRA32A
+    9. CP2K16G4DFRA32A
+    10. CP2K16G4DFRA32A
+    11. F5-7200J3445G16GX2-TZ5RK
+    12. F5-7200J3445G16GX2-TZ5RK
+    13. F5-7200J3445G16GX2-TZ5RK
+    14. CP2K32G4DFRA32A
+    15. CP2K32G4DFRA32A
+
+  Resultados esperados:
+    G.Skill Trident Z5 RGB 32GB DDR5 6000MHz
+    Corsair Dominator Platinum RGB 32GB DDR5 6200MHz
+
+Componente: MB
+  Top resultados recuperados:
+    1. N/A
+    2. N/A
+    3. B650E MAX GAMING WIFI W
+    4. B650E MAX GAMING WIFI W
+    5. B650E MAX GAMING WIFI W
+    6. X870 AYW GAMING WIFI W
+    7. X870E AORUS PRO ICE
+    8. X870E AORUS PRO ICE
+    9. B650 GAMING PLUS WIFI
+    10. B850M GAMING X WIFI6E
+    11. B850M GAMING X WIFI6E
+    12. B850M GAMING X WIFI6E
+    13. B650E A ELITE X ICE
+    14. B650E A ELITE X ICE
+    15. ROG STRIX B760-I GAMING WIFI
+
+  Resultados esperados:
+    ASUS ROG STRIX B650-I
+    Gigabyte B650I AORUS Ultra
+
+Componente: PSU
+  Top resultados recuperados:
+    1. N/A
+    2. N/A
+    3. N/A
+    4. N/A
+    5. N/A
+    6. N/A
+    7. N/A
+    8. TC-1200PD8G
+    9. TC-1200PD8G
+    10. AP-MPS3ATX80EP8
+    11. AP-MPS3ATX80EP8
+    12. AP-MPS3ATX80EP8
+    13. AP-MPS3ATX80EP8
+    14. N/A
+    15. N/A
+
+  Resultados esperados:
+    Cooler Master V850 SFX
+    Lian Li SP750
+
+Componente: Case
+  Top resultados recuperados:
+    1. ARGB-G5-BK
+    2. ARGB-G5-BK
+    3. ARGB-G5-BK
+    4. ARGB-G5-BK
+    5. 3500X White
+    6. 3500X White
+    7. FD-C-NOR1C-01
+    8. FD-C-NOR1C-01
+    9. FD-C-NOR1C-01
+    10. FD-C-NOR1C-01
+    11. FD-C-NOR1C-02
+    12. FD-C-NOR1C-02
+    13. FD-C-NOR1C-02
+    14. FBM-X3-650 M
+    15. CM-H91FW-01
+
+  Resultados esperados:
+    NZXT H1 V2
+    SSUPD Meshlicious
+
+================================================================================
+
+QUERY: PC económica para oficina y navegación web bajo $500
+--------------------------------------------------------------------------------
+
+Componente: CPU
+  Top resultados recuperados:
+    1. Core Ultra 5 245KF
+    2. Core Ultra 5 245KF
+    3. Core Ultra 5 245KF
+    4. Core Ultra 5 245KF
+    5. Core Ultra 5 245KF
+    6. Core Ultra 5 245K
+    7. Core Ultra 5 245K
+    8. Core Ultra 5 245K
+    9. Core Ultra 5 245K
+    10. Core Ultra 5 245K
+    11. Core Ultra 5 245K
+    12. Core Ultra 5 245KF
+    13. Core Ultra 9 285K
+    14. Core Ultra 9 285K
+    15. Core Ultra 9 285K
+
+  Resultados esperados:
+    AMD Ryzen 5 5600G
+    Intel Core i3-12100
+    AMD Ryzen 3 5300G
+
+Componente: RAM
+  Top resultados recuperados:
+    1. CP2K16G4DFRA32A
+    2. CP2K16G4DFRA32A
+    3. CP2K16G4DFRA32A
+    4. CP2K32G4DFRA32A
+    5. CP2K32G4DFRA32A
+    6. CP2K32G4DFRA32A
+    7. F4-3200C16D-32GVK
+    8. F4-3200C16D-32GVK
+    9. F4-3200C16D-32GVK
+    10. F4-3200C16D-32GVK
+    11. CP2K32G56C46U5
+    12. CP2K32G56C46U5
+    13. CP2K32G56C46U5
+    14. F4-3200C16D-16GVKB
+    15. F4-3200C16D-16GVKB
+
+  Resultados esperados:
+    Crucial 8GB DDR4 3200MHz
+    Kingston ValueRAM 8GB DDR4 3200MHz
+
+Componente: MB
+  Top resultados recuperados:
+    1. N/A
+    2. N/A
+    3. X870E AORUS PRO ICE
+    4. X870E AORUS PRO ICE
+    5. MAG X870 TOMAHAWK WIFI
+    6. B650E A ELITE X ICE
+    7. B650E A ELITE X ICE
+    8. Z890 AORUS ELITE WF7 ICE
+    9. Z890 AORUS ELITE WF7 ICE
+    10. Z890 AORUS ELITE WF7 ICE
+    11. Z890 AORUS ELITE WF7 ICE
+    12. N/A
+    13. N/A
+    14. CROSSHAIR X870E EXTREME
+    15. CROSSHAIR X870E EXTREME
+
+  Resultados esperados:
+    ASRock B550M-ITX
+    Gigabyte B660I AORUS Pro
+
+Componente: PSU
+  Top resultados recuperados:
+    1. N/A
+    2. N/A
+    3. N/A
+    4. N/A
+    5. AP-MPS3ATX80EP8
+    6. AP-MPS3ATX80EP8
+    7. AP-MPS3ATX80EP8
+    8. AP-MPS3ATX80EP8
+    9. N/A
+    10. N/A
+    11. N/A
+    12. N/A
+    13. N/A
+    14. N/A
+    15. N/A
+
+  Resultados esperados:
+    EVGA 450W 80+ Bronze
+    Thermaltake Smart 500W
+
+Componente: Case
+  Top resultados recuperados:
+    1. FD-C-NOR1C-02
+    2. FD-C-NOR1C-02
+    3. FD-C-NOR1C-02
+    4. FD-C-NOR1C-04
+    5. FD-C-NOR1C-04
+    6. FD-C-NOR1C-01
+    7. FD-C-NOR1C-01
+    8. FD-C-NOR1C-01
+    9. FD-C-NOR1C-01
+    10. NV5 MK2
+    11. NV5 MK2
+    12. 3500X White
+    13. 3500X White
+    14. FBM-X3-650 M
+    15. Pop XL Air
+
+  Resultados esperados:
+    Cooler Master Elite 110
+    Fractal Design Node 304
+
+================================================================================
+
+QUERY: Workstation para edición 4K en Premiere con máximo $2500
+--------------------------------------------------------------------------------
+
+Componente: CPU
+  Top resultados recuperados:
+    1. Core Ultra 5 245KF
+    2. Core Ultra 5 245KF
+    3. Core Ultra 5 245KF
+    4. Core Ultra 5 245KF
+    5. Core Ultra 5 245KF
+    6. Core Ultra 5 245K
+    7. Core Ultra 5 245K
+    8. Core Ultra 5 245K
+    9. Core Ultra 5 245K
+    10. Core Ultra 5 245K
+    11. Core Ultra 5 245K
+    12. Core Ultra 9 285K
+    13. Core Ultra 9 285K
+    14. Core Ultra 9 285K
+    15. Core Ultra 9 285K
+
+  Resultados esperados:
+    Intel Core i7-13700K
+    AMD Ryzen 9 7900X
+    Intel Core i9-13900
+
+Componente: GPU
+  Top resultados recuperados:
+    1. 8346-00178
+    2. RTX 5090 32G VANGUARD SOC
+    3. PRIME-RTX5070-O12G
+    4. PRIME-RTX5070-12G
+    5. RTX 5080 16G INSPIRE 3X OC
+    6. GV-N5080AORUS M-16GD
+    7. VCG407012TFXXPB1
+    8. VCG4070S12TFXXPB1-O
+    9. GV-N5080GAMING OC-16GD
+    10. GT 1030
+    11. PRIME-RTX5070TI-O16G
+    12. PRIME-RX9070XT-O16G
+    13. ZT-B50900D-10P
+    14. VCG4080S16TFXPB1-O
+    15. 21P01J00BA
+
+  Resultados esperados:
+    NVIDIA RTX 4070
+    NVIDIA RTX 4080
+    NVIDIA RTX 3090
+
+Componente: RAM
+  Top resultados recuperados:
+    1. CP2K32G56C46U5
+    2. CP2K32G56C46U5
+    3. CP2K32G56C46U5
+    4. F5-6400J3239G16GX2-TZ5RK
+    5. F5-6400J3239G16GX2-TZ5RK
+    6. F5-6400J3239G16GX2-TZ5RK
+    7. CP2K16G4DFRA32A
+    8. CP2K16G4DFRA32A
+    9. CP2K16G4DFRA32A
+    10. F5-6400J3239G32GX2-TZ5RK
+    11. F5-7200J3445G16GX2-TZ5RK
+    12. F5-7200J3445G16GX2-TZ5RK
+    13. F5-7200J3445G16GX2-TZ5RK
+    14. CP2K32G4DFRA32A
+    15. CP2K32G4DFRA32A
+
+  Resultados esperados:
+    Corsair Dominator Platinum 32GB DDR5 5600MHz
+    G.Skill Trident Z5 32GB DDR5 5600MHz
+
+Componente: MB
+  Top resultados recuperados:
+    1. N/A
+    2. N/A
+    3. B850M GAMING X WIFI6E
+    4. B850M GAMING X WIFI6E
+    5. B850M GAMING X WIFI6E
+    6. B650E A ELITE X ICE
+    7. B650E A ELITE X ICE
+    8. X870E AORUS PRO ICE
+    9. X870E AORUS PRO ICE
+    10. B850M GAMING X WIFI6E
+    11. B650 GAMING PLUS WIFI
+    12. B450M-A PRO MAX II
+    13. B450M-A PRO MAX II
+    14. B450M-A PRO MAX II
+    15. B450M-A PRO MAX II
+
+  Resultados esperados:
+    ASUS ProArt Z790
+    Gigabyte X670 AORUS Elite
+
+Componente: PSU
+  Top resultados recuperados:
+    1. N/A
+    2. N/A
+    3. N/A
+    4. N/A
+    5. N/A
+    6. N/A
+    7. N/A
+    8. N/A
+    9. PWS-668-PQ
+    10. PWS-668-PQ
+    11. TC-1200PD8G
+    12. TC-1200PD8G
+    13. TC-700PD8B
+    14. TC-700PD8B
+    15. TC-700PD8B
+
+  Resultados esperados:
+    Corsair RM850x
+    Seasonic Focus GX-850
+
+Componente: Case
+  Top resultados recuperados:
+    1. PH-XT523P1_DBK01
+    2. PH-XT523P1_DBK01
+    3. O11DERGBW
+    4. O11DERGBW
+    5. O11DERGBW
+    6. O11DERGBW
+    7. O11DERGBW
+    8. O11DERGBX
+    9. O11VPX
+    10. O11VPX
+    11. O11VPX
+    12. O11VPX
+    13. FD-C-NOR1C-01
+    14. FD-C-NOR1C-01
+    15. FD-C-NOR1C-01
+
+  Resultados esperados:
+    Lian Li PC-O11 Dynamic
+    Corsair iCUE 4000X
+
+================================================================================
+

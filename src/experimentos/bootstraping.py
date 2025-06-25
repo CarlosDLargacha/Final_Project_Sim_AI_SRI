@@ -128,7 +128,7 @@ def analyze_consistency(original_scores, bootstrap_samples):
 
 def main():
     # Configuración
-    INPUT_CSV = 'evaluations.csv'  # Asegúrate de tener este archivo con columna 'eval'
+    INPUT_CSV = 'evaluations.csv' 
     OUTPUT_DIR = 'results'
     
     # Crear directorio de resultados si no existe
