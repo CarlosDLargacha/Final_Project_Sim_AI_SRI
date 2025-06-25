@@ -157,11 +157,11 @@ if prompt := st.chat_input("Describe tu necesidad de hardware..."):
     with st.chat_message("assistant"):
         with st.spinner("Analizando componentes y generando configuración óptima..."):
             for _ in range(60):
-                st.session_state.user_response = st.session_state.blackboard.get("user_response").get("response")
+                st.session_state.user_response = st.session_state.blackboard.get("user_response", None)
                 if st.session_state.user_response or st.session_state.blackboard.state['errors']:
                     break
                 sleep(1)
 
-            response = st.session_state.user_response or "⚠️ No se recibió respuesta del sistema. Intenta nuevamente."
+            response = st.session_state.user_response.get("response") or "⚠️ No se recibió respuesta del sistema. Intenta nuevamente."
             st.markdown(response)
             st.session_state.messages.append({"role": "assistant", "content": response})
