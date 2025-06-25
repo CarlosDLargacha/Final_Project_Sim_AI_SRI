@@ -4,6 +4,7 @@ QUERY: Estación de trabajo para machine learning con GPU NVIDIA y 64GB RAM
 --------------------------------------------------------------------------------
 
 Componente: CPU
+  Top resultados recuperados:
     1. Core i7-720QM
     2. Core i7-720QM
     3. Core i7-720QM
@@ -20,7 +21,13 @@ Componente: CPU
     14. Ryzen 7 8700G
     15. Ryzen 7 8700G
 
+  Resultados esperados:
+    AMD Ryzen 9 7950X
+    Intel Core i9-13900K
+    AMD Threadripper 3960X
+
 Componente: GPU
+  Top resultados recuperados:
     1. k80
     2. GV-N5090AORUS M-32GD
     3. N/A
@@ -37,7 +44,13 @@ Componente: GPU
     14. 900-5G132-2560-000
     15. VCG407012TFXXPB1
 
+  Resultados esperados:
+    NVIDIA RTX 4090
+    NVIDIA RTX 3090 Ti
+    NVIDIA RTX A6000
+
 Componente: RAM
+  Top resultados recuperados:
     1. CP2K32G56C46U5
     2. CP2K32G56C46U5
     3. CP2K32G56C46U5
@@ -54,7 +67,12 @@ Componente: RAM
     14. F5-6000J3636F16GX2-TZ5RK
     15. F5-6000J3636F16GX2-TZ5RK
 
+  Resultados esperados:
+    Corsair Vengeance 64GB DDR5 5200MHz
+    G.Skill Ripjaws S5 64GB DDR5 5600MHz
+
 Componente: MB
+  Top resultados recuperados:
     1. B650E A ELITE X ICE
     2. B650E A ELITE X ICE
     3. MAG X870 TOMAHAWK WIFI
@@ -71,7 +89,12 @@ Componente: MB
     14. B650M GAMING PLUS WIFI
     15. Z890 AORUS ELITE WIFI7
 
+  Resultados esperados:
+    ASUS ROG Crosshair X670E Hero
+    MSI MEG X670E ACE
+
 Componente: PSU
+  Top resultados recuperados:
     1. N/A
     2. N/A
     3. N/A
@@ -88,7 +111,12 @@ Componente: PSU
     14. N/A
     15. N/A
 
+  Resultados esperados:
+    Corsair HX1200
+    Seasonic PRIME TX-1000
+
 Componente: Case
+  Top resultados recuperados:
     1. FD-C-NOR1C-02
     2. FD-C-NOR1C-02
     3. FD-C-NOR1C-02
@@ -105,12 +133,17 @@ Componente: Case
     14. Pop XL Air
     15. ARGB-G5-BK
 
+  Resultados esperados:
+    Fractal Design Meshify 2 XL
+    Lian Li Lancool III
+
 ================================================================================
 
 QUERY: Necesito una PC para gaming en 1080p con presupuesto de $1000
 --------------------------------------------------------------------------------
 
 Componente: CPU
+  Top resultados recuperados:
     1. Core Ultra 5 245K
     2. Core Ultra 5 245K
     3. Core Ultra 5 245K
@@ -127,7 +160,13 @@ Componente: CPU
     14. Core Ultra 9 285K
     15. Core Ultra 9 285K
 
+  Resultados esperados:
+    Intel Core i5-12400F
+    AMD Ryzen 5 5600X
+    Intel Core i5-13400F
+
 Componente: GPU
+  Top resultados recuperados:
     1. GV-N5080GAMING OC-16GD
     2. RTX 5080 16G GAMING TRIO OC WHITE
     3. RTX 5080 16G GAMING TRIO OC
@@ -144,7 +183,13 @@ Componente: GPU
     14. RTX 5060 Ti 16G GAMING TRIO OC
     15. GV-N507TGAMING OC-16GD
 
+  Resultados esperados:
+    NVIDIA RTX 3060
+    AMD RX 6600
+    NVIDIA RTX 3060 Ti
+
 Componente: RAM
+  Top resultados recuperados:
     1. CP2K16G4DFRA32A
     2. CP2K16G4DFRA32A
     3. CP2K16G4DFRA32A
@@ -161,7 +206,12 @@ Componente: RAM
     14. F4-3600C16D-32GVKC
     15. F4-3600C16D-32GVKC
 
+  Resultados esperados:
+    Corsair Vengeance LPX 16GB DDR4 3200MHz
+    G.Skill Ripjaws V 16GB DDR4 3200MHz
+
 Componente: MB
+  Top resultados recuperados:
     1. B650 GAMING PLUS WIFI
     2. X870 AYW GAMING WIFI W
     3. B650E MAX GAMING WIFI W
@@ -178,7 +228,12 @@ Componente: MB
     14. B850M GAMING X WIFI6E
     15. B650 GAMING PLUS WIFI
 
+  Resultados esperados:
+    MSI B660M-A
+    ASUS TUF B550-PLUS
+
 Componente: PSU
+  Top resultados recuperados:
     1. N/A
     2. N/A
     3. N/A
@@ -195,7 +250,12 @@ Componente: PSU
     14. N/A
     15. N/A
 
+  Resultados esperados:
+    EVGA 600W 80+ Gold
+    Corsair CX650M
+
 Componente: Case
+  Top resultados recuperados:
     1. 3500X White
     2. 3500X White
     3. FD-C-NOR1C-02
@@ -212,12 +272,17 @@ Componente: Case
     14. FD-C-NOR1C-01
     15. FD-C-NOR1C-01
 
+  Resultados esperados:
+    NZXT H510
+    Fractal Design Focus G
+
 ================================================================================
 
 QUERY: PC compacta para gaming en LAN parties con RGB, máximo $1200
 --------------------------------------------------------------------------------
 
 Componente: CPU
+  Top resultados recuperados:
     1. Core Ultra 5 245K
     2. Core Ultra 5 245K
     3. Core Ultra 5 245K
@@ -234,7 +299,12 @@ Componente: CPU
     14. Core Ultra 9 285K
     15. Core Ultra 9 285K
 
+  Resultados esperados:
+    AMD Ryzen 7 7700X
+    Intel Core i5-13600KF
+
 Componente: GPU
+  Top resultados recuperados:
     1. GV-N5080GAMING OC-16GD
     2. RTX 4060 TI GAMING X SLIM 16G
     3. GV-N3060GAMING OC-12GD (rev. 2.0)
@@ -251,7 +321,12 @@ Componente: GPU
     14. GV-R76GAMING OC-8GD
     15. GV-N407TSGAMING OC-16GD
 
+  Resultados esperados:
+    NVIDIA RTX 4070
+    NVIDIA RTX 4060 Ti
+
 Componente: RAM
+  Top resultados recuperados:
     1. CP2K32G56C46U5
     2. CP2K32G56C46U5
     3. CP2K32G56C46U5
@@ -268,7 +343,12 @@ Componente: RAM
     14. CP2K32G4DFRA32A
     15. CP2K32G4DFRA32A
 
+  Resultados esperados:
+    G.Skill Trident Z5 RGB 32GB DDR5 6000MHz
+    Corsair Dominator Platinum RGB 32GB DDR5 6200MHz
+
 Componente: MB
+  Top resultados recuperados:
     1. N/A
     2. N/A
     3. B650E MAX GAMING WIFI W
@@ -285,7 +365,12 @@ Componente: MB
     14. B650E A ELITE X ICE
     15. ROG STRIX B760-I GAMING WIFI
 
+  Resultados esperados:
+    ASUS ROG STRIX B650-I
+    Gigabyte B650I AORUS Ultra
+
 Componente: PSU
+  Top resultados recuperados:
     1. N/A
     2. N/A
     3. N/A
@@ -302,7 +387,12 @@ Componente: PSU
     14. N/A
     15. N/A
 
+  Resultados esperados:
+    Cooler Master V850 SFX
+    Lian Li SP750
+
 Componente: Case
+  Top resultados recuperados:
     1. ARGB-G5-BK
     2. ARGB-G5-BK
     3. ARGB-G5-BK
@@ -319,12 +409,17 @@ Componente: Case
     14. FBM-X3-650 M
     15. CM-H91FW-01
 
+  Resultados esperados:
+    NZXT H1 V2
+    SSUPD Meshlicious
+
 ================================================================================
 
 QUERY: PC económica para oficina y navegación web bajo $500
 --------------------------------------------------------------------------------
 
 Componente: CPU
+  Top resultados recuperados:
     1. Core Ultra 5 245KF
     2. Core Ultra 5 245KF
     3. Core Ultra 5 245KF
@@ -341,7 +436,13 @@ Componente: CPU
     14. Core Ultra 9 285K
     15. Core Ultra 9 285K
 
+  Resultados esperados:
+    AMD Ryzen 5 5600G
+    Intel Core i3-12100
+    AMD Ryzen 3 5300G
+
 Componente: RAM
+  Top resultados recuperados:
     1. CP2K16G4DFRA32A
     2. CP2K16G4DFRA32A
     3. CP2K16G4DFRA32A
@@ -358,7 +459,12 @@ Componente: RAM
     14. F4-3200C16D-16GVKB
     15. F4-3200C16D-16GVKB
 
+  Resultados esperados:
+    Crucial 8GB DDR4 3200MHz
+    Kingston ValueRAM 8GB DDR4 3200MHz
+
 Componente: MB
+  Top resultados recuperados:
     1. N/A
     2. N/A
     3. X870E AORUS PRO ICE
@@ -375,7 +481,12 @@ Componente: MB
     14. CROSSHAIR X870E EXTREME
     15. CROSSHAIR X870E EXTREME
 
+  Resultados esperados:
+    ASRock B550M-ITX
+    Gigabyte B660I AORUS Pro
+
 Componente: PSU
+  Top resultados recuperados:
     1. N/A
     2. N/A
     3. N/A
@@ -392,7 +503,12 @@ Componente: PSU
     14. N/A
     15. N/A
 
+  Resultados esperados:
+    EVGA 450W 80+ Bronze
+    Thermaltake Smart 500W
+
 Componente: Case
+  Top resultados recuperados:
     1. FD-C-NOR1C-02
     2. FD-C-NOR1C-02
     3. FD-C-NOR1C-02
@@ -409,12 +525,17 @@ Componente: Case
     14. FBM-X3-650 M
     15. Pop XL Air
 
+  Resultados esperados:
+    Cooler Master Elite 110
+    Fractal Design Node 304
+
 ================================================================================
 
 QUERY: Workstation para edición 4K en Premiere con máximo $2500
 --------------------------------------------------------------------------------
 
 Componente: CPU
+  Top resultados recuperados:
     1. Core Ultra 5 245KF
     2. Core Ultra 5 245KF
     3. Core Ultra 5 245KF
@@ -431,7 +552,13 @@ Componente: CPU
     14. Core Ultra 9 285K
     15. Core Ultra 9 285K
 
+  Resultados esperados:
+    Intel Core i7-13700K
+    AMD Ryzen 9 7900X
+    Intel Core i9-13900
+
 Componente: GPU
+  Top resultados recuperados:
     1. 8346-00178
     2. RTX 5090 32G VANGUARD SOC
     3. PRIME-RTX5070-O12G
@@ -448,7 +575,13 @@ Componente: GPU
     14. VCG4080S16TFXPB1-O
     15. 21P01J00BA
 
+  Resultados esperados:
+    NVIDIA RTX 4070
+    NVIDIA RTX 4080
+    NVIDIA RTX 3090
+
 Componente: RAM
+  Top resultados recuperados:
     1. CP2K32G56C46U5
     2. CP2K32G56C46U5
     3. CP2K32G56C46U5
@@ -465,7 +598,12 @@ Componente: RAM
     14. CP2K32G4DFRA32A
     15. CP2K32G4DFRA32A
 
+  Resultados esperados:
+    Corsair Dominator Platinum 32GB DDR5 5600MHz
+    G.Skill Trident Z5 32GB DDR5 5600MHz
+
 Componente: MB
+  Top resultados recuperados:
     1. N/A
     2. N/A
     3. B850M GAMING X WIFI6E
@@ -482,7 +620,12 @@ Componente: MB
     14. B450M-A PRO MAX II
     15. B450M-A PRO MAX II
 
+  Resultados esperados:
+    ASUS ProArt Z790
+    Gigabyte X670 AORUS Elite
+
 Componente: PSU
+  Top resultados recuperados:
     1. N/A
     2. N/A
     3. N/A
@@ -499,7 +642,12 @@ Componente: PSU
     14. TC-700PD8B
     15. TC-700PD8B
 
+  Resultados esperados:
+    Corsair RM850x
+    Seasonic Focus GX-850
+
 Componente: Case
+  Top resultados recuperados:
     1. PH-XT523P1_DBK01
     2. PH-XT523P1_DBK01
     3. O11DERGBW
@@ -515,6 +663,10 @@ Componente: Case
     13. FD-C-NOR1C-01
     14. FD-C-NOR1C-01
     15. FD-C-NOR1C-01
+
+  Resultados esperados:
+    Lian Li PC-O11 Dynamic
+    Corsair iCUE 4000X
 
 ================================================================================
 

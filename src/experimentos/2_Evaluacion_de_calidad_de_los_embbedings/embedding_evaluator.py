@@ -178,14 +178,14 @@ class EmbeddingEvaluator:
                     f.write(f"\nComponente: {row['component_type']}\n")
                     
                     # Resultados obtenidos
-                    f.write("  Top resultados recuperados:\n")
+                    # f.write("  Top resultados recuperados:\n")
                     for i, item in enumerate(row['retrieved'], 1):
                         f.write(f"    {i}. {item}\n")
                     
                     # Resultados esperados
-                    f.write("\n  Resultados esperados:\n")
-                    for exp in row['expected']:
-                        f.write(f"    {exp}\n")
+                    # f.write("\n  Resultados esperados:\n")
+                    # for exp in row['expected']:
+                    #     f.write(f"    {exp}\n")
                 
                 f.write("\n" + "=" * 80 + "\n\n")
 
